@@ -5,7 +5,9 @@
 #------------------------------------------------------------------------
 # Importe
 import numpy as np
-
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton
+from PyQt5.QtGui import QColor
 
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------
