@@ -100,8 +100,13 @@ class Board(QMainWindow):
                     return False                # Es gibt mindestens eine leere Zelle
         return True                             # Das Spielfeld ist voll, wenn keine leeren Zellen gefunden wurden
     
-
-
+#test
+    
+    def get_next_open_row(self, col):
+        for r in range(self.m):  # Von oben nach unten durchgehen
+            if self.get_symbol(r, col) == "":
+                return r  # Rückgabe der nächsten offenen Zeile in der Spalte
+        return -1  # -1, wenn die Spalte voll ist
 
 
 #ausführen
