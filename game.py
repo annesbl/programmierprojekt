@@ -10,7 +10,7 @@ class Game:
    
 
   def make_move(self, col):
-    row = self.board.get_next_open_row(col) #gibt nächste verfügbare zeile in spiel zurück, wenn -1 also voll
+    row = self.board.place_x() #sollte eig zug machen
     if row != -1: #überprüfen ob spalte voll ist
       current_symbol = self.player1_symbol if self.player1_turn else self.player2_symbol
       self.board.place_symbol(row, col, current_symbol)
