@@ -1,4 +1,5 @@
 from board import Board #damit man am ende alles zusammenfügen kann
+from playergame import Player
 class Game:
   def __init__(self, board):# m=5, n=5, k=4)
     self.board = Board()  #speichert spielbrett dass game zugeordnet ist
