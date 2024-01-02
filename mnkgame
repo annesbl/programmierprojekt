@@ -7,18 +7,17 @@ import random
 from PyQt5.QtCore import QTimer, QCoreApplication
 
 
-class Board(QMainWindow):
+class Board(QMainWindow):                #beliz
     
     def __init__(self, m=5, n=5, k=4):  #initialisieren vom spielfeld
         super().__init__()
         
         self.m = m    #row
         self.n = n    #col
-        self.k = k 
+        self.k = k    
+      
     
-        
-    
-    #ERSTELLUNG DES SPIELBRETTES            beliz
+    #ERSTELLUNG DES SPIELBRETTES            
     def display(self, game):
 
         #titel
@@ -64,40 +63,38 @@ class Player:                                  #jule
     def __init__(self, name, symbol):
         self.name = name
         self.symbol = symbol   
+        self.is_zufallski = False
+        self.is_einfacheki = False
+        self.is_komplexeki = False
         
         
         
-class ZufallsKI(Player):
+class ZufallsKI(Player):                       #anne
      
      def __init__(self, name, symbol, game):
          super().__init__(name, symbol)
          self.game = game
+         self.is_zufallski = True
      
      
-     def make_computer_move(self):
+     #ZUG DER ZUFALLS KI
+     def make_zufallski_move(self):
          while True:
              row = random.randint(0, self.game.board.m - 1)
              col = random.randint(0, self.game.board.n - 1)
              if self.game.get_symbol(row, col) == "":
                  self.game.place_symbol(row, col)
                  break
-         #EINFACHE ZUFÄLLIGE AUSWAHL EINER SPALTE
-         #import random
-         #if self.game.current_player == self:
-           # while True:
-              #  row, col = random.randint(0, self.game.board.m - 1), random.randint(0, self.game.board.n - 1) #zufallszahlen von 0 bis (m/n) - 1
-                #ÜBERPRÜFEN OB FELD LEER
-               # if self.game.get_symbol(row, col) == "":
-              #     self.game.place_symbol(row, col)
-               # break
-                #row, col = random.randint(0, self.m - 1), random.randint(0, self.n - 1)
-                #PLATZIEREN DES SYMBOLS
-                #self.game.place_symbol(row, col)
+         
 
 class EinfacheKI(Player):
+    '''vergisst nicht self.is_einfacheki = True zu setzten'''
+    '''wenn möglich die Make move methode der klasse make_einfacheki_move nennen'''
     pass
 
 class KomplexeKI(Player):
+    '''vergisst nicht self.is_komplexeki = True zu setzten'''
+    '''wenn möglich die Make move methode der klasse make_komplexeki_move nennen'''
     pass
 
 
@@ -138,6 +135,19 @@ class Game:
             
             #spielerwechsel (falls kein gewinner/gleichstand vorhanden)
             self.current_player = self.player1 if self.current_player == self.player2 else self.player2
+            
+            #überprüfen, ob der neue aktuelle Spieler eine KI ist
+            #zufalls KI
+            if self.current_player.is_zufallski:
+                QTimer.singleShot(100, self.current_player.make_zufallski_move)
+            #einfache KI
+            elif self.current_player.is_einfacheki:
+                QTimer.singleShot(100, self.current_player.make_einfacheki_move)
+            #komlexe KI
+            elif self.current_player.is_komplexeki:
+                QTimer.singleShot(100, self.current_player.make_komplexeki_move)
+            
+            
             
             
     #GEWINNÜBERPRÜFUNG                       anne
@@ -184,12 +194,16 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     player1 = Player("Max", "x")
-    player2 = Player("Tom", "o") #ZufallsKI("Tom", "o", None) #Player("Tom", "o")
-      
-    game = Game(5, 5, 4, player1, player2)
-    #player2.game = game
+    player2 = Player("Tom", "o") 
+    player3 = ZufallsKI("Zufalls KI", "o", None)  
+    player4 = EinfacheKI("Einfache KI", "o", None)
+    player5 = KomplexeKI("Einfache KI", "o", None)
+    
+    game = Game(5, 5, 4, player1, player3)
+    
+    player3.game = game #zufallski
+    player4.game = game #einfacheki
+    player5.game = game #komplexeki
+    
     game.board.show()
     sys.exit(app.exec_())
-
-
-
