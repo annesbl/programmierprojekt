@@ -67,7 +67,23 @@ class Player:                                  #jule
         
         
 class ZufallsKI(Player):
-    pass
+     def __init__(self, name, symbol, game):
+         super().__init__(name, symbol)
+         self.game = Game
+     
+     
+     def make_computer_move(self):
+         #EINFACHE ZUFÄLLIGE AUSWAHL EINER SPALTE
+         import random
+         while True:
+             row, col = random.randint(0, self.game.board.m - 1), random.randint(0, self.game.board.n - 1) #zufallszahlen von 0 bis (m/n) - 1
+             #ÜBERPRÜFEN OB FELD LEER
+             if self.game.get_symbol(row, col) == "":
+               self.game.place_symbol(row, col)
+               break
+             #row, col = random.randint(0, self.m - 1), random.randint(0, self.n - 1)
+             #PLATZIEREN DES SYMBOLS
+             #self.game.place_symbol(row, col)
 
 class EinfacheKI(Player):
     pass
@@ -161,7 +177,7 @@ if __name__ == "__main__":
 
     player1 = Player("Max", "x")
     player2 = Player("Tom", "o")
-
+      
     game = Game(5, 5, 4, player1, player2)
     game.board.show()
     sys.exit(app.exec_())
