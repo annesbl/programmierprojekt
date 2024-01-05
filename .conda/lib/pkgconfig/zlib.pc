@@ -1,0 +1,13 @@
+prefix=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda
+exec_prefix=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda
+libdir=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib
+sharedlibdir=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib
+includedir=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
