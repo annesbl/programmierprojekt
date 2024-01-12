@@ -205,6 +205,52 @@ class Game:
 
 
 
+if __name__ == "__main__":
+
+    #definieren Spieler
+    player1 = Player("Max", "x")
+    player2 = Player("Tom", "o") 
+    player3 = ZufallsKI("Zufalls KI", "o", None)
+    #player4 = EinfacheKI("Einfache KI", "o", None)
+    #player5 = KomplexeKI("Einfache KI", "o", None)
+    
+    play_with_gui = True 
+    
+    if play_with_gui == True:
+        app = QApplication(sys.argv)
+        
+        game = Game(5, 5, 4, player1, player3)
+    
+        player3.game = game #zufallski
+        #player4.game = game #einfacheki
+        #player5.game = game #komplexeki
+        
+        game.board.show()
+        sys.exit(app.exec_())
+    
+    elif play_with_gui == False:
+        #Liste aller Spieler
+        players = [player1, player2, player3] # , player4, player5]
+        
+        #Ergebnisse Initialisieren
+        results = {player.name: 0 for player in players}
+        
+        #Simulieren der Spiele
+        for i in range(len(players)):
+            for j in range(i + 1, len(players)):
+                # Erstellen Sie ein neues Game-Objekt für jede Spielerpaarung
+                game = Game(5, 5, 4, players[i], players[j])
+                # Führen Sie das Spiel aus und erhalten Sie den Gewinner
+                winner = game.play_game()  # play_game Methode muss entsprechend definiert sein
+                # Aktualisieren Sie die Ergebnisse
+                if winner:
+                    results[winner.name] += 1
+        
+        #Ergebnisse ausgeben
+        for player, wins in results.items():
+            print(f"{player}: {wins} Spiele gewonnen")
+
+
 '''
 
 #ausführen zum spielen mit GUI                             beliz
@@ -227,7 +273,7 @@ if __name__ == "__main__":
     game.board.show()
     sys.exit(app.exec_())
     
-    '''
+    
     
     
 # Ausführen der Spiele ohne GUI                            beliz
@@ -260,3 +306,4 @@ if __name__ == "__main__":
     #Ergebnisse ausgeben
     for player, wins in results.items():
         print(f"{player}: {wins} Spiele gewonnen")
+'''
