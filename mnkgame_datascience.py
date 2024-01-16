@@ -105,8 +105,8 @@ class Game:
         self.player1 = player1
         self.player2 = player2
         self.current_player = self.player1  # Start mit Spieler 1
-        self.board = Board(m, n, k)  #Initialisierung von self.board
-        self.board.display(self)     #Übergeben des 'self'-Objekts an die display-Methode
+        self.board = Board(m, n, k)         #Initialisierung von self.board
+        self.board.display(self)            #Übergeben des 'self'-Objekts an die display-Methode
         
         
     #RUFT SYMBOL AUF SPIELFELD AB UM ZU SCHAUEN WELCHES SYMBOL AN DIESER STELLE IST    anne
@@ -186,26 +186,41 @@ class Game:
     
     
     #DURCHLAUF DES SPIELES OHNE GUI --> um werte für die data Science fragen zu sammeln       beliz
-    def play_game(game, player1, player2):
-        game.current_player = player1  # Startspieler festlegen
+    def play_game(self, player1, player2):
+        self.current_player = player1  # Startspieler festlegen
 
-        while not game.check_winner() and not game.is_board_full(): #sichergehen, dass niemand gewonnen hat oder gleichstand ist
+        while not self.check_winner() and not self.is_board_full(): #sichergehen, dass niemand gewonnen hat oder gleichstand ist
             #überprüfen welche KI und Zug machen
-            if isinstance(game.current_player, ZufallsKI):
-                game.current_player.make_zufallski_move()
-            elif isinstance(game.current_player, EinfacheKI):
-                game.current_player.make_einfacheki_move()
-            elif isinstance(game.current_player, KomplexeKI):
-                game.current_player.make_komplexeki_move()
+            if isinstance(self.current_player, ZufallsKI):
+                self.current_player.make_zufallski_move()
+            elif isinstance(self.current_player, EinfacheKI):
+                self.current_player.make_einfacheki_move()
+            elif isinstance(self.current_player, KomplexeKI):
+                self.current_player.make_komplexeki_move()
             
             #spieler wechsel
-            game.current_player = player2 if game.current_player == player1 else player1
+            self.current_player = player2 if self.current_player == player1 else player1
 
-        return game.check_winner()  # Gewinner zurückgeben
+        winner = self.check_winner()  #gewinner zurückgeben
+        return self.current_player.name  #gewinner-Namen zurückgeben
+    
+    
+    
+    #SPIEL OHNE GUI SO OFT DURCHLAUFEN LASSEN WIE MAL WILL                   beliz
+    def play_multiple_games(self, player1, player2, num_games):
+        results = {player1.name: 0, player2.name: 0}           #beide erstmal 0 Spiele gewonnen
+
+        for _ in range(num_games):                             #durchlaufen je nachdem welchen wert man num_games zugewiesen hat
+            winner = self.play_game(player1, player2)          #einen gewinner der runde festlegen
+            if winner:                                         
+                results[winner] += 1                           #dem gewinner einen Winn drauf addieren
+
+        return results
 
 
 
 if __name__ == "__main__":
+    app = QApplication(sys.argv)
 
     #definieren Spieler
     player1 = Player("Max", "x")
@@ -214,12 +229,11 @@ if __name__ == "__main__":
     #player4 = EinfacheKI("Einfache KI", "o", None)
     #player5 = KomplexeKI("Einfache KI", "o", None)
     
-    play_with_gui = True 
+    play_with_gui = False 
     
-    if play_with_gui == True:
-        app = QApplication(sys.argv)
+    if play_with_gui == True:        #führt spiel mit GUI aus
         
-        game = Game(5, 5, 4, player1, player3)
+        game = Game(5, 5, 4, player1, player3) #game klasse aufrufen
     
         player3.game = game #zufallski
         #player4.game = game #einfacheki
@@ -228,82 +242,21 @@ if __name__ == "__main__":
         game.board.show()
         sys.exit(app.exec_())
     
-    elif play_with_gui == False:
-        #Liste aller Spieler
-        players = [player1, player2, player3] # , player4, player5]
+    elif play_with_gui == False:     #fürht spiel ohne GUI aus
         
-        #Ergebnisse Initialisieren
-        results = {player.name: 0 for player in players}
+        #anzahl der Spiele
+        num_games = 10  
         
-        #Simulieren der Spiele
-        for i in range(len(players)):
-            for j in range(i + 1, len(players)):
-                # Erstellen Sie ein neues Game-Objekt für jede Spielerpaarung
-                game = Game(5, 5, 4, players[i], players[j])
-                # Führen Sie das Spiel aus und erhalten Sie den Gewinner
-                winner = game.play_game()  # play_game Methode muss entsprechend definiert sein
-                # Aktualisieren Sie die Ergebnisse
-                if winner:
-                    results[winner.name] += 1
+        #game klasse aufrufen
+        game = Game(5, 5, 4, player1, player3)
+        
+        #player3.game richtig zuweissen
+        player3.game = game  
+        
+        #durchlaufen
+        results = game.play_multiple_games(player1, player3, num_games)
         
         #Ergebnisse ausgeben
-        for player, wins in results.items():
-            print(f"{player}: {wins} Spiele gewonnen")
+        for player_name, wins in results.items():
+            print(f"{player_name}: {wins} Spiele gewonnen")
 
-
-'''
-
-#ausführen zum spielen mit GUI                             beliz
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    
-    #definieren Spieler
-    player1 = Player("Max", "x")
-    player2 = Player("Tom", "o") 
-    player3 = ZufallsKI("Zufalls KI", "o", None)
-    #player4 = EinfacheKI("Einfache KI", "o", None)
-    #player5 = KomplexeKI("Einfache KI", "o", None)
-    
-    game = Game(5, 5, 4, player1, player3)
-    
-    player3.game = game #zufallski
-    #player4.game = game #einfacheki
-    #player5.game = game #komplexeki
-    
-    game.board.show()
-    sys.exit(app.exec_())
-    
-    
-    
-    
-# Ausführen der Spiele ohne GUI                            beliz
-if __name__ == "__main__":
-    
-    #definieren Spieler
-    player1 = Player("Max", "X")
-    player2 = Player("Tom", "O")
-    player3 = ZufallsKI("Zufalls KI", "O", None)
-    #player4 = EinfacheKI("Einfache KI", "o", None)
-    #player5 = KomplexeKI("Einfache KI", "o", None)
-    
-    #Liste aller Spieler
-    players = [player1, player2, player3] # , player4, player5]
-    
-    #Ergebnisse Initialisieren
-    results = {player.name: 0 for player in players}
-    
-    #Simulieren der Spiele
-    for i in range(len(players)):
-        for j in range(i + 1, len(players)):
-            # Erstellen Sie ein neues Game-Objekt für jede Spielerpaarung
-            game = Game(5, 5, 4, players[i], players[j])
-            # Führen Sie das Spiel aus und erhalten Sie den Gewinner
-            winner = game.play_game()  # play_game Methode muss entsprechend definiert sein
-            # Aktualisieren Sie die Ergebnisse
-            if winner:
-                results[winner.name] += 1
-    
-    #Ergebnisse ausgeben
-    for player, wins in results.items():
-        print(f"{player}: {wins} Spiele gewonnen")
-'''
