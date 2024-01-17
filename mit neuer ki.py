@@ -126,20 +126,52 @@ class EinfacheKI(Player):           #jule
         row_start, row_end = self.get_rechendaten_row()
         col_start, col_end = self.get_rechendaten_col()
         
-        #waagerechte Zeilen gewinnen
-    def waagerechte_zeilen(self, symbol, col):
+        for row in range (game.board.m):
+            result_row = EinfacheKI.check_row(row, self.player.symbol)
+            
+    
+
+    def make_move_for_row(self, player_symbol):
+        for row in range(self.board.m):
+            move = self.check_row(row, player_symbol)
+            if move is not None:
+                return move
+        return None
+
+    def make_move_for_column(self, player_symbol):
+        for col in range(self.board.n):
+            move = self.check_column(col, player_symbol)
+            if move is not None:
+                return move
+        return None
+        
+        
+        
+    
+
+    def check_row(self, row, player_symbol):
+        for col in range(self.board.n - self.board.k + 1):
+            symbols_in_row = [self.board.get_symbol(row, col + i) for i in range(self.board.k)]
+            if (symbols_in_row.count(player_symbol) == self.board.k - 1 and '' not in symbols_in_row) or \
+                    (col > 0 and col < self.board.n - self.board.k and
+                    symbols_in_row[self.board.k // 2] == player_symbol and
+                    symbols_in_row[self.board.k - 1] == player_symbol and
+                    symbols_in_row[0] == ''):
+                empty_index = symbols_in_row.index('')  # Find the index of the empty cell
+                return row, col + empty_index
+        return None
+
+    def check_column(self, col, player_symbol):
         for row in range(self.board.m - self.board.k + 1):
             symbols_in_column = [self.board.get_symbol(row + i, col) for i in range(self.board.k)]
-            if symbols_in_column.count(player_symbol) == self.board.k - 1 and '' not in symbols_in_column:
-                return True
-            return False
-        
-    def senkrechte_zeilen(self, symbol, row):
-        for col in range(self.board.n - self.board.k + 1):
-            symbols_in_row = [self.board.get_symbol(row , col + 1) for i in range(self.board.k)]
-            if symbols_in_column.count(player_symbol) == self.board.k - 1 and '' not in symbols_in_column:
-                return True
-            return False
+            if (symbols_in_column.count(player_symbol) == self.board.k - 1 and '' not in symbols_in_column) or \
+                    (row > 0 and row < self.board.m - self.board.k and
+                    symbols_in_column[self.board.k // 2] == player_symbol and
+                    symbols_in_column[self.board.k - 1] == player_symbol and
+                    symbols_in_column[0] == ''):
+                empty_index = symbols_in_column.index('')  # Find the index of the empty cell
+                return row + empty_index, col
+        return None
         
         
         
@@ -149,6 +181,14 @@ class EinfacheKI(Player):           #jule
     def find_optimal_placement_defense(self):
          
     def make_einfacheki_move (self):
+        move = self.game.make_move_for_column(self.symbol) or self.game.make_move_for_row(self.symbol)
+        if move is not None:
+            row, col = move
+            self.game.place_symbol(row, col)
+
+# Beispiel für die Verwendung der KI in Ihrer Game-Klasse
+if self.current_player.is_zufallski:
+    self.current_player.make_zufallski_move()
         
         
 
