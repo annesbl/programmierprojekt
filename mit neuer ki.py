@@ -157,7 +157,7 @@ class EinfacheKI(Player):           #jule
                     symbols_in_row[self.board.k // 2] == player_symbol and
                     symbols_in_row[self.board.k - 1] == player_symbol and
                     symbols_in_row[0] == ''):
-                empty_index = symbols_in_row.index('')  # Find the index of the empty cell
+                empty_index = symbols_in_row.index('')  
                 return row, col + empty_index
         return None
 
@@ -169,7 +169,7 @@ class EinfacheKI(Player):           #jule
                     symbols_in_column[self.board.k // 2] == player_symbol and
                     symbols_in_column[self.board.k - 1] == player_symbol and
                     symbols_in_column[0] == ''):
-                empty_index = symbols_in_column.index('')  # Find the index of the empty cell
+                empty_index = symbols_in_column.index('')  
                 return row + empty_index, col
         return None
         
@@ -179,7 +179,7 @@ class EinfacheKI(Player):           #jule
                 
         
     def find_optimal_placement_defense(self):
-         
+         pass
     def make_einfacheki_move (self):
         move = self.game.make_move_for_column(self.symbol) or self.game.make_move_for_row(self.symbol)
         if move is not None:
