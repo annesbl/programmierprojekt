@@ -206,54 +206,6 @@ class Game:
         return True                       #brett voll -> unentschieden 
     
     
-    
-    #DURCHLAUF DES SPIELES OHNE GUI --> um werte für die data Science fragen zu sammeln       beliz
-    def play_game(self, player1, player2):
-        self.board.reset_board()       #Spielbrett zurücksetzen
-        self.current_player = player1  #Startspieler festlegen
-
-        while not self.check_winner() and not self.is_board_full(): #sichergehen, dass niemand gewonnen hat oder gleichstand ist
-            #überprüfen welche KI und Zug machen
-            if isinstance(self.current_player, ZufallsKI):    #Zufalls KI
-                self.current_player.make_zufallski_move()
-            elif isinstance(self.current_player, EinfacheKI): #Einfache KI
-                self.current_player.make_einfacheki_move()
-            elif isinstance(self.current_player, KomplexeKI): #Komplexe KI
-                self.current_player.make_komplexeki_move()
-            
-            #spieler wechsel
-            #self.current_player = player1 if self.current_player == player2 else player1
-            self.current_player = self.player2 if self.current_player == self.player1 else self.player1
-
-        winner = self.check_winner()  #gewinner zurückgeben
-          
-        if winner:
-            #gewinner-Namen zurückgeben
-            return self.player1.name if self.player1.symbol == winner else self.player2.name
-        else:
-            #none für unendschieden
-            return None
-    
-    
-    
-    #SPIEL OHNE GUI SO OFT DURCHLAUFEN LASSEN WIE MAL WILL                   beliz
-    def play_multiple_games(self, player1, player2, num_games):
-        
-        #liste, die die Siege zählt
-        results = {
-        player1.name: 0,  #Siege von Player1
-        player2.name: 0,  #Siege von Player 2
-        "Draws": 0        #Gleichstand
-        }
-
-        for _ in range(num_games):                             #durchlaufen je nachdem welchen wert man num_games zugewiesen hat
-            winner = self.play_game(player1, player2)          #einen gewinner der runde festlegen
-            if winner:                                         
-                results[winner] += 1                           #dem gewinner einen Winn drauf addieren
-            else:
-                results["Draws"] += 1                          #gleichstände zählen
-                
-        return results
 
 
 #ausführen
@@ -268,9 +220,11 @@ if __name__ == "__main__":
     #player4 = EinfacheKI("Einfache KI", "o", None)
     #player5 = KomplexeKI("Einfache KI", "o", None)
     
-    play_with_gui = False
+    num_gamen = 1000
     
-    if play_with_gui == True:        #führt spiel mit GUI aus
+    play_several_times = False
+    
+    if play_several_times == False:        #führt spiel einmal
         
         #game klasse aufrufen
         game = Game(5, 5, 4, player33, player3) 
@@ -285,24 +239,18 @@ if __name__ == "__main__":
         game.board.show()
         sys.exit(app.exec_())
     
-    elif play_with_gui == False:     #fürht spiel ohne GUI aus
+    elif play_several_times == True:
         
-        #anzahl der Spiele
-        num_games = 1000
-        
+        for number in 
         #game klasse aufrufen
-        game = Game(5, 5, 4, player33, player3)
+        game = Game(5, 5, 4, player33, player3) 
         
-        #KIs richtig zuweisen 
+        #KIs richtig zuweisen
         player3.game = game #zufallski
         player33.game = game #zufallski
         #player4.game = game #einfacheki
-        #player5.game = game #komplexeki  
+        #player5.game = game #komplexeki
         
-        #durchlaufen
-        results = game.play_multiple_games(player33, player3, num_games)
-        
-        #Ergebnisse ausgeben
-        for player_name, wins in results.items():
-            print(f"{player_name}: {wins} Spiele gewonnen")
-
+        #GUI aufrufen und durchlaufen
+        game.board.show()
+        sys.exit(app.exec_())
