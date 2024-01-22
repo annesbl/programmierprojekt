@@ -104,10 +104,21 @@ class Game:
     def __init__(self, m, n, k, player1, player2):                                    
         self.player1 = player1
         self.player2 = player2
-        self.current_player = self.player1  # Start mit Spieler 1
-        self.board = Board(m, n, k)  #Initialisierung von self.board
-        self.board.display(self)     #Übergeben des 'self'-Objekts an die display-Methode
+        self.board = Board(m, n, k)         #Initialisierung von self.board
+        self.board.display(self)            #Übergeben des 'self'-Objekts an die display-Methode
         
+        self.current_player = self.player1  # Start mit Spieler 1
+        
+        #Überprüfung, ob Startspieler == KI --> falls ja: automatischen Zug machen   beliz
+        #zufalls KI
+        if self.current_player.is_zufallski:
+            QTimer.singleShot(100, self.current_player.make_zufallski_move)
+        #einfache KI
+        elif self.current_player.is_einfacheki:
+            QTimer.singleShot(100, self.current_player.make_einfacheki_move)
+        #komlexe KI
+        elif self.current_player.is_komplexeki:
+            QTimer.singleShot(100, self.current_player.make_komplexeki_move)
         
     #RUFT SYMBOL AUF SPIELFELD AB UM ZU SCHAUEN WELCHES SYMBOL AN DIESER STELLE IST    anne
     def get_symbol(self, row, col):                  
