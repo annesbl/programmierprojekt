@@ -141,7 +141,7 @@ class Game:
                 self.board.close()  #Schließt das Fenster
             #gleichstand
             elif self.is_board_full() == True:
-                print("No one winns")
+                print("No one wins")
                 self.board.close()  #Schließt das Fenster
             
             #spielerwechsel (falls kein gewinner/gleichstand vorhanden)
@@ -183,7 +183,7 @@ class Game:
         
   
     
-    #UEBERPRUEFT AUF GLEICHSTAND             beliz
+    #UEBERPRUEFT AUF GLEICHSTAND             
     def is_board_full(self):               
         #schleifen durch das Spielfeld
         for row in range(self.board.m):
