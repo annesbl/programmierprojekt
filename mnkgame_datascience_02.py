@@ -144,6 +144,8 @@ class Game:
             #entscheiden wer dran ist und das jeweilige Symbol wählen
             self.board.buttons[row][col].setText(self.current_player.symbol)
             
+            time.sleep(0.2)
+            
             #überprüfung: Spielende?
             winner = self.check_winner()    #wenn von check winner ein symbol zurückgegeben wird, wurde das spiel von diesem symbol gewonnen.
             #ausgabe gewinner (falls vorhanden)
@@ -155,47 +157,72 @@ class Game:
                 print("No one winns")
                 self.board.close()  #Schließt das Fenster
             
-            #spielerwechsel (falls kein gewinner/gleichstand vorhanden)
-            self.current_player = self.player1 if self.current_player == self.player2 else self.player2
+            elif winner == None:
             
-            #überprüfen, ob der neue aktuelle Spieler eine KI ist
-            #zufalls KI
-            if self.current_player.is_zufallski:
-                QTimer.singleShot(100, self.current_player.make_zufallski_move)
-            #einfache KI
-            elif self.current_player.is_einfacheki:
-                QTimer.singleShot(100, self.current_player.make_einfacheki_move)
-            #komlexe KI
-            elif self.current_player.is_komplexeki:
-                QTimer.singleShot(100, self.current_player.make_komplexeki_move)
+                #spielerwechsel (falls kein gewinner/gleichstand vorhanden)
+                self.current_player = self.player1 if self.current_player == self.player2 else self.player2
+            
+                #überprüfen, ob der neue aktuelle Spieler eine KI ist
+                #zufalls KI
+                if self.current_player.is_zufallski:
+                    QTimer.singleShot(100, self.current_player.make_zufallski_move)
+                #einfache KI
+                elif self.current_player.is_einfacheki:
+                    QTimer.singleShot(100, self.current_player.make_einfacheki_move)
+                #komlexe KI
+                elif self.current_player.is_komplexeki:
+                    QTimer.singleShot(100, self.current_player.make_komplexeki_move)
             
             
             
             
-    #GEWINNÜBERPRÜFUNG                       anne
+    #GEWINNÜBERPRÜFUNG                       anne, beliz
     def check_winner(self):                  
       for i in range(self.board.m):
         for r in range(self.board.n):
           symbol = self.get_symbol(i, r)
           if symbol != "":
+              
             #horizontal
-            if r + self.board.k <= self.board.n and all(self.get_symbol(i, r + c) == symbol for c in range(self.board.k)):
-                print(f"Gewinner gefunden: {symbol}")
-                return symbol
+                count_h = 0                              #Anzahl der gleichen symbole in einer Reihe zählen
+                for c in range(r, self.board.n):
+                    if self.get_symbol(i, c) == symbol:
+                        count_h += 1                     #wird ein
+                        if count_h >= self.board.k:
+                            return symbol
+                    else:
+                        break
+                    
             #vertikal
-            elif i + self.board.k <= self.board.m and all(self.get_symbol(i + c, r) == symbol for c in range(self.board.k)):
-                print(f"Gewinner gefunden: {symbol}")
-                return symbol
-            #diagonal \
-            elif r + self.board.k <= self.board.n and i + self.board.k < self.board.m and all(self.get_symbol(i +c, r + c) == symbol for c in range(self.board.k)):
-                print(f"Gewinner gefunden: {symbol}")
-                return symbol
-            #diagonal /
-            elif r - self.board.k >= -1 and i + self.board.k <= self.board.m and all(self.get_symbol(i +c, r - c) == symbol for c in range(self.board.k)):
-                print(f"Gewinner gefunden: {symbol}")
-                return symbol
-            else:
-                return None
+                count_v = 0
+                for c in range(i, self.board.m):
+                    if self.get_symbol(c, r) == symbol:
+                        count_v += 1
+                        if count_v >= self.board.k:
+                            return symbol
+                    else:
+                        break
+                    
+            # Diagonal absteigend (\)
+                count_d1 = 0
+                for c in range(self.board.k):
+                    if i + c < self.board.m and r + c < self.board.n and self.get_symbol(i + c, r + c) == symbol:
+                        count_d1 += 1
+                        if count_d1 >= self.board.k:
+                            return symbol
+                    else:
+                        break
+
+            # Diagonal aufsteigend (/)
+                count_d2 = 0
+                for c in range(self.board.k):
+                    if i - c >= 0 and r + c < self.board.n and self.get_symbol(i - c, r + c) == symbol:
+                        count_d2 += 1
+                        if count_d2 >= self.board.k:
+                            return symbol
+                    else:
+                        break
+
         
   
     
@@ -248,10 +275,10 @@ if __name__ == "__main__":
     #player_komplexeki = KomplexeKI("Einfache KI", "o", None)
     
     #Player1 und Player2 definieren
-    player1 = player_zufallski
+    player1 = player_mensch2
     player2 = player_zufallski2
     
-    play_several_times = True
+    play_several_times = False
     num_games = 5  # Anzahl der Spiele
     
     #Gewinnzählung
