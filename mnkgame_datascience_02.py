@@ -206,14 +206,6 @@ class Game:
         return True                       #brett voll -> unentschieden 
     
     
-    #SPIELBRETT AUFRUFEN UND SCHLIESSEN       beliz
-    def play_and_close(self):
-        #GUI aufrufen & durchlaufen
-        self.board.show()
-        #GUI schliessen 
-        self.board.close()
-    
-    
     
     
     
@@ -229,8 +221,9 @@ def play_game(game):
     #winner für die runde festhalten
     winner = game.check_winner()
     
-    #Spielbrett zurücksetzen
+    #Spielbrett schliessen/zurücksetzen
     game.board.reset_board()  
+    game.board.close()
     
     #gewinner zurückgeben
     return winner
@@ -242,12 +235,16 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     #definieren Spieler
-    player1 = Player("Max", "x")
-    player2 = Player("Tom", "o") 
-    player3 = ZufallsKI("Zufalls KI", "o", None)
-    player33 = ZufallsKI("Zufalls KI 2", "x", None)
-    #player4 = EinfacheKI("Einfache KI", "o", None)
-    #player5 = KomplexeKI("Einfache KI", "o", None)
+    player_mensch = Player("Max", "x")
+    player_mensch2 = Player("Tom", "o") 
+    player_zufallski = ZufallsKI("Zufalls KI", "o", None)
+    player_zufallski2 = ZufallsKI("Zufalls KI 2", "x", None)
+    #player_einfacheki = EinfacheKI("Einfache KI", "o", None)
+    #player_komplexeki = KomplexeKI("Einfache KI", "o", None)
+    
+    #Player1 und Player2 definieren
+    player1 = player_zufallski
+    player2 = player_zufallski2
     
     play_several_times = True
     num_games = 5  # Anzahl der Spiele
@@ -260,17 +257,18 @@ if __name__ == "__main__":
         for _ in range(num_games):
             
             #game klasse aufrufen und m,n,k,player1,player2 wählen
-            game = Game(5, 5, 4, player3, player33)
+            game = Game(5, 5, 4, player1, player2)
             
             #KIs richtig zuweisen
-            player3.game = game #zufallski
-            player33.game = game #zufallski
+            player1.game = game #zufallski
+            player2.game = game #zufallski
             #player4.game = game #einfacheki
             #player5.game = game #komplexeki
             
-            #gewinne zählen
+            #Spiel starten
             winner = play_game(game)
 
+            #gewinne zählen
             if winner == player1.name:
                 wins[player1.name] += 1
             elif winner == player2.name:
@@ -281,22 +279,21 @@ if __name__ == "__main__":
             #Pause
             time.sleep(1)
             
-            #Spiel starten
-            play_game(game)
+        # Gewinne ausgeben
+        for player, win_count in wins.items():
+            print(f"{player} hat {win_count} Spiele gewonnen")
             
     else:
         #game klasse aufrufen und m,n,k,player1,player2 wählen
-        game = Game(5, 5, 4, player3, player33)
+        game = Game(5, 5, 4, player1, player2)
         
         #KIs richtig zuweisen
-        player3.game = game #zufallski
-        player33.game = game #zufallski
+        player1.game = game #zufallski
+        player2.game = game #zufallski
         #player4.game = game #einfacheki
         #player5.game = game #komplexeki
         
         #Spiel starten
         play_game(game)
         
-# Gewinne ausgeben
-for player, win_count in wins.items():
-    print(f"{player} hat {win_count} Spiele gewonnen")
+
