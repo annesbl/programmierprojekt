@@ -1,4 +1,5 @@
 #imports
+import time
 import sys
 import PyQt5.QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton
@@ -57,16 +58,15 @@ class Board(QMainWindow):                #beliz
                 row_buttons.append(button)                                              #row_buttons-Liste wird ergänzt
                 self.layout.addWidget(button, row, col)                                 #Gitterlayout wird ergänzt
             self.buttons.append(row_buttons)                                            #buttons wird ergänzt
-
-
+    
+    
     #SPIELBRETT KOMPLETT SCHLIESSEN 
     def reset_board(self):
         for row in range(self.m):
             for col in range(self.n):
                 self.buttons[row][col].setText("")  #setzt den Text jedes Buttons zurück
-
-
-        
+                
+                   
         
         
 class Player:                                  #jule
@@ -206,9 +206,38 @@ class Game:
         return True                       #brett voll -> unentschieden 
     
     
+    #SPIELBRETT AUFRUFEN UND SCHLIESSEN       beliz
+    def play_and_close(self):
+        #GUI aufrufen & durchlaufen
+        self.board.show()
+        #GUI schliessen 
+        self.board.close()
+    
+    
+    
+    
+    
+    
+    
+#Spiel durchlaufen                                     beliz
+def play_game(game):
+    
+    #GUI aufrufen und durchlaufen
+    game.board.show()  
+    app.exec_()        
+    
+    #winner für die runde festhalten
+    winner = game.check_winner()
+    
+    #Spielbrett zurücksetzen
+    game.board.reset_board()  
+    
+    #gewinner zurückgeben
+    return winner
 
 
-#ausführen
+
+#Ausführen                                              beliz
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
@@ -220,14 +249,44 @@ if __name__ == "__main__":
     #player4 = EinfacheKI("Einfache KI", "o", None)
     #player5 = KomplexeKI("Einfache KI", "o", None)
     
-    num_gamen = 1000
+    play_several_times = True
+    num_games = 5  # Anzahl der Spiele
     
-    play_several_times = False
-    
-    if play_several_times == False:        #führt spiel einmal
-        
-        #game klasse aufrufen
-        game = Game(5, 5, 4, player33, player3) 
+    #Gewinnzählung
+    wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
+
+
+    if play_several_times:
+        for _ in range(num_games):
+            
+            #game klasse aufrufen und m,n,k,player1,player2 wählen
+            game = Game(5, 5, 4, player3, player33)
+            
+            #KIs richtig zuweisen
+            player3.game = game #zufallski
+            player33.game = game #zufallski
+            #player4.game = game #einfacheki
+            #player5.game = game #komplexeki
+            
+            #gewinne zählen
+            winner = play_game(game)
+
+            if winner == player1.name:
+                wins[player1.name] += 1
+            elif winner == player2.name:
+                wins[player2.name] += 1
+            else:
+                wins["Unentschieden"] += 1
+
+            #Pause
+            time.sleep(1)
+            
+            #Spiel starten
+            play_game(game)
+            
+    else:
+        #game klasse aufrufen und m,n,k,player1,player2 wählen
+        game = Game(5, 5, 4, player3, player33)
         
         #KIs richtig zuweisen
         player3.game = game #zufallski
@@ -235,22 +294,9 @@ if __name__ == "__main__":
         #player4.game = game #einfacheki
         #player5.game = game #komplexeki
         
-        #GUI aufrufen und durchlaufen
-        game.board.show()
-        sys.exit(app.exec_())
-    
-    elif play_several_times == True:
+        #Spiel starten
+        play_game(game)
         
-        for number in 
-        #game klasse aufrufen
-        game = Game(5, 5, 4, player33, player3) 
-        
-        #KIs richtig zuweisen
-        player3.game = game #zufallski
-        player33.game = game #zufallski
-        #player4.game = game #einfacheki
-        #player5.game = game #komplexeki
-        
-        #GUI aufrufen und durchlaufen
-        game.board.show()
-        sys.exit(app.exec_())
+# Gewinne ausgeben
+for player, win_count in wins.items():
+    print(f"{player} hat {win_count} Spiele gewonnen")

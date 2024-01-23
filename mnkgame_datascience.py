@@ -59,12 +59,6 @@ class Board(QMainWindow):                #beliz
             self.buttons.append(row_buttons)                                            #buttons wird ergänzt
 
 
-    #SPIELBRETT KOMPLETT SCHLIESSEN 
-    def reset_board(self):
-        for row in range(self.m):
-            for col in range(self.n):
-                self.buttons[row][col].setText("")  #setzt den Text jedes Buttons zurück
-
 
         
         
