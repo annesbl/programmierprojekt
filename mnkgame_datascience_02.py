@@ -144,7 +144,6 @@ class Game:
             #entscheiden wer dran ist und das jeweilige Symbol wählen
             self.board.buttons[row][col].setText(self.current_player.symbol)
             
-            time.sleep(0.2)
             
             #überprüfung: Spielende?
             winner = self.check_winner()    #wenn von check winner ein symbol zurückgegeben wird, wurde das spiel von diesem symbol gewonnen.
@@ -184,7 +183,7 @@ class Game:
           if symbol != "":
               
             #horizontal
-                count_h = 0                              #Anzahl der gleichen symbole in einer Reihe zählen
+                count_h = 0                              #Anzahl der gleichen symbole (nebeneinandeer) in einer Reihe zählen
                 for c in range(r, self.board.n):
                     if self.get_symbol(i, c) == symbol:
                         count_h += 1                     #wird ein
@@ -275,14 +274,14 @@ if __name__ == "__main__":
     #player_komplexeki = KomplexeKI("Einfache KI", "o", None)
     
     #Player1 und Player2 definieren
-    player1 = player_mensch2
+    player1 = player_zufallski
     player2 = player_zufallski2
     
-    play_several_times = False
-    num_games = 5  # Anzahl der Spiele
+    play_several_times = True
+    num_games = 10  # Anzahl der Spiele
     
     #Gewinnzählung
-    wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
+    wins = {player1: 0, player2: 0, "Unentschieden": 0}
 
 
     if play_several_times:
@@ -292,38 +291,38 @@ if __name__ == "__main__":
             game = Game(5, 5, 4, player1, player2)
             
             #KIs richtig zuweisen
-            player1.game = game #zufallski
-            player2.game = game #zufallski
-            #player4.game = game #einfacheki
-            #player5.game = game #komplexeki
+            player_zufallski.game = game #zufallski
+            player_zufallski2.game = game #zufallski
+            #player_einfacheki.game = game #einfacheki
+            #player_komplexeki.game = game #komplexeki
             
             #Spiel starten
             winner = play_game(game)
 
             #gewinne zählen
             if winner == player1.name:
-                wins[player1.name] += 1
+                wins[player1.name] += 1       # +1 wenn player 1 gewinnt
             elif winner == player2.name:
-                wins[player2.name] += 1
+                wins[player2.name] += 1       # +1 wenn player 2 gewinnt
             else:
-                wins["Unentschieden"] += 1
+                wins["Unentschieden"] += 1    # +1 wenn unendschieden 
 
             #Pause
-            time.sleep(0.5)
+            time.sleep(0.15)
             
         # Gewinne ausgeben
-        for player, win_count in wins.items():
-            print(f"{player} hat {win_count} Spiele gewonnen")
+        for player, win in wins.items():
+            print(f"{player} hat {win} Spiele gewonnen")
             
     else:
         #game klasse aufrufen und m,n,k,player1,player2 wählen
         game = Game(5, 5, 4, player1, player2)
         
         #KIs richtig zuweisen
-        player1.game = game #zufallski
-        player2.game = game #zufallski
-        #player4.game = game #einfacheki
-        #player5.game = game #komplexeki
+        player_zufallski.game = game #zufallski
+        player_zufallski2.game = game #zufallski
+        #player_einfacheki.game = game #einfacheki
+        #player_komplexeki.game = game #komplexeki
         
         #Spiel starten
         play_game(game)
