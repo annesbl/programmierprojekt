@@ -145,7 +145,7 @@ class Game:
             self.board.buttons[row][col].setText(self.current_player.symbol)
             
             #überprüfung: Spielende?
-            winner = self.check_winner()
+            winner = self.check_winner()    #wenn von check winner ein symbol zurückgegeben wird, wurde das spiel von diesem symbol gewonnen.
             #ausgabe gewinner (falls vorhanden)
             if winner:
                 print(f"{self.current_player.name} wins!")
@@ -180,17 +180,22 @@ class Game:
           if symbol != "":
             #horizontal
             if r + self.board.k <= self.board.n and all(self.get_symbol(i, r + c) == symbol for c in range(self.board.k)):
-              return symbol
+                print(f"Gewinner gefunden: {symbol}")
+                return symbol
             #vertikal
-            if i + self.board.k <= self.board.m and all(self.get_symbol(i + c, r) == symbol for c in range(self.board.k)):
-              return symbol
+            elif i + self.board.k <= self.board.m and all(self.get_symbol(i + c, r) == symbol for c in range(self.board.k)):
+                print(f"Gewinner gefunden: {symbol}")
+                return symbol
             #diagonal \
-            if r + self.board.k <= self.board.n and i + self.board.k < self.board.m and all(self.get_symbol(i +c, r + c) == symbol for c in range(self.board.k)):
-              return symbol
+            elif r + self.board.k <= self.board.n and i + self.board.k < self.board.m and all(self.get_symbol(i +c, r + c) == symbol for c in range(self.board.k)):
+                print(f"Gewinner gefunden: {symbol}")
+                return symbol
             #diagonal /
-            if r - self.board.k >= -1 and i + self.board.k <= self.board.m and all(self.get_symbol(i +c, r - c) == symbol for c in range(self.board.k)):
-              return symbol
-      return None
+            elif r - self.board.k >= -1 and i + self.board.k <= self.board.m and all(self.get_symbol(i +c, r - c) == symbol for c in range(self.board.k)):
+                print(f"Gewinner gefunden: {symbol}")
+                return symbol
+            else:
+                return None
         
   
     
@@ -277,7 +282,7 @@ if __name__ == "__main__":
                 wins["Unentschieden"] += 1
 
             #Pause
-            time.sleep(1)
+            time.sleep(0.5)
             
         # Gewinne ausgeben
         for player, win_count in wins.items():
