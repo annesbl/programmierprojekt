@@ -212,85 +212,85 @@ class KomplexeKI(Player):
          self.game = game
          self.is_komplexeki = True
 
-    def make_komplexeki_move(self, game_board):
+    def make_komplexeki_move(self):
 
         # Check for a winning move
-        for row in range(game_board.m):
-            for col in range(game_board.n):
-                if game_board.board[row][col] == ' ':
-                    game_board.board[row][col] = self.symbol
-                    if self.check_win(game_board):
+        for row in range(self.board.m):
+            for col in range(self.board.n):
+                if self.board[row][col] == ' ':
+                    self.board[row][col] = self.symbol
+                    if self.check_win(self.board):
                         return
 
-                    game_board.board[row][col] = ' '
+                    self.board[row][col] = ' '
 
         # Check for a blocking move
         opponent_symbol = 'O' if self.symbol == 'X' else 'X'
         move_made = False
 
         # Check rows and columns
-        for i in range(game_board.m):
-            if self.make_blocking_move(game_board, i, opponent_symbol):
+        for i in range(self.board.m):
+            if self.make_blocking_move(self.board, i, opponent_symbol):
                 move_made = True
                 break
-            if self.make_blocking_move(game_board, i, self.symbol):
+            if self.make_blocking_move(self.board, i, self.symbol):
                 move_made = True
                 break
 
         # Check diagonals
-        if not move_made and self.make_blocking_move(game_board, -1, opponent_symbol):  # Main diagonal
+        if not move_made and self.make_blocking_move( -1, opponent_symbol):  # Main diagonal
             move_made = True
-        elif not move_made and self.make_blocking_move(game_board, 1, opponent_symbol):   # Anti-diagonal
+        elif not move_made and self.make_blocking_move( 1, opponent_symbol):   # Anti-diagonal
             move_made = True
-        elif not move_made and self.make_blocking_move(game_board, -1, self.symbol):      # Main diagonal for self
+        elif not move_made and self.make_blocking_move( -1, self.symbol):      # Main diagonal for self
             move_made = True
-        elif not move_made and self.make_blocking_move(game_board, 1, self.symbol):        # Anti-diagonal for self
+        elif not move_made and self.make_blocking_move( 1, self.symbol):        # Anti-diagonal for self
             move_made = True
 
         # If neither winning nor blocking, make a strategic move
         if not move_made:
-            self.make_strategic_move(game_board)
+            self.make_strategic_move(self.board)
 
-    def make_blocking_move(self, game_board, index, symbol):
+    def make_blocking_move(self, index, symbol):
         # Check for blocking move in rows, columns, or diagonals
         if index == -1:
             # Main diagonal
-            if game_board.board[0][0] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][2] == symbol:
-                game_board.board[0][0] = self.symbol
+            if self.board[0][0] == ' ' and self.board[1][1] == symbol and self.board[2][2] == symbol:
+                self.board[0][0] = self.symbol
                 return True
         elif index == 1:
             # Anti-diagonal
-            if game_board.board[0][2] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][0] == symbol:
-                game_board.board[0][2] = self.symbol
+            if self.board[0][2] == ' ' and self.board[1][1] == symbol and self.board[2][0] == symbol:
+                self.board[0][2] = self.symbol
                 return True
         else:
             # Rows and columns
-            for i in range(game_board.m):
-                if game_board.board[i][index] == ' ' and game_board.board[i][(index + 1) % game_board.n] == symbol and \
-                        game_board.board[i][(index + 2) % game_board.n] == symbol:
-                    game_board.board[i][index] = self.symbol
+            for i in range(self.board.m):
+                if self.board[i][index] == ' ' and self.board[i][(index + 1) % self.n] == symbol and \
+                        self.board[i][(index + 2) % self.n] == symbol:
+                    self.board[i][index] = self.symbol
                     return True
-                if game_board.board[index][i] == ' ' and game_board.board[(index + 1) % game_board.m][i] == symbol and \
-                        game_board.board[(index + 2) % game_board.m][i] == symbol:
-                    game_board.board[index][i] = self.symbol
+                if self.board[index][i] == ' ' and self.board[(index + 1) % self.m][i] == symbol and \
+                        self.board[(index + 2) % self.m][i] == symbol:
+                    self.board[index][i] = self.symbol
                     return True
 
         # If no blocking move is made, return False
         return False
 
 
-    def make_strategic_move(self, game_board):
+    def make_strategic_move(self):
         # Implement your strategic move logic here
         # Example: Try to occupy the center if available, else pick a corner
-        center = (game_board.m // 2, game_board.n // 2)
-        if game_board.board[center[0]][center[1]] == ' ':
-            game_board.board[center[0]][center[1]] = self.symbol
+        center = (self.board.m // 2, self.board.n // 2)
+        if self.board[center[0]][center[1]] == ' ':
+            self.board[center[0]][center[1]] = self.symbol
         else:
             # Implement other strategic moves
             # ...
-            self.make_random_move(game_board)
+            self.make_random_move()
 
-    def make_random_move(self, game_board):
+    def make_random_move(self):
         # Implement making a random move
         # ...
         while True:
