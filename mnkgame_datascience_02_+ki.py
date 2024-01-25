@@ -204,6 +204,95 @@ class KomplexeKI(Player):
 # Beispiel für die Verwendung der KI in Ihrer Game-Klasse
 if self.current_player.is_zufallski:
     self.current_player.make_zufallski_move()
+    
+    
+    
+class KomplexeKi2(Player):
+    def __init__(self, symbol):
+        super().__init__(symbol)
+
+    def make_move(self, game_board):
+        # Check for a winning move
+        for row in range(game_board.m):
+            for col in range(game_board.n):
+                if game_board.board[row][col] == ' ':
+                    game_board.board[row][col] = self.symbol
+                    if self.check_win(game_board):
+                        return
+                    game_board.board[row][col] = ' '
+
+        # Check for a blocking move
+        opponent_symbol = 'O' if self.symbol == 'X' else 'X'
+
+        # Check rows and columns
+        for i in range(game_board.m):
+            self.make_blocking_move(game_board, i, opponent_symbol)
+            self.make_blocking_move(game_board, i, self.symbol)
+
+        # Check diagonals
+        self.make_blocking_move(game_board, -1, opponent_symbol)  # Main diagonal
+        self.make_blocking_move(game_board, 1, opponent_symbol)   # Anti-diagonal
+        self.make_blocking_move(game_board, -1, self.symbol)      # Main diagonal for self
+        self.make_blocking_move(game_board, 1, self.symbol)       # Anti-diagonal for self
+
+        # If neither winning nor blocking, make a strategic move
+        self.make_strategic_move(game_board)
+
+    def make_blocking_move(self, game_board, index, symbol):
+        # Check for blocking move in rows, columns, or diagonals
+        if index == -1:
+            # Main diagonal
+            if game_board.board[0][0] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][2] == symbol:
+                game_board.board[0][0] = self.symbol
+                return
+        elif index == 1:
+            # Anti-diagonal
+            if game_board.board[0][2] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][0] == symbol:
+                game_board.board[0][2] = self.symbol
+                return
+        else:
+            # Rows and columns
+            for i in range(game_board.m):
+                if game_board.board[i][index] == ' ' and game_board.board[i][(index + 1) % game_board.n] == symbol and \
+                        game_board.board[i][(index + 2) % game_board.n] == symbol:
+                    game_board.board[i][index] = self.symbol
+                    return
+                if game_board.board[index][i] == ' ' and game_board.board[(index + 1) % game_board.m][i] == symbol and \
+                        game_board.board[(index + 2) % game_board.m][i] == symbol:
+                    game_board.board[index][i] = self.symbol
+                    return
+
+        # If neither winning nor blocking, make a strategic move
+        self.make_strategic_move(game_board)
+
+    def make_strategic_move(self, game_board):
+        # Implement your strategic move logic here
+        # Example: Try to occupy the center if available, else pick a corner
+        center = (game_board.m // 2, game_board.n // 2)
+        if game_board.board[center[0]][center[1]] == ' ':
+            game_board.board[center[0]][center[1]] = self.symbol
+        else:
+            # Implement other strategic moves
+            # ...
+            self.make_random_move(game_board)
+
+    def make_random_move(self, game_board):
+        # Implement making a random move
+        # ...
+        while True:
+             row = random.randint(0, self.game.board.m - 1)
+             col = random.randint(0, self.game.board.n - 1)
+             if self.game.get_symbol(row, col) == "":
+                 self.game.place_symbol(row, col)
+                 break
+
+    def check_win(self, game_board, symbol=None):
+        symbol = symbol or self.symbol
+        if game.check_winner() == True:
+            return True
+        else:
+            return False
+
 
 
 
