@@ -251,32 +251,32 @@ class KomplexeKI(Player):
         if not move_made:
             self.make_strategic_move(game_board)
 
-def make_blocking_move(self, game_board, index, symbol):
-    # Check for blocking move in rows, columns, or diagonals
-    if index == -1:
-        # Main diagonal
-        if game_board.board[0][0] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][2] == symbol:
-            game_board.board[0][0] = self.symbol
-            return True
-    elif index == 1:
-        # Anti-diagonal
-        if game_board.board[0][2] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][0] == symbol:
-            game_board.board[0][2] = self.symbol
-            return True
-    else:
-        # Rows and columns
-        for i in range(game_board.m):
-            if game_board.board[i][index] == ' ' and game_board.board[i][(index + 1) % game_board.n] == symbol and \
-                    game_board.board[i][(index + 2) % game_board.n] == symbol:
-                game_board.board[i][index] = self.symbol
+    def make_blocking_move(self, game_board, index, symbol):
+        # Check for blocking move in rows, columns, or diagonals
+        if index == -1:
+            # Main diagonal
+            if game_board.board[0][0] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][2] == symbol:
+                game_board.board[0][0] = self.symbol
                 return True
-            if game_board.board[index][i] == ' ' and game_board.board[(index + 1) % game_board.m][i] == symbol and \
-                    game_board.board[(index + 2) % game_board.m][i] == symbol:
-                game_board.board[index][i] = self.symbol
+        elif index == 1:
+            # Anti-diagonal
+            if game_board.board[0][2] == ' ' and game_board.board[1][1] == symbol and game_board.board[2][0] == symbol:
+                game_board.board[0][2] = self.symbol
                 return True
+        else:
+            # Rows and columns
+            for i in range(game_board.m):
+                if game_board.board[i][index] == ' ' and game_board.board[i][(index + 1) % game_board.n] == symbol and \
+                        game_board.board[i][(index + 2) % game_board.n] == symbol:
+                    game_board.board[i][index] = self.symbol
+                    return True
+                if game_board.board[index][i] == ' ' and game_board.board[(index + 1) % game_board.m][i] == symbol and \
+                        game_board.board[(index + 2) % game_board.m][i] == symbol:
+                    game_board.board[index][i] = self.symbol
+                    return True
 
-    # If no blocking move is made, return False
-    return False
+        # If no blocking move is made, return False
+        return False
 
 
     def make_strategic_move(self, game_board):
