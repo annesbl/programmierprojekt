@@ -105,11 +105,9 @@ class EinfacheKI(Player):
    
     
 class KomplexeKI(Player):
-    def __init__(self, name, symbol, game, m, n, k):
+    def __init__(self, name, symbol, game):
          super().__init__(name, symbol)
-         self.game = game
-         self.board = Board(m, n, k)         #Initialisierung von self.board
-         self.board.display(self)            #Übergeben des 'self'-Objekts an die display-Methode
+         self.game = game           #Übergeben des 'self'-Objekts an die display-Methode
          self.is_komplexeki = True
 
     def make_komplexeki_move(self):
@@ -117,7 +115,7 @@ class KomplexeKI(Player):
         # Check for a winning move
         for row in range(self.game.board.m):
             for col in range(self.game.board.n):
-                if self.game.board[row][col] == ' ':
+                if self.game.get_symbol(row, col) == ' ':
                     self.game.board[row][col] = self.symbol
                     if self.check_win(self.game.board):
                         return
@@ -155,12 +153,12 @@ class KomplexeKI(Player):
         # Check for blocking move in rows, columns, or diagonals
         if index == -1:
             # Main diagonal
-            if self.game.board[0][0] == ' ' and self.game.board[1][1] == symbol and self.game.board[2][2] == symbol:
+            if self.game.get_symbol(0, 0) == ' ' and self.game.get_symbol(1, 1) == symbol and self.game.get_symbol(2, 2) == symbol:
                 self.game.board[0][0] = self.symbol
                 return True
         elif index == 1:
             # Anti-diagonal
-            if self.game.board[0][2] == ' ' and self.game.board[1][1] == symbol and self.game.board[2][0] == symbol:
+            if self.game.get_symbol(0, 2) == ' ' and self.game.get_symbol(1, 1) == symbol and self.game.get_symbol(2, 0) == symbol:
                 self.game.board[0][2] = self.symbol
                 return True
         else:
@@ -373,7 +371,7 @@ if __name__ == "__main__":
     player_zufallski2 = ZufallsKI("Zufalls KI 2", "x", None)
     #player_einfacheki = EinfacheKI("Einfache KI", "o", None)
     #player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
-    player_komplexeki = KomplexeKI("Komplexe KI", "o", None, m, n, k)
+    player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
     # Weitere Spielerinitialisierungen und Spiellogik
     #player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
     
