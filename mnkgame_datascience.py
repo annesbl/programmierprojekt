@@ -59,6 +59,10 @@ class Board(QMainWindow):                #beliz
             self.buttons.append(row_buttons)                                            #buttons wird ergänzt
 
 
+
+        
+        
+        
 class Player:                                  #jule
     def __init__(self, name, symbol):
         self.name = name
@@ -104,9 +108,21 @@ class Game:
     def __init__(self, m, n, k, player1, player2):                                    
         self.player1 = player1
         self.player2 = player2
-        self.current_player = self.player1  # Start mit Spieler 1
         self.board = Board(m, n, k)         #Initialisierung von self.board
         self.board.display(self)            #Übergeben des 'self'-Objekts an die display-Methode
+        
+        self.current_player = self.player1  #starten mit Spieler 1
+        
+        #Überprüfung, ob Startspieler == KI --> falls ja: automatischen Zug machen
+        #zufalls KI
+        if self.current_player.is_zufallski:
+            QTimer.singleShot(100, self.current_player.make_zufallski_move)
+        #einfache KI
+        elif self.current_player.is_einfacheki:
+            QTimer.singleShot(100, self.current_player.make_einfacheki_move)
+        #komlexe KI
+        elif self.current_player.is_komplexeki:
+            QTimer.singleShot(100, self.current_player.make_komplexeki_move)
         
         
     #RUFT SYMBOL AUF SPIELFELD AB UM ZU SCHAUEN WELCHES SYMBOL AN DIESER STELLE IST    anne
@@ -187,34 +203,50 @@ class Game:
     
     #DURCHLAUF DES SPIELES OHNE GUI --> um werte für die data Science fragen zu sammeln       beliz
     def play_game(self, player1, player2):
-        self.current_player = player1  # Startspieler festlegen
+        self.board.reset_board()       #Spielbrett zurücksetzen
+        self.current_player = player1  #Startspieler festlegen
 
         while not self.check_winner() and not self.is_board_full(): #sichergehen, dass niemand gewonnen hat oder gleichstand ist
             #überprüfen welche KI und Zug machen
-            if isinstance(self.current_player, ZufallsKI):
+            if isinstance(self.current_player, ZufallsKI):    #Zufalls KI
                 self.current_player.make_zufallski_move()
-            elif isinstance(self.current_player, EinfacheKI):
+            elif isinstance(self.current_player, EinfacheKI): #Einfache KI
                 self.current_player.make_einfacheki_move()
-            elif isinstance(self.current_player, KomplexeKI):
+            elif isinstance(self.current_player, KomplexeKI): #Komplexe KI
                 self.current_player.make_komplexeki_move()
             
             #spieler wechsel
-            self.current_player = player2 if self.current_player == player1 else player1
+            #self.current_player = player1 if self.current_player == player2 else player1
+            self.current_player = self.player2 if self.current_player == self.player1 else self.player1
 
         winner = self.check_winner()  #gewinner zurückgeben
-        return self.current_player.name  #gewinner-Namen zurückgeben
+          
+        if winner:
+            #gewinner-Namen zurückgeben
+            return self.player1.name if self.player1.symbol == winner else self.player2.name
+        else:
+            #none für unendschieden
+            return None
     
     
     
     #SPIEL OHNE GUI SO OFT DURCHLAUFEN LASSEN WIE MAL WILL                   beliz
     def play_multiple_games(self, player1, player2, num_games):
-        results = {player1.name: 0, player2.name: 0}           #beide erstmal 0 Spiele gewonnen
+        
+        #liste, die die Siege zählt
+        results = {
+        player1.name: 0,  #Siege von Player1
+        player2.name: 0,  #Siege von Player 2
+        "Draws": 0        #Gleichstand
+        }
 
         for _ in range(num_games):                             #durchlaufen je nachdem welchen wert man num_games zugewiesen hat
             winner = self.play_game(player1, player2)          #einen gewinner der runde festlegen
             if winner:                                         
                 results[winner] += 1                           #dem gewinner einen Winn drauf addieren
-
+            else:
+                results["Draws"] += 1                          #gleichstände zählen
+                
         return results
 
 
@@ -226,35 +258,43 @@ if __name__ == "__main__":
     player1 = Player("Max", "x")
     player2 = Player("Tom", "o") 
     player3 = ZufallsKI("Zufalls KI", "o", None)
+    player33 = ZufallsKI("Zufalls KI 2", "x", None)
     #player4 = EinfacheKI("Einfache KI", "o", None)
     #player5 = KomplexeKI("Einfache KI", "o", None)
     
-    play_with_gui = False 
+    play_with_gui = False
     
     if play_with_gui == True:        #führt spiel mit GUI aus
         
-        game = Game(5, 5, 4, player1, player3) #game klasse aufrufen
-    
+        #game klasse aufrufen
+        game = Game(5, 5, 4, player33, player3) 
+        
+        #KIs richtig zuweisen
         player3.game = game #zufallski
+        player33.game = game #zufallski
         #player4.game = game #einfacheki
         #player5.game = game #komplexeki
         
+        #GUI aufrufen und durchlaufen
         game.board.show()
         sys.exit(app.exec_())
     
     elif play_with_gui == False:     #fürht spiel ohne GUI aus
         
         #anzahl der Spiele
-        num_games = 10  
+        num_games = 1000
         
         #game klasse aufrufen
-        game = Game(5, 5, 4, player1, player3)
+        game = Game(5, 5, 4, player33, player3)
         
-        #player3.game richtig zuweissen
-        player3.game = game  
+        #KIs richtig zuweisen 
+        player3.game = game #zufallski
+        player33.game = game #zufallski
+        #player4.game = game #einfacheki
+        #player5.game = game #komplexeki  
         
         #durchlaufen
-        results = game.play_multiple_games(player1, player3, num_games)
+        results = game.play_multiple_games(player33, player3, num_games)
         
         #Ergebnisse ausgeben
         for player_name, wins in results.items():
