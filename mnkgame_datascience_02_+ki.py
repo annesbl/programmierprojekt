@@ -102,138 +102,38 @@ class EinfacheKI(Player):
     '''wenn möglich die Make move methode der klasse make_einfacheki_move nennen'''
     pass
 
-class KomplexeKI_test(Player):
-    def __init__(self, name, symbol, game):
-         super().__init__(name, symbol)
-         self.game = game
-         self.is_komplexeki = True
-         
-    def get_rechendaten_row(self):
-        start_numbers_row = {}
-        end_numbers_row = {}
-        
-        for row in range(self.m):
-            start_number = row * self.n + 1 
-            end_number = start_number + self.n -1
-            start_numbers_row [row] = start_number
-            end_numbers_row [row] = end_number
-            
-        return start_numbers_row, end_numbers_row
-    
-    def get_rechendaten_col(self):
-        start_numbers_col = {}
-        end_numbers_col = {}
-        
-        for col in range(self.n):
-            start_number = col * self.m + 1 
-            end_number = start_number + self.m -1
-            start_numbers_col [col] = start_number
-            end_numbers_col [col] = end_number
-            
-        return start_numbers_col, end_numbers_col
-            
-            
-        
-    def find_optimal_placement_attack(self):
-        aktueller_stand = self.board.symbol.dict()
-        row_start, row_end = self.get_rechendaten_row()
-        col_start, col_end = self.get_rechendaten_col()
-        
-        for row in range (game.board.m):
-            result_row = EinfacheKI.check_row(row, self.player.symbol)
-            
-    
-
-    def make_move_for_row(self, player_symbol):
-        for row in range(self.board.m):
-            move = self.check_row(row, player_symbol)
-            if move is not None:
-                return move
-        return None
-
-    def make_move_for_column(self, player_symbol):
-        for col in range(self.board.n):
-            move = self.check_column(col, player_symbol)
-            if move is not None:
-                return move
-        return None
-        
-        
-        
-    
-
-    def check_row(self, row, player_symbol):
-        for col in range(self.board.n - self.board.k + 1):
-            symbols_in_row = [self.board.get_symbol(row, col + i) for i in range(self.board.k)]
-            if (symbols_in_row.count(player_symbol) == self.board.k - 1 and '' not in symbols_in_row) or \
-                    (col > 0 and col < self.board.n - self.board.k and
-                    symbols_in_row[self.board.k // 2] == player_symbol and
-                    symbols_in_row[self.board.k - 1] == player_symbol and
-                    symbols_in_row[0] == ''):
-                empty_index = symbols_in_row.index('')  
-                return row, col + empty_index
-        return None
-
-    def check_column(self, col, player_symbol):
-        for row in range(self.board.m - self.board.k + 1):
-            symbols_in_column = [self.board.get_symbol(row + i, col) for i in range(self.board.k)]
-            if (symbols_in_column.count(player_symbol) == self.board.k - 1 and '' not in symbols_in_column) or \
-                    (row > 0 and row < self.board.m - self.board.k and
-                    symbols_in_column[self.board.k // 2] == player_symbol and
-                    symbols_in_column[self.board.k - 1] == player_symbol and
-                    symbols_in_column[0] == ''):
-                empty_index = symbols_in_column.index('')  
-                return row + empty_index, col
-        return None
-        
-        
-        
-        
-                
-        
-    def find_optimal_placement_defense(self):
-         pass
-    def make_einfacheki_move (self):
-        move = self.game.make_move_for_column(self.symbol) or self.game.make_move_for_row(self.symbol)
-        if move is not None:
-            row, col = move
-            self.game.place_symbol(row, col)
-
-'''
-# Beispiel für die Verwendung der KI in Ihrer Game-Klasse
-if self.current_player.is_zufallski:
-    self.current_player.make_zufallski_move()
-    '''
-    
+   
     
 class KomplexeKI(Player):
-    def __init__(self, name, symbol, game):
+    def __init__(self, name, symbol, game, m, n, k):
          super().__init__(name, symbol)
          self.game = game
+         self.board = Board(m, n, k)         #Initialisierung von self.board
+         self.board.display(self)            #Übergeben des 'self'-Objekts an die display-Methode
          self.is_komplexeki = True
 
     def make_komplexeki_move(self):
 
         # Check for a winning move
-        for row in range(self.board.m):
-            for col in range(self.board.n):
-                if self.board[row][col] == ' ':
-                    self.board[row][col] = self.symbol
-                    if self.check_win(self.board):
+        for row in range(self.game.board.m):
+            for col in range(self.game.board.n):
+                if self.game.board[row][col] == ' ':
+                    self.game.board[row][col] = self.symbol
+                    if self.check_win(self.game.board):
                         return
 
-                    self.board[row][col] = ' '
+                    self.game.board[row][col] = ' '
 
         # Check for a blocking move
         opponent_symbol = 'O' if self.symbol == 'X' else 'X'
         move_made = False
 
         # Check rows and columns
-        for i in range(self.board.m):
-            if self.make_blocking_move(self.board, i, opponent_symbol):
+        for i in range(self.game.board.m):
+            if self.make_blocking_move(self.game.board, i, opponent_symbol):
                 move_made = True
                 break
-            if self.make_blocking_move(self.board, i, self.symbol):
+            if self.make_blocking_move(self.game.board, i, self.symbol):
                 move_made = True
                 break
 
@@ -255,24 +155,24 @@ class KomplexeKI(Player):
         # Check for blocking move in rows, columns, or diagonals
         if index == -1:
             # Main diagonal
-            if self.board[0][0] == ' ' and self.board[1][1] == symbol and self.board[2][2] == symbol:
-                self.board[0][0] = self.symbol
+            if self.game.board[0][0] == ' ' and self.game.board[1][1] == symbol and self.game.board[2][2] == symbol:
+                self.game.board[0][0] = self.symbol
                 return True
         elif index == 1:
             # Anti-diagonal
-            if self.board[0][2] == ' ' and self.board[1][1] == symbol and self.board[2][0] == symbol:
-                self.board[0][2] = self.symbol
+            if self.game.board[0][2] == ' ' and self.game.board[1][1] == symbol and self.game.board[2][0] == symbol:
+                self.game.board[0][2] = self.symbol
                 return True
         else:
             # Rows and columns
-            for i in range(self.board.m):
-                if self.board[i][index] == ' ' and self.board[i][(index + 1) % self.n] == symbol and \
-                        self.board[i][(index + 2) % self.n] == symbol:
-                    self.board[i][index] = self.symbol
+            for i in range(self.game.board.m):
+                if self.game.board[i][index] == ' ' and self.game.board[i][(index + 1) % self.game.board.n] == symbol and \
+                        self.game.board[i][(index + 2) % self.n] == symbol:
+                    self.game.board[i][index] = self.symbol
                     return True
-                if self.board[index][i] == ' ' and self.board[(index + 1) % self.m][i] == symbol and \
-                        self.board[(index + 2) % self.m][i] == symbol:
-                    self.board[index][i] = self.symbol
+                if self.game.board[index][i] == ' ' and self.game.board[(index + 1) % self.game.board.m][i] == symbol and \
+                        self.game.board[(index + 2) % self.m][i] == symbol:
+                    self.game.board[index][i] = self.symbol
                     return True
 
         # If no blocking move is made, return False
@@ -282,9 +182,9 @@ class KomplexeKI(Player):
     def make_strategic_move(self):
         # Implement your strategic move logic here
         # Example: Try to occupy the center if available, else pick a corner
-        center = (self.board.m // 2, self.board.n // 2)
-        if self.board[center[0]][center[1]] == ' ':
-            self.board[center[0]][center[1]] = self.symbol
+        center = (self.game.board.m // 2, self.game.board.n // 2)
+        if self.game.board[center[0]][center[1]] == ' ':
+            self.game.board[center[0]][center[1]] = self.symbol
         else:
             # Implement other strategic moves
             # ...
@@ -300,7 +200,7 @@ class KomplexeKI(Player):
                  self.game.place_symbol(row, col)
                  break
 
-    def check_win(self, game_board, symbol=None):
+    def check_win(self, symbol=None):
         symbol = symbol or self.symbol
         if game.check_winner() == True:
             return True
@@ -329,7 +229,7 @@ class Game:
             QTimer.singleShot(100, self.current_player.make_einfacheki_move)
         #komlexe KI6
         elif self.current_player.is_komplexeki:
-            QTimer.singleShot(100, self.current_player.make_komplexeki_move(self.board))
+            QTimer.singleShot(100, self.current_player.make_komplexeki_move)
         
         
     #RUFT SYMBOL AUF SPIELFELD AB UM ZU SCHAUEN WELCHES SYMBOL AN DIESER STELLE IST    anne
@@ -473,7 +373,8 @@ if __name__ == "__main__":
     player_zufallski2 = ZufallsKI("Zufalls KI 2", "x", None)
     #player_einfacheki = EinfacheKI("Einfache KI", "o", None)
     #player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
-    player_komplexeki = KomplexeKI("Einfache KI", "o", None)
+    player_komplexeki = KomplexeKI("Komplexe KI", "o", None, m, n, k)
+    # Weitere Spielerinitialisierungen und Spiellogik
     #player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
