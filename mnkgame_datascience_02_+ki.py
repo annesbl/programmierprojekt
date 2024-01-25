@@ -102,13 +102,11 @@ class EinfacheKI(Player):
     '''wenn möglich die Make move methode der klasse make_einfacheki_move nennen'''
     pass
 
-class KomplexeKI(Player):
-     '''vergisst nicht self.is_einfacheki = True zu setzten'''
-    '''wenn möglich die Make move methode der klasse make_einfacheki_move nennen'''
+class KomplexeKI_test(Player):
     def __init__(self, name, symbol, game):
          super().__init__(name, symbol)
          self.game = game
-         self.is_einfacheki = True
+         self.is_komplexeki = True
          
     def get_rechendaten_row(self):
         start_numbers_row = {}
@@ -201,17 +199,19 @@ class KomplexeKI(Player):
             row, col = move
             self.game.place_symbol(row, col)
 
+'''
 # Beispiel für die Verwendung der KI in Ihrer Game-Klasse
 if self.current_player.is_zufallski:
     self.current_player.make_zufallski_move()
+    '''
     
     
-    
-class KomplexeKi2(Player):
+class KomplexeKi(Player):
     def __init__(self, symbol):
         super().__init__(symbol)
+        self.is_komplexeki = True
 
-    def make_move(self, game_board):
+    def make_komplexeki_move(self, game_board):
         # Check for a winning move
         for row in range(game_board.m):
             for col in range(game_board.n):
@@ -459,14 +459,14 @@ if __name__ == "__main__":
     player_zufallski2 = ZufallsKI("Zufalls KI 2", "x", None)
     #player_einfacheki = EinfacheKI("Einfache KI", "o", None)
     #player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
-    #player_komplexeki = KomplexeKI("Einfache KI", "o", None)
-    #player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
+    player_komplexeki = KomplexeKi("Einfache KI", "o", None)
+    #player_komplexeki2 = KomplexeKi("Einfache KI 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_zufallski
-    player2 = player_zufallski2
+    player1 = player_mensch
+    player2 = player_komplexeki
     
-    play_several_times = True
+    play_several_times = False
     num_games = 5  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
@@ -516,7 +516,7 @@ if __name__ == "__main__":
         player_zufallski2.game = game #zufallski
         #player_einfacheki.game = game #einfacheki
         #player_einfacheki2.game = game #einfacheki
-        #player_komplexeki.game = game #komplexeki
+        player_komplexeki.game = game #komplexeki
         #player_komplexeki2.game = game #komplexeki
         
         #Spiel starten
