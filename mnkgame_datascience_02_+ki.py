@@ -327,9 +327,9 @@ class Game:
         #einfache KI
         elif self.current_player.is_einfacheki:
             QTimer.singleShot(100, self.current_player.make_einfacheki_move)
-        #komlexe KI
+        #komlexe KI6
         elif self.current_player.is_komplexeki:
-            QTimer.singleShot(100, self.current_player.make_komplexeki_move)
+            QTimer.singleShot(100, self.current_player.make_komplexeki_move(self.board))
         
         
     #RUFT SYMBOL AUF SPIELFELD AB UM ZU SCHAUEN WELCHES SYMBOL AN DIESER STELLE IST    anne
