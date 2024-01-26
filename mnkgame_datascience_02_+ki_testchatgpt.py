@@ -111,86 +111,29 @@ class KomplexeKI(Player):
          self.is_komplexeki = True
 
     def make_komplexeki_move(self):
+        '''zuerst überprüft er check_winning_move_self(). setzt er kein symbol, so soll er check_winning_move_self und check_winning_move_gegner machen. wenn das auch nicht ist, dann mach def make_strategic_move_mitte. ist die mitte voll, so soll make_random_move gemacht werden'''
+        pass
 
-        # Check for a winning move
-        for row in range(self.game.board.m):
-            for col in range(self.game.board.n):
-                if self.game.get_symbol(row, col) == ' ':
-                    self.game.place_symbol(row, col)
-                    if self.check_win(self.game.board):
-                        return
-
-                    
-
-        # Check for a blocking move
-        opponent_symbol = 'O' if self.symbol == 'X' else 'X'
-        move_made = False
-
-        # Check rows and columns
-        for i in range(self.game.board.m):
-            if self.make_blocking_move( i, opponent_symbol):
-                move_made = True
-                break
-            if self.make_blocking_move( i, self.symbol):
-                move_made = True
-                break
-
-        # Check diagonals
-        if not move_made and self.make_blocking_move( -1, opponent_symbol):  # Main diagonal
-            move_made = True
-        elif not move_made and self.make_blocking_move( 1, opponent_symbol):   # Anti-diagonal
-            move_made = True
-        elif not move_made and self.make_blocking_move( -1, self.symbol):      # Main diagonal for self
-            move_made = True
-        elif not move_made and self.make_blocking_move( 1, self.symbol):        # Anti-diagonal for self
-            move_made = True
-
-        # If neither winning nor blocking, make a strategic move
-        if not move_made:
-            self.make_random_move()
-
-    def make_blocking_move(self, index, symbol):
-        # Check for blocking move in rows, columns, or diagonals
-        if index == -1:
-            # Main diagonal
-            if self.game.get_symbol(0, 0) == ' ' and self.game.get_symbol(1, 1) == symbol and self.game.get_symbol(2, 2) == symbol:
-                self.game.place_symbol(0, 0)
-                return True
-        elif index == 1:
-            # Anti-diagonal
-            if self.game.get_symbol(0, 2) == ' ' and self.game.get_symbol(1, 1) == symbol and self.game.get_symbol(2, 0) == symbol:
-                self.game.place_symbol(0, 2)
-                return True
-        else:
-            # Rows and columns
-            for i in range(self.game.board.m):
-                if self.game.get_symbol(i, index) == ' ' and self.game.get_symbol(i, (index + 1) % self.game.board.n) == symbol and \
-                        self.game.get_symbol(i, (index + 2) % self.n) == symbol:
-                    self.game.place_symbol(i, index)
-                    return True
-                if self.game.get_symbol(index, i) == ' ' and self.game.get_symbol((index + 1) % self.game.board.m, i) == symbol and \
-                        self.game.get_symbol((index + 2) % self.m, i) == symbol:
-                    self.game.place_symbol(index, i)
-                    return True
-
-        # If no blocking move is made, return False
-        return False
+    
+    def check_winning_move_self():
+        '''soll guvken ob man selbst fast k symbole nebeneinander hat (nur noch 1 übrig). für horizontal, vertikal und diagonal. wenn ja symbol an dieser stelle plazieren(place_symbol)'''
+        pass
 
 
-    #def make_strategic_move(self):
-        # Implement your strategic move logic here
-        # Example: Try to occupy the center if available, else pick a corner
-        center = (self.game.board.m // 2, self.game.board.n // 2)
-        if self.game.board[center[0]][center[1]] == ' ':
-            self.game.board[center[0]][center[1]] = self.symbol
-        else:
-            # Implement other strategic moves
-            # ...
-            self.make_random_move()
+    def check_winning_move_gegner():
+        '''soll checken ob der gegner fast k symbole nebeneinader hat (nur noch 1 übrig). für horizontal, vertikal und diagonal. wenn ja true zurück gebe, wenn nein none'''
+        pass
+    
+    def make_blocking_move():
+        ''' wenn check_winning_move_gegner == True ist, soll die KI sein symbol so setzen (place_symbol), dass der gegner nicht im nächten zug gewinnen kann bzw blockiert wird'''
+        pass
+
+
+    def make_strategic_move_mitte(self):
+        '''soll mit der place symbol methode das symbol in die mitte setzten, wenn die mitte frei ist. ist sie nicht frei so soll random move gemacht werden'''
+        pass
 
     def make_random_move(self):
-        # Implement making a random move
-        # ...
         while True:
              row = random.randint(0, self.game.board.m - 1)
              col = random.randint(0, self.game.board.n - 1)
@@ -199,11 +142,8 @@ class KomplexeKI(Player):
                  break
 
     def check_win(self, symbol=None):
-        symbol = symbol or self.symbol
-        if game.check_winner() == True:
-            return True
-        else:
-            return False
+        '''greift auf check_winner aus der game class zu'''
+        pass
 
 
 
