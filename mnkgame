@@ -196,14 +196,14 @@ if __name__ == "__main__":
     player1 = Player("Max", "x")
     player2 = Player("Tom", "o") 
     player3 = ZufallsKI("Zufalls KI", "o", None)  
-    player4 = EinfacheKI("Einfache KI", "o", None)
-    player5 = KomplexeKI("Einfache KI", "o", None)
+    #player4 = EinfacheKI("Einfache KI", "o", None)
+    #player5 = KomplexeKI("Einfache KI", "o", None)
     
     game = Game(5, 5, 4, player1, player3)
     
     player3.game = game #zufallski
-    player4.game = game #einfacheki
-    player5.game = game #komplexeki
+    #player4.game = game #einfacheki
+    #player5.game = game #komplexeki
     
     game.board.show()
     sys.exit(app.exec_())
