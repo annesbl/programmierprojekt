@@ -116,11 +116,11 @@ class KomplexeKI(Player):
         for row in range(self.game.board.m):
             for col in range(self.game.board.n):
                 if self.game.get_symbol(row, col) == ' ':
-                    self.game.board[row][col] = self.symbol
+                    self.game.place_symbol(row, col)
                     if self.check_win(self.game.board):
                         return
 
-                    self.game.board[row][col] = ' '
+                    
 
         # Check for a blocking move
         opponent_symbol = 'O' if self.symbol == 'X' else 'X'
@@ -128,10 +128,10 @@ class KomplexeKI(Player):
 
         # Check rows and columns
         for i in range(self.game.board.m):
-            if self.make_blocking_move(self.game.board, i, opponent_symbol):
+            if self.make_blocking_move( i, opponent_symbol):
                 move_made = True
                 break
-            if self.make_blocking_move(self.game.board, i, self.symbol):
+            if self.make_blocking_move( i, self.symbol):
                 move_made = True
                 break
 
@@ -147,37 +147,37 @@ class KomplexeKI(Player):
 
         # If neither winning nor blocking, make a strategic move
         if not move_made:
-            self.make_strategic_move(self.board)
+            self.make_random_move()
 
     def make_blocking_move(self, index, symbol):
         # Check for blocking move in rows, columns, or diagonals
         if index == -1:
             # Main diagonal
             if self.game.get_symbol(0, 0) == ' ' and self.game.get_symbol(1, 1) == symbol and self.game.get_symbol(2, 2) == symbol:
-                self.game.board[0][0] = self.symbol
+                self.game.place_symbol(0, 0)
                 return True
         elif index == 1:
             # Anti-diagonal
             if self.game.get_symbol(0, 2) == ' ' and self.game.get_symbol(1, 1) == symbol and self.game.get_symbol(2, 0) == symbol:
-                self.game.board[0][2] = self.symbol
+                self.game.place_symbol(0, 2)
                 return True
         else:
             # Rows and columns
             for i in range(self.game.board.m):
-                if self.game.board[i][index] == ' ' and self.game.board[i][(index + 1) % self.game.board.n] == symbol and \
-                        self.game.board[i][(index + 2) % self.n] == symbol:
-                    self.game.board[i][index] = self.symbol
+                if self.game.get_symbol(i, index) == ' ' and self.game.get_symbol(i, (index + 1) % self.game.board.n) == symbol and \
+                        self.game.get_symbol(i, (index + 2) % self.n) == symbol:
+                    self.game.place_symbol(i, index)
                     return True
-                if self.game.board[index][i] == ' ' and self.game.board[(index + 1) % self.game.board.m][i] == symbol and \
-                        self.game.board[(index + 2) % self.m][i] == symbol:
-                    self.game.board[index][i] = self.symbol
+                if self.game.get_symbol(index, i) == ' ' and self.game.get_symbol((index + 1) % self.game.board.m, i) == symbol and \
+                        self.game.get_symbol((index + 2) % self.m, i) == symbol:
+                    self.game.place_symbol(index, i)
                     return True
 
         # If no blocking move is made, return False
         return False
 
 
-    def make_strategic_move(self):
+    #def make_strategic_move(self):
         # Implement your strategic move logic here
         # Example: Try to occupy the center if available, else pick a corner
         center = (self.game.board.m // 2, self.game.board.n // 2)
