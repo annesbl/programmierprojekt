@@ -1,6 +1,61 @@
+# class EinfacheKI(Player):
+#     '''vergisst nicht self.is_einfacheki = True zu setzten'''
+#     '''wenn möglich die Make move methode der klasse make_einfacheki_move nennen'''
+#     def __init__(self, name, symbol, game):
+#         super().__init__(name, symbol)
+#         self.game = game
+#         self.is_einfacheki = True
+
+#     def make_einfacheki_move(self):
+#         if self.game.is_board_empty():
+#             row = random.randint(0, self.game.board.m - 1)
+#             col = random.randint(0, self.game.board.n - 1)
+#             if self.game.get_symbol(row, col) == "":
+#                 self.game.place_symbol(row, col)
+#         else:
+#             row, col = self.find_strategic_move()
+
+#         # Symbol setzen
+#         self.game.place_symbol(row, col)       
+
+#     def find_strategic_move(self):
+#         for r in range(self.game.board.m):
+#             for c in range(self.game.board.n):
+#                 if self.game.get_symbol(r, c) == self.symbol:
+#                     # Prüfen, ob rechts Platz ist
+#                     if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":
+#                         return r, c + 1
+#                     # Prüfen, ob links Platz ist
+#                     elif c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
+#                         return r, c - 1
+#                     # Prüfen, ob unten Platz ist
+#                     elif r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
+#                         return r + 1, c
+#                     # Prüfen, ob oben Platz ist
+#                     elif r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
+#                         return r - 1, c
+#                     # Prüfen, ob diagonal unten rechts Platz ist
+#                     elif r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
+#                         return r + 1, c + 1
+#                     # Prüfen, ob diagonal oben links Platz ist
+#                     elif r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
+#                         return r - 1, c - 1
+#                     # Prüfen, ob diagonal unten links Platz ist
+#                     elif r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
+#                         return r + 1, c - 1
+#                     # Prüfen, ob diagonal oben rechts Platz ist
+#                     elif r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
+#                         return r - 1, c + 1
+
+#         # Falls keine intelligenten Züge gefunden wurden, setze zufällig
+#         empty_positions = [(r, c) for r in range(self.game.board.m) for c in range(self.game.board.n) if self.game.get_symbol(r, c) == ""]
+#         return random.choice(empty_positions)
+
+
+
 import time
 import sys
-import PyQt5.QtWidgets
+import PyQt5
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QPushButton
 from PyQt5.QtGui import QColor
 import random
@@ -99,54 +154,105 @@ class ZufallsKI(Player):                       #anne
 class EinfacheKI(Player):
     '''vergisst nicht self.is_einfacheki = True zu setzten'''
     '''wenn möglich die Make move methode der klasse make_einfacheki_move nennen'''
-    pass
-
-   
-    
-class KomplexeKI(Player):
     def __init__(self, name, symbol, game):
-         super().__init__(name, symbol)
-         self.game = game           #Übergeben des 'self'-Objekts an die display-Methode
-         self.is_komplexeki = True
+        super().__init__(name, symbol)
+        self.game = game
+        self.is_einfacheki = True
+        self.first_move = True  # Initialize the first_move flag
+        
+        
+    def make_einfacheki_move(self):
+        if self.first_move:
+            row = random.randint(0, self.game.board.m - 1)
+            col = random.randint(0, self.game.board.n - 1)
+            #self.game.place_symbol(row,col)
+            self.first_move = False
+        else:
+            row, col = self.find_strategic_move()
 
-    def make_komplexeki_move(self):
-        '''zuerst überprüft er check_winning_move_self(). setzt er kein symbol, so soll er check_winning_move_self und check_winning_move_gegner machen. wenn das auch nicht ist, dann mach def make_strategic_move_mitte. ist die mitte voll, so soll make_random_move gemacht werden'''
-        pass
+        # Symbol setzen
+        self.game.place_symbol(row, col)
 
+        # Überprüfen, ob das Spiel vorbei ist
+        winner = self.game.check_winner()
+        if winner:
+            print(f"Spieler {self.name} hat gewonnen!")
+            self.game.board.close()
+        elif self.game.is_board_full():
+            print("Unentschieden!")
+            self.game.board.close()
     
-    def check_winning_move_self():
-        '''soll guvken ob man selbst fast k symbole nebeneinander hat (nur noch 1 übrig). für horizontal, vertikal und diagonal. wenn ja symbol an dieser stelle plazieren(place_symbol)'''
-        pass
+    def find_strategic_move(self):
+        max_length = 0
+        best_move = None
 
+        for r in range(self.game.board.m):
+            for c in range(self.game.board.n):
+                if self.game.get_symbol(r, c) == self.symbol:
+                    # Prüfen, ob rechts Platz ist
+                    if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":
+                        return r, c + 1
+                    # Prüfen, ob links Platz ist
+                    elif c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
+                        return r, c - 1
+                    # Prüfen, ob unten Platz ist
+                    elif r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
+                        return r + 1, c
+                    # Prüfen, ob oben Platz ist
+                    elif r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
+                        return r - 1, c
+                    # Prüfen, ob diagonal unten rechts Platz ist
+                    elif r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
+                        return r + 1, c + 1
+                    # Prüfen, ob diagonal oben links Platz ist
+                    elif r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
+                        return r - 1, c - 1
+                    # Prüfen, ob diagonal unten links Platz ist
+                    elif r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
+                        return r + 1, c - 1
+                    # Prüfen, ob diagonal oben rechts Platz ist
+                    elif r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
+                        return r - 1, c + 1
+                if self.game.get_symbol(r, c) == "":
+                    length = self.calculate_chain_length(r, c)
+                    if length > max_length:
+                        max_length = length
+                        best_move = (r, c)
 
-    def check_winning_move_gegner():
-        '''soll checken ob der gegner fast k symbole nebeneinader hat (nur noch 1 übrig). für horizontal, vertikal und diagonal. wenn ja true zurück gebe, wenn nein none'''
-        pass
-    
-    def make_blocking_move():
-        ''' wenn check_winning_move_gegner == True ist, soll die KI sein symbol so setzen (place_symbol), dass der gegner nicht im nächten zug gewinnen kann bzw blockiert wird'''
-        pass
+        if best_move is not None:
+            return best_move
 
+        # Falls keine intelligenten Züge gefunden wurden, setze zufällig
+        empty_positions = [(r, c) for r in range(self.game.board.m) for c in range(self.game.board.n) if self.game.get_symbol(r, c) == ""]
+        return random.choice(empty_positions)
 
-    def make_strategic_move_mitte(self):
-        '''soll mit der place symbol methode das symbol in die mitte setzten, wenn die mitte frei ist. ist sie nicht frei so soll random move gemacht werden'''
-        pass
+    def calculate_chain_length(self, row, col):
+        directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend
+        max_length = 0
 
-    def make_random_move(self):
-        while True:
-             row = random.randint(0, self.game.board.m - 1)
-             col = random.randint(0, self.game.board.n - 1)
-             if self.game.get_symbol(row, col) == "":
-                 self.game.place_symbol(row, col)
-                 break
+        for dr, dc in directions:
+            length = 1
+            for i in range(1, self.game.board.k):
+                r, c = row + i * dr, col + i * dc
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
+                    length += 1
+                else:
+                    break
 
-    def check_win(self, symbol=None):
-        '''greift auf check_winner aus der game class zu'''
-        pass
+            for i in range(1, self.game.board.k):
+                r, c = row - i * dr, col - i * dc
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
+                    length += 1
+                else:
+                    break
 
+            if length >= self.game.board.k:
+                return length
 
+            if length > max_length:
+                max_length = length
 
-
+        return max_length
     
 class Game:                                                          
     def __init__(self, m, n, k, player1, player2):                                    
@@ -276,8 +382,14 @@ class Game:
                     return False          #brett nicht voll
         return True                       #brett voll -> unentschieden 
     
-    
-    
+    ##für einfache ki
+    def is_board_empty(self):
+        # Überprüft, ob das Spielfeld leer ist
+        for row in range(self.board.m):
+            for col in range(self.board.n):
+                if self.get_symbol(row, col) != "":
+                    return False
+        return True
     
     
     
@@ -308,15 +420,15 @@ if __name__ == "__main__":
     player_mensch2 = Player("Tom", "o") 
     player_zufallski = ZufallsKI("Zufalls KI", "o", None)
     player_zufallski2 = ZufallsKI("Zufalls KI 2", "x", None)
-    #player_einfacheki = EinfacheKI("Einfache KI", "o", None)
+    player_einfacheki = EinfacheKI("Einfache KI", "o", None)
     #player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
-    player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
+    #player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
     # Weitere Spielerinitialisierungen und Spiellogik
     #player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
     player1 = player_mensch
-    player2 = player_komplexeki
+    player2 = player_einfacheki
     
     play_several_times = False
     num_games = 5  # Anzahl der Spiele
@@ -334,7 +446,7 @@ if __name__ == "__main__":
             #KIs richtig zuweisen
             player_zufallski.game = game #zufallski
             player_zufallski2.game = game #zufallski
-            #player_einfacheki.game = game #einfacheki
+            player_einfacheki.game = game #einfacheki
             #player_einfacheki2.game = game #einfacheki
             #player_komplexeki.game = game #komplexeki
             #player_komplexeki2.game = game #komplexeki
@@ -366,9 +478,9 @@ if __name__ == "__main__":
         #KIs richtig zuweisen
         player_zufallski.game = game #zufallski
         player_zufallski2.game = game #zufallski
-        #player_einfacheki.game = game #einfacheki
+        player_einfacheki.game = game #einfacheki
         #player_einfacheki2.game = game #einfacheki
-        player_komplexeki.game = game #komplexeki
+        #player_komplexeki.game = game #komplexeki
         #player_komplexeki2.game = game #komplexeki
         
         #Spiel starten
