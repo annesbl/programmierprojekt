@@ -162,19 +162,19 @@ class EinfacheKI(Player):
         
         
     def make_einfacheki_move(self):
-        if self.first_move:
-            row = random.randint(0, self.game.board.m - 1)
-            col = random.randint(0, self.game.board.n - 1)
-            #self.game.place_symbol(row,col)
-            self.first_move = False
-        else:
-            row, col = self.find_strategic_move()
+        if self.first_move:                                 #falls es der erste move ist ist first_move = True gesetzt
+            row = random.randint(0, self.game.board.m - 1)  #row des buttons (für den ersten zug) zufällig festlegen
+            col = random.randint(0, self.game.board.n - 1)  #col des buttons (für den ersten zug) zufällig festlegen
+            #self.game.place_symbol(row,col)        
+            self.first_move = False                         #wird auf False gesetzt, nachdem der first move gemacht worden ist
+        else:                                               #falls es nicht der erste zug der KI ist:
+            row, col = self.find_strategic_move()           #find_strategic_move findet ein leeren Button und gint diesen zurück -> wird ind row, col gespeichert
 
-        # Symbol setzen
-        self.game.place_symbol(row, col)
+        # Symbol setzen                            
+        self.game.place_symbol(row, col)                    #plaziert symbol auf bei col, row (die im vorherigen schritt festgelegt wurden)
 
-        # Überprüfen, ob das Spiel vorbei ist
-        winner = self.game.check_winner()
+        # Überprüfen, ob das Spiel vorbei ist      - ist das nicht schon durch place_symbol? weil in der place_symbol methode gibt es das, und jetzt machen wir es nochmal?
+        winner = self.game.check_winner() 
         if winner:
             print(f"Spieler {self.name} hat gewonnen!")
             self.game.board.close()
@@ -185,7 +185,7 @@ class EinfacheKI(Player):
     def find_strategic_move(self):
         max_length = 0
         best_move = None
-
+        #es wird nur Ort des leeren Buttons zruück gegeben, jedoch noch kein symbol plaziert
         for r in range(self.game.board.m):
             for c in range(self.game.board.n):
                 if self.game.get_symbol(r, c) == self.symbol:
@@ -382,13 +382,12 @@ class Game:
                     return False          #brett nicht voll
         return True                       #brett voll -> unentschieden 
     
-    ##für einfache ki
+    #UEBERPRUEF OB DAS BOARD LEER IST        anne
     def is_board_empty(self):
-        # Überprüft, ob das Spielfeld leer ist
-        for row in range(self.board.m):
+        for row in range(self.board.m):                
             for col in range(self.board.n):
-                if self.get_symbol(row, col) != "":
-                    return False
+                if self.get_symbol(row, col) != "":    #überprüfen ob NICHT leer
+                    return False                       # falls NICHT leer -> False zurückgeben
         return True
     
     
