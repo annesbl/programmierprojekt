@@ -1,0 +1,11 @@
+prefix=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+toolexeclibdir=${libdir}
+includedir=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
+
+Name: libffi
+Description: Library supporting Foreign Function Interfaces
+Version: 3.4.4
+Libs: -L${toolexeclibdir} -lffi
+Cflags: -I${includedir}
