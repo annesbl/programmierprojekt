@@ -168,19 +168,19 @@ class EinfacheKI(Player):
             #self.game.place_symbol(row,col)        
             self.first_move = False                         #wird auf False gesetzt, nachdem der first move gemacht worden ist
         else:                                               #falls es nicht der erste zug der KI ist:
-            row, col = self.find_strategic_move()           #find_strategic_move findet ein leeren Button und gint diesen zurück -> wird ind row, col gespeichert
+            row, col = self.find_strategic_move()           #find_strategic_move findet ein leeren Button und gibt diesen zurück -> wird ind row, col gespeichert
 
         # Symbol setzen                            
         self.game.place_symbol(row, col)                    #plaziert symbol auf bei col, row (die im vorherigen schritt festgelegt wurden)
 
         # Überprüfen, ob das Spiel vorbei ist      - ist das nicht schon durch place_symbol? weil in der place_symbol methode gibt es das, und jetzt machen wir es nochmal?
-        winner = self.game.check_winner() 
-        if winner:
-            print(f"Spieler {self.name} hat gewonnen!")
-            self.game.board.close()
-        elif self.game.is_board_full():
-            print("Unentschieden!")
-            self.game.board.close()
+        # winner = self.game.check_winner() 
+        # if winner:
+        #     print(f"Spieler {self.name} hat gewonnen!")
+        #     self.game.board.close()
+        # elif self.game.is_board_full():
+        #     print("Unentschieden!")
+        #     self.game.board.close()
     
     def find_strategic_move(self):
         max_length = 0
@@ -228,7 +228,7 @@ class EinfacheKI(Player):
 
     def calculate_chain_length(self, row, col):
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend
-        max_length = 0
+        max_length = 1
 
         for dr, dc in directions:
             length = 1
