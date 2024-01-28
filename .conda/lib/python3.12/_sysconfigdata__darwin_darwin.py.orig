@@ -8,27 +8,27 @@ build_time_vars = {'ABIFLAGS': '',
  'ALIGNOF_SIZE_T': 8,
  'ALT_SOABI': 0,
  'ANDROID_API_LEVEL': 0,
- 'AR': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/_build_env/bin/arm64-apple-darwin20.0.0-llvm-ar',
+ 'AR': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/_build_env/bin/arm64-apple-darwin20.0.0-llvm-ar',
  'ARFLAGS': 'rcs',
  'BASECFLAGS': '-fno-strict-overflow',
  'BASECPPFLAGS': '-IObjects -IInclude -IPython',
  'BASEMODLIBS': '',
- 'BINDIR': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/bin',
- 'BINLIBDEST': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12',
+ 'BINDIR': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/bin',
+ 'BINLIBDEST': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12',
  'BLDLIBRARY': 'libpython3.12.a',
  'BLDSHARED': 'arm64-apple-darwin20.0.0-clang -bundle -undefined '
               'dynamic_lookup -isysroot '
               '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
               '-Wl,-pie -Wl,-headerpad_max_install_names '
               '-Wl,-dead_strip_dylibs '
-              '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-              '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+              '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+              '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
               '-isysroot '
               '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
               '-Wl,-pie -Wl,-headerpad_max_install_names '
               '-Wl,-dead_strip_dylibs '
-              '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-              '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib',
+              '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+              '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib',
  'BOOTSTRAP_HEADERS': '\\',
  'BUILDEXE': '.exe',
  'BUILDPYTHON': 'python.exe',
@@ -41,21 +41,21 @@ build_time_vars = {'ABIFLAGS': '',
            '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
            '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe '
            '-isystem '
-           '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-           '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-           '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+           '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+           '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+           '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
            '-arch arm64  -isysroot '
            '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
            '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe '
            '-isystem '
-           '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-           '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-           '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+           '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+           '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+           '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
            '-arch arm64 ',
  'CFLAGSFORSHARED': '',
  'CFLAGS_ALIASING': '-fno-strict-aliasing',
- 'CODECS_COMMON_HEADERS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h '
-                          '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/cjkcodecs.h',
+ 'CODECS_COMMON_HEADERS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h '
+                          '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/cjkcodecs.h',
  'COMPILEALL_OPTS': '-j0',
  'CONFIGFILES': 'configure configure.ac acconfig.h pyconfig.h.in '
                 'Makefile.pre.in',
@@ -63,9 +63,9 @@ build_time_vars = {'ABIFLAGS': '',
                      '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                      '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong '
                      '-O2 -pipe -isystem '
-                     '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                     '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                     '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                     '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                     '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                     '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                      '-arch arm64 ',
  'CONFIGURE_CFLAGS_NODIST': '=full -std=c11 '
                             '-Werror=implicit-function-declaration '
@@ -73,91 +73,91 @@ build_time_vars = {'ABIFLAGS': '',
  'CONFIGURE_CPPFLAGS': '-isysroot '
                        '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                        '-D_FORTIFY_SOURCE=2 -isystem '
-                       '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                       '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                        '-mmacosx-version-min=11.1 '
-                       '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
+                       '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
  'CONFIGURE_LDFLAGS': '-isysroot '
                       '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                       '-Wl,-pie -Wl,-headerpad_max_install_names '
                       '-Wl,-dead_strip_dylibs '
-                      '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-                      '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib',
+                      '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+                      '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib',
  'CONFIGURE_LDFLAGS_NODIST': '=full -Wl,-export_dynamic '
                              '-Wl,-object_path_lto,"$@".lto -g',
  'CONFIGURE_LDFLAGS_NOLTO': '=thin',
- 'CONFIG_ARGS': "'--prefix=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda' "
+ 'CONFIG_ARGS': "'--prefix=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda' "
                 "'--build=arm64-apple-darwin20.0.0' "
                 "'--host=arm64-apple-darwin20.0.0' '--enable-ipv6' "
                 "'--with-ensurepip=no' "
-                "'--with-tzpath=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/share/zoneinfo' "
+                "'--with-tzpath=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/share/zoneinfo' "
                 "'--with-computed-gotos' '--with-system-expat' "
                 "'--enable-loadable-sqlite-extensions' "
-                "'--with-tcltk-includes=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include' "
-                "'--with-tcltk-libs=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib "
+                "'--with-tcltk-includes=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include' "
+                "'--with-tcltk-libs=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib "
                 "-ltcl8.6 -ltk8.6' '--with-platlibdir=lib' '--with-lto=full' "
                 "'--enable-optimizations' "
-                "'-oldincludedir=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/_build_env/arm64-apple-darwin20.0.0/sysroot/usr/include' "
+                "'-oldincludedir=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/_build_env/arm64-apple-darwin20.0.0/sysroot/usr/include' "
                 "'--disable-shared' 'PROFILE_TASK=-m test --pgo' "
                 "'build_alias=arm64-apple-darwin20.0.0' "
                 "'host_alias=arm64-apple-darwin20.0.0' "
-                "'PKG_CONFIG_PATH=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/pkgconfig' "
+                "'PKG_CONFIG_PATH=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/pkgconfig' "
                 "'MACHDEP=darwin' 'CC=arm64-apple-darwin20.0.0-clang' "
                 "'CFLAGS=-isysroot "
                 '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                 '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                 '-pipe -isystem '
-                '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                 "-arch arm64 ' 'LDFLAGS=-isysroot "
                 '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                 '-Wl,-pie -Wl,-headerpad_max_install_names '
                 '-Wl,-dead_strip_dylibs '
-                '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-                "-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib' "
+                '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+                "-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib' "
                 "'CPPFLAGS=-isysroot "
                 '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                 '-D_FORTIFY_SOURCE=2 -isystem '
-                '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                 '-mmacosx-version-min=11.1 '
-                "-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include'",
- 'CONFINCLUDEDIR': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
- 'CONFINCLUDEPY': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include/python3.12',
+                "-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include'",
+ 'CONFINCLUDEDIR': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
+ 'CONFINCLUDEPY': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include/python3.12',
  'COREPYTHONPATH': '',
- 'COVERAGE_INFO': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/build-static/coverage.info',
+ 'COVERAGE_INFO': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/build-static/coverage.info',
  'COVERAGE_LCOV_OPTIONS': '--rc lcov_branch_coverage=1',
- 'COVERAGE_REPORT': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/build-static/lcov-report',
+ 'COVERAGE_REPORT': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/build-static/lcov-report',
  'COVERAGE_REPORT_OPTIONS': '--rc lcov_branch_coverage=1 --branch-coverage '
                             '--title "CPython 3.12 LCOV report [commit $(shell '
                             ')]"',
  'CPPFLAGS': '-IObjects -IInclude -IPython -I. '
-             '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+             '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
              '-isysroot '
              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
              '-D_FORTIFY_SOURCE=2 -isystem '
-             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
              '-mmacosx-version-min=11.1 '
-             '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+             '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
              '-isysroot '
              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
              '-D_FORTIFY_SOURCE=2 -isystem '
-             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
              '-mmacosx-version-min=11.1 '
-             '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
+             '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
  'CXX': 'arm64-apple-darwin20.0.0-clang++',
  'DEEPFREEZE_C': 'Python/deepfreeze/deepfreeze.c',
- 'DEEPFREEZE_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Tools/build/deepfreeze.py '
+ 'DEEPFREEZE_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Tools/build/deepfreeze.py '
                     '_bootstrap_python '
-                    '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Programs/_freeze_module.py '
+                    '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Programs/_freeze_module.py '
                     '\\',
  'DEEPFREEZE_OBJS': 'Python/deepfreeze/deepfreeze.o',
- 'DESTDIRS': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda '
-             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12 '
-             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12/lib-dynload',
- 'DESTLIB': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12',
+ 'DESTDIRS': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda '
+             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12 '
+             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12/lib-dynload',
+ 'DESTLIB': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12',
  'DESTPATH': '',
- 'DESTSHARED': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12/lib-dynload',
+ 'DESTSHARED': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12/lib-dynload',
  'DFLAGS': '',
  'DIRMODE': 755,
  'DIST': 'README.rst ChangeLog configure configure.ac acconfig.h pyconfig.h.in '
@@ -181,7 +181,7 @@ build_time_vars = {'ABIFLAGS': '',
  'ENSUREPIP': 'no',
  'EXE': '',
  'EXEMODE': 755,
- 'EXENAME': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/bin/python3.12',
+ 'EXENAME': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/bin/python3.12',
  'EXPORTSFROM': '',
  'EXPORTSYMS': '',
  'EXTRATESTOPTS': '',
@@ -189,11 +189,11 @@ build_time_vars = {'ABIFLAGS': '',
  'FILEMODE': 644,
  'FLOAT_WORDS_BIGENDIAN': 0,
  'FREEZE_MODULE': './_bootstrap_python '
-                  '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Programs/_freeze_module.py',
+                  '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Programs/_freeze_module.py',
  'FREEZE_MODULE_BOOTSTRAP': './Programs/_freeze_module',
  'FREEZE_MODULE_BOOTSTRAP_DEPS': 'Programs/_freeze_module',
  'FREEZE_MODULE_DEPS': '_bootstrap_python '
-                       '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Programs/_freeze_module.py',
+                       '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Programs/_freeze_module.py',
  'FROZEN_FILES_IN': '\\',
  'FROZEN_FILES_OUT': '\\',
  'GETPGRP_HAVE_ARG': 0,
@@ -453,7 +453,7 @@ build_time_vars = {'ABIFLAGS': '',
  'HAVE_MMAP': 1,
  'HAVE_MREMAP': 0,
  'HAVE_NANOSLEEP': 1,
- 'HAVE_NCURSESW': 0,
+ 'HAVE_NCURSESW': 1,
  'HAVE_NCURSES_H': 1,
  'HAVE_NDBM_H': 1,
  'HAVE_NDIR_H': 0,
@@ -507,6 +507,7 @@ build_time_vars = {'ABIFLAGS': '',
  'HAVE_RENAMEAT': 1,
  'HAVE_RL_APPEND_HISTORY': 1,
  'HAVE_RL_CATCH_SIGNAL': 1,
+ 'HAVE_RL_COMPDISP_FUNC_T': 1,
  'HAVE_RL_COMPLETION_APPEND_CHARACTER': 1,
  'HAVE_RL_COMPLETION_DISPLAY_MATCHES_HOOK': 1,
  'HAVE_RL_COMPLETION_MATCHES': 1,
@@ -690,12 +691,12 @@ build_time_vars = {'ABIFLAGS': '',
  'HAVE__GETPTY': 0,
  'HOSTRUNNER': '',
  'HOST_GNU_TYPE': 'arm64-apple-darwin20.0.0',
- 'INCLDIRSTOMAKE': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include/python3.12 '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include/python3.12',
- 'INCLUDEDIR': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
- 'INCLUDEPY': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include/python3.12',
+ 'INCLDIRSTOMAKE': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include/python3.12 '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include/python3.12',
+ 'INCLUDEDIR': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
+ 'INCLUDEPY': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include/python3.12',
  'INSTALL': '/usr/bin/install -c',
  'INSTALL_DATA': '/usr/bin/install -c -m 644',
  'INSTALL_PROGRAM': '/usr/bin/install -c',
@@ -708,144 +709,144 @@ build_time_vars = {'ABIFLAGS': '',
                 'dynamic_lookup',
  'LDFLAGS': '-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
             '-Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs '
-            '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-            '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+            '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+            '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
             '-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
             '-Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs '
-            '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-            '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib',
+            '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+            '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib',
  'LDLIBRARY': 'libpython3.12.a',
  'LDLIBRARYDIR': '',
  'LDSHARED': 'arm64-apple-darwin20.0.0-clang -bundle -undefined dynamic_lookup '
              '-isysroot '
              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-pie '
              '-Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs '
-             '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-             '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+             '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+             '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
              '-isysroot '
              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-pie '
              '-Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs '
-             '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-             '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib',
+             '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+             '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib',
  'LDVERSION': '3.12',
  'LIBC': '',
- 'LIBDEST': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12',
- 'LIBDIR': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib',
+ 'LIBDEST': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12',
+ 'LIBDIR': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib',
  'LIBEXPAT_A': 'Modules/expat/libexpat.a',
  'LIBEXPAT_CFLAGS': '-fno-strict-overflow -DNDEBUG -O2 -Wall -isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                     '-pipe -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                    '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                    '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                     '-arch arm64  -isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                     '-pipe -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                    '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                    '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                     '-arch arm64  =full -std=c11 '
                     '-Werror=implicit-function-declaration -fvisibility=hidden '
                     '-fprofile-instr-use=code.profclangd '
-                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include/internal '
+                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include/internal '
                     '-IObjects -IInclude -IPython -I. '
-                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
                     '-isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-D_FORTIFY_SOURCE=2 -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                     '-mmacosx-version-min=11.1 '
-                    '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                    '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                     '-isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-D_FORTIFY_SOURCE=2 -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                     '-mmacosx-version-min=11.1 '
-                    '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
+                    '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
  'LIBEXPAT_HEADERS': '\\',
  'LIBEXPAT_OBJS': '\\',
- 'LIBHACL_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_hacl/include '
+ 'LIBHACL_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_hacl/include '
                    '-D_BSD_SOURCE -D_DEFAULT_SOURCE -fno-strict-overflow '
                    '-DNDEBUG -O2 -Wall -isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                    '-pipe -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                   '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                   '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                    '-arch arm64  -isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                    '-pipe -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                   '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                   '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                    '-arch arm64  =full -std=c11 '
                    '-Werror=implicit-function-declaration -fvisibility=hidden '
                    '-fprofile-instr-use=code.profclangd '
-                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include/internal '
+                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include/internal '
                    '-IObjects -IInclude -IPython -I. '
-                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
                    '-isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-D_FORTIFY_SOURCE=2 -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                    '-mmacosx-version-min=11.1 '
-                   '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                   '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                    '-isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-D_FORTIFY_SOURCE=2 -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                    '-mmacosx-version-min=11.1 '
-                   '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
+                   '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
  'LIBHACL_HEADERS': '\\',
  'LIBHACL_SHA2_A': 'Modules/_hacl/libHacl_Hash_SHA2.a',
  'LIBHACL_SHA2_HEADERS': '\\',
  'LIBHACL_SHA2_OBJS': '\\',
  'LIBM': '',
  'LIBMPDEC_A': 'Modules/_decimal/libmpdec/libmpdec.a',
- 'LIBMPDEC_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_decimal/libmpdec '
+ 'LIBMPDEC_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_decimal/libmpdec '
                     '-DUNIVERSAL=1 -fno-strict-overflow -DNDEBUG -O2 -Wall '
                     '-isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                     '-pipe -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                    '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                    '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                     '-arch arm64  -isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                     '-pipe -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                    '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                    '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                    '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                     '-arch arm64  =full -std=c11 '
                     '-Werror=implicit-function-declaration -fvisibility=hidden '
                     '-fprofile-instr-use=code.profclangd '
-                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include/internal '
+                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include/internal '
                     '-IObjects -IInclude -IPython -I. '
-                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+                    '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
                     '-isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-D_FORTIFY_SOURCE=2 -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                     '-mmacosx-version-min=11.1 '
-                    '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                    '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                     '-isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-D_FORTIFY_SOURCE=2 -isystem '
-                    '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                    '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                     '-mmacosx-version-min=11.1 '
-                    '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
+                    '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
  'LIBMPDEC_HEADERS': '\\',
  'LIBMPDEC_OBJS': '\\',
  'LIBOBJDIR': 'Python/',
  'LIBOBJS': '',
- 'LIBPC': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/pkgconfig',
- 'LIBPL': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12/config-3.12-darwin',
+ 'LIBPC': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/pkgconfig',
+ 'LIBPL': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12/config-3.12-darwin',
  'LIBPYTHON': '',
  'LIBRARY': 'libpython3.12.a',
  'LIBRARY_DEPS': 'libpython3.12.a',
@@ -861,19 +862,19 @@ build_time_vars = {'ABIFLAGS': '',
  'LIPO_INTEL64_FLAGS': '',
  'LLVM_PROF_ERR': 'no',
  'LLVM_PROF_FILE': 'LLVM_PROFILE_FILE="code-%p.profclangr"',
- 'LLVM_PROF_MERGER': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/_build_env/bin/llvm-profdata '
+ 'LLVM_PROF_MERGER': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/_build_env/bin/llvm-profdata '
                      'merge -output=code.profclangd *.profclangr',
  'LN': 'ln',
  'LOCALMODLIBS': '',
  'MACHDEP': 'darwin',
  'MACHDEP_OBJS': '',
- 'MACHDESTLIB': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12',
+ 'MACHDESTLIB': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12',
  'MACOSX_DEPLOYMENT_TARGET': '11.1',
  'MAJOR_IN_MKDEV': 0,
  'MAJOR_IN_SYSMACROS': 0,
- 'MAKESETUP': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/makesetup',
- 'MANDIR': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/share/man',
- 'MKDIR_P': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/install-sh '
+ 'MAKESETUP': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/makesetup',
+ 'MANDIR': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/share/man',
+ 'MKDIR_P': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/install-sh '
             '-c -d',
  'MODBUILT_NAMES': 'array  _asyncio  _bisect  _contextvars  _csv  _heapq  '
                    '_json  _lsprof  _opcode  _pickle  _queue  _random  '
@@ -929,11 +930,11 @@ build_time_vars = {'ABIFLAGS': '',
  'MODULE_AUDIOOP_LDFLAGS': '',
  'MODULE_AUDIOOP_STATE': 'yes',
  'MODULE_BINASCII_CFLAGS': '-DUSE_ZLIB_CRC32 '
-                           '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
- 'MODULE_BINASCII_LDFLAGS': '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+                           '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
+ 'MODULE_BINASCII_LDFLAGS': '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                             '-lz',
  'MODULE_BINASCII_STATE': 'yes',
- 'MODULE_CMATH_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_math.h',
+ 'MODULE_CMATH_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_math.h',
  'MODULE_CMATH_LDFLAGS': '',
  'MODULE_CMATH_STATE': 'yes',
  'MODULE_DEPS_SHARED': 'Modules/config.c',
@@ -944,7 +945,7 @@ build_time_vars = {'ABIFLAGS': '',
  'MODULE_FCNTL_STATE': 'yes',
  'MODULE_GRP_STATE': 'yes',
  'MODULE_ITERTOOLS_LDFLAGS': '',
- 'MODULE_MATH_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_math.h',
+ 'MODULE_MATH_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_math.h',
  'MODULE_MATH_LDFLAGS': '',
  'MODULE_MATH_STATE': 'yes',
  'MODULE_MMAP_STATE': 'yes',
@@ -970,70 +971,70 @@ build_time_vars = {'ABIFLAGS': '',
  'MODULE_TERMIOS_STATE': 'yes',
  'MODULE_TIME_LDFLAGS': '',
  'MODULE_TIME_STATE': 'yes',
- 'MODULE_UNICODEDATA_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/unicodedata_db.h '
-                            '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/unicodename_db.h',
+ 'MODULE_UNICODEDATA_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/unicodedata_db.h '
+                            '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/unicodename_db.h',
  'MODULE_UNICODEDATA_STATE': 'yes',
  'MODULE_XXLIMITED_35_STATE': 'yes',
  'MODULE_XXLIMITED_STATE': 'yes',
  'MODULE_XXSUBTYPE_STATE': 'yes',
- 'MODULE_ZLIB_CFLAGS': '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
- 'MODULE_ZLIB_LDFLAGS': '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+ 'MODULE_ZLIB_CFLAGS': '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
+ 'MODULE_ZLIB_LDFLAGS': '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                         '-lz',
  'MODULE_ZLIB_STATE': 'yes',
  'MODULE__ABC_LDFLAGS': '',
  'MODULE__ASYNCIO_STATE': 'yes',
  'MODULE__BISECT_STATE': 'yes',
  'MODULE__BLAKE2_CFLAGS': '',
- 'MODULE__BLAKE2_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2-config.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2-impl.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2b-load-sse2.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2b-load-sse41.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2b-ref.c '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2b-round.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2b.c '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2s-load-sse2.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2s-load-sse41.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2s-load-xop.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2s-ref.c '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2s-round.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/impl/blake2s.c '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_blake2/blake2module.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/hashlib.h',
+ 'MODULE__BLAKE2_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2-config.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2-impl.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2b-load-sse2.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2b-load-sse41.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2b-ref.c '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2b-round.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2b.c '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2s-load-sse2.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2s-load-sse41.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2s-load-xop.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2s-ref.c '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2s-round.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/impl/blake2s.c '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_blake2/blake2module.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/hashlib.h',
  'MODULE__BLAKE2_LDFLAGS': '',
  'MODULE__BLAKE2_STATE': 'yes',
  'MODULE__BZ2_CFLAGS': '',
  'MODULE__BZ2_LDFLAGS': '-lbz2',
  'MODULE__BZ2_STATE': 'yes',
- 'MODULE__CODECS_CN_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/mappings_cn.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/cjkcodecs.h',
+ 'MODULE__CODECS_CN_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/mappings_cn.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/cjkcodecs.h',
  'MODULE__CODECS_CN_STATE': 'yes',
- 'MODULE__CODECS_HK_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/mappings_hk.h  '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/cjkcodecs.h',
+ 'MODULE__CODECS_HK_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/mappings_hk.h  '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/cjkcodecs.h',
  'MODULE__CODECS_HK_STATE': 'yes',
- 'MODULE__CODECS_ISO2022_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/mappings_jisx0213_pair.h '
-                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/alg_jisx0201.h '
-                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/emu_jisx0213_2000.h '
-                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h '
-                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/cjkcodecs.h',
+ 'MODULE__CODECS_ISO2022_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/mappings_jisx0213_pair.h '
+                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/alg_jisx0201.h '
+                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/emu_jisx0213_2000.h '
+                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h '
+                                '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/cjkcodecs.h',
  'MODULE__CODECS_ISO2022_STATE': 'yes',
- 'MODULE__CODECS_JP_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/mappings_jisx0213_pair.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/alg_jisx0201.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/emu_jisx0213_2000.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/mappings_jp.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/cjkcodecs.h',
+ 'MODULE__CODECS_JP_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/mappings_jisx0213_pair.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/alg_jisx0201.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/emu_jisx0213_2000.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/mappings_jp.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/cjkcodecs.h',
  'MODULE__CODECS_JP_STATE': 'yes',
- 'MODULE__CODECS_KR_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/mappings_kr.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/cjkcodecs.h',
+ 'MODULE__CODECS_KR_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/mappings_kr.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/cjkcodecs.h',
  'MODULE__CODECS_KR_STATE': 'yes',
  'MODULE__CODECS_LDFLAGS': '',
- 'MODULE__CODECS_TW_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/mappings_tw.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h '
-                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/cjkcodecs.h',
+ 'MODULE__CODECS_TW_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/mappings_tw.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h '
+                           '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/cjkcodecs.h',
  'MODULE__CODECS_TW_STATE': 'yes',
  'MODULE__COLLECTIONS_LDFLAGS': '',
  'MODULE__CONTEXTVARS_STATE': 'yes',
@@ -1042,18 +1043,18 @@ build_time_vars = {'ABIFLAGS': '',
  'MODULE__CRYPT_STATE': 'yes',
  'MODULE__CSV_STATE': 'yes',
  'MODULE__CTYPES_CFLAGS': '-fno-strict-overflow '
-                          '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                          '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                           '-DUSING_APPLE_OS_LIBFFI=0 '
                           '-DUSING_MALLOC_CLOSURE_DOT_C=1',
- 'MODULE__CTYPES_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ctypes/ctypes.h',
+ 'MODULE__CTYPES_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ctypes/ctypes.h',
  'MODULE__CTYPES_LDFLAGS': '-lffi -ldl',
  'MODULE__CTYPES_MALLOC_CLOSURE': '_ctypes/malloc_closure.c',
  'MODULE__CTYPES_STATE': 'yes',
  'MODULE__CTYPES_TEST_LDFLAGS': '',
  'MODULE__CTYPES_TEST_STATE': 'yes',
- 'MODULE__CURSES_CFLAGS': '',
+ 'MODULE__CURSES_CFLAGS': '-D_XOPEN_SOURCE_EXTENDED=1',
  'MODULE__CURSES_LDFLAGS': '-lncurses',
- 'MODULE__CURSES_PANEL_CFLAGS': '',
+ 'MODULE__CURSES_PANEL_CFLAGS': '-D_XOPEN_SOURCE_EXTENDED=1',
  'MODULE__CURSES_PANEL_LDFLAGS': '-lpanel -lncurses',
  'MODULE__CURSES_PANEL_STATE': 'yes',
  'MODULE__CURSES_STATE': 'yes',
@@ -1062,49 +1063,49 @@ build_time_vars = {'ABIFLAGS': '',
  'MODULE__DBM_CFLAGS': '-DUSE_NDBM',
  'MODULE__DBM_LDFLAGS': '',
  'MODULE__DBM_STATE': 'yes',
- 'MODULE__DECIMAL_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_decimal/libmpdec '
+ 'MODULE__DECIMAL_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_decimal/libmpdec '
                            '-DUNIVERSAL=1',
- 'MODULE__DECIMAL_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_decimal/docstrings.h '
+ 'MODULE__DECIMAL_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_decimal/docstrings.h '
                          '\\ Modules/_decimal/libmpdec/libmpdec.a',
  'MODULE__DECIMAL_LDFLAGS': '-lm Modules/_decimal/libmpdec/libmpdec.a',
  'MODULE__DECIMAL_STATE': 'yes',
  'MODULE__ELEMENTTREE_CFLAGS': '',
- 'MODULE__ELEMENTTREE_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/pyexpat.c',
+ 'MODULE__ELEMENTTREE_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/pyexpat.c',
  'MODULE__ELEMENTTREE_STATE': 'yes',
  'MODULE__FUNCTOOLS_LDFLAGS': '',
  'MODULE__GDBM_STATE': 'missing',
- 'MODULE__HASHLIB_CFLAGS': '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
- 'MODULE__HASHLIB_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/hashlib.h',
- 'MODULE__HASHLIB_LDFLAGS': '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib   '
+ 'MODULE__HASHLIB_CFLAGS': '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
+ 'MODULE__HASHLIB_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/hashlib.h',
+ 'MODULE__HASHLIB_LDFLAGS': '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib   '
                             '-lcrypto',
  'MODULE__HASHLIB_STATE': 'yes',
  'MODULE__HEAPQ_STATE': 'yes',
- 'MODULE__IO_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_io',
- 'MODULE__IO_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_io/_iomodule.h',
+ 'MODULE__IO_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_io',
+ 'MODULE__IO_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_io/_iomodule.h',
  'MODULE__IO_LDFLAGS': '',
  'MODULE__IO_STATE': 'yes',
  'MODULE__JSON_STATE': 'yes',
  'MODULE__LOCALE_LDFLAGS': '',
  'MODULE__LSPROF_STATE': 'yes',
- 'MODULE__LZMA_CFLAGS': '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
- 'MODULE__LZMA_LDFLAGS': '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+ 'MODULE__LZMA_CFLAGS': '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
+ 'MODULE__LZMA_LDFLAGS': '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                          '-llzma',
  'MODULE__LZMA_STATE': 'yes',
- 'MODULE__MD5_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_hacl/include '
-                       '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_hacl/internal '
+ 'MODULE__MD5_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_hacl/include '
+                       '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_hacl/internal '
                        '-D_BSD_SOURCE -D_DEFAULT_SOURCE',
- 'MODULE__MD5_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/hashlib.h '
+ 'MODULE__MD5_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/hashlib.h '
                      '\\ Modules/_hacl/Hacl_Hash_MD5.h '
                      'Modules/_hacl/Hacl_Hash_MD5.c',
  'MODULE__MD5_STATE': 'yes',
- 'MODULE__MULTIBYTECODEC_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/cjkcodecs/multibytecodec.h',
+ 'MODULE__MULTIBYTECODEC_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/cjkcodecs/multibytecodec.h',
  'MODULE__MULTIBYTECODEC_STATE': 'yes',
- 'MODULE__MULTIPROCESSING_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_multiprocessing',
+ 'MODULE__MULTIPROCESSING_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_multiprocessing',
  'MODULE__MULTIPROCESSING_STATE': 'yes',
  'MODULE__OPCODE_STATE': 'yes',
  'MODULE__OPERATOR_LDFLAGS': '',
  'MODULE__PICKLE_STATE': 'yes',
- 'MODULE__POSIXSHMEM_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_multiprocessing',
+ 'MODULE__POSIXSHMEM_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_multiprocessing',
  'MODULE__POSIXSHMEM_LDFLAGS': '',
  'MODULE__POSIXSHMEM_STATE': 'yes',
  'MODULE__POSIXSUBPROCESS_STATE': 'yes',
@@ -1113,52 +1114,52 @@ build_time_vars = {'ABIFLAGS': '',
  'MODULE__SCPROXY_LDFLAGS': '-framework SystemConfiguration -framework '
                             'CoreFoundation',
  'MODULE__SCPROXY_STATE': 'yes',
- 'MODULE__SHA1_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_hacl/include '
-                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_hacl/internal '
+ 'MODULE__SHA1_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_hacl/include '
+                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_hacl/internal '
                         '-D_BSD_SOURCE -D_DEFAULT_SOURCE',
- 'MODULE__SHA1_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/hashlib.h '
+ 'MODULE__SHA1_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/hashlib.h '
                       '\\ Modules/_hacl/Hacl_Hash_SHA1.h '
                       'Modules/_hacl/Hacl_Hash_SHA1.c',
  'MODULE__SHA1_STATE': 'yes',
- 'MODULE__SHA2_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_hacl/include '
-                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_hacl/internal '
+ 'MODULE__SHA2_CFLAGS': '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_hacl/include '
+                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_hacl/internal '
                         '-D_BSD_SOURCE -D_DEFAULT_SOURCE',
- 'MODULE__SHA2_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/hashlib.h '
+ 'MODULE__SHA2_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/hashlib.h '
                       '\\ Modules/_hacl/libHacl_Hash_SHA2.a',
  'MODULE__SHA2_STATE': 'yes',
- 'MODULE__SHA3_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/hashlib.h '
+ 'MODULE__SHA3_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/hashlib.h '
                       '\\ Modules/_hacl/Hacl_Hash_SHA3.h '
                       'Modules/_hacl/Hacl_Hash_SHA3.c',
  'MODULE__SHA3_STATE': 'yes',
  'MODULE__SIGNAL_LDFLAGS': '',
- 'MODULE__SOCKET_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/socketmodule.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/addrinfo.h '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/getaddrinfo.c '
-                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/getnameinfo.c',
+ 'MODULE__SOCKET_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/socketmodule.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/addrinfo.h '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/getaddrinfo.c '
+                        '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/getnameinfo.c',
  'MODULE__SOCKET_STATE': 'yes',
- 'MODULE__SQLITE3_CFLAGS': '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                           '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite',
- 'MODULE__SQLITE3_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite/connection.h '
-                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite/cursor.h '
-                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite/microprotocols.h '
-                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite/module.h '
-                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite/prepare_protocol.h '
-                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite/row.h '
-                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_sqlite/util.h',
- 'MODULE__SQLITE3_LDFLAGS': '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+ 'MODULE__SQLITE3_CFLAGS': '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                           '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite',
+ 'MODULE__SQLITE3_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite/connection.h '
+                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite/cursor.h '
+                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite/microprotocols.h '
+                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite/module.h '
+                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite/prepare_protocol.h '
+                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite/row.h '
+                         '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_sqlite/util.h',
+ 'MODULE__SQLITE3_LDFLAGS': '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                             '-lsqlite3',
  'MODULE__SQLITE3_STATE': 'yes',
  'MODULE__SRE_LDFLAGS': '',
- 'MODULE__SSL_CFLAGS': '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
- 'MODULE__SSL_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ssl.h '
-                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ssl/cert.c '
-                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ssl/debughelpers.c '
-                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ssl/misc.c '
-                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ssl_data.h '
-                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ssl_data_111.h '
-                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_ssl_data_300.h '
-                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/socketmodule.h',
- 'MODULE__SSL_LDFLAGS': '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib  '
+ 'MODULE__SSL_CFLAGS': '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
+ 'MODULE__SSL_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ssl.h '
+                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ssl/cert.c '
+                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ssl/debughelpers.c '
+                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ssl/misc.c '
+                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ssl_data.h '
+                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ssl_data_111.h '
+                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_ssl_data_300.h '
+                     '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/socketmodule.h',
+ 'MODULE__SSL_LDFLAGS': '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib  '
                         '-lssl -lcrypto',
  'MODULE__SSL_STATE': 'yes',
  'MODULE__STATISTICS_LDFLAGS': '',
@@ -1167,18 +1168,18 @@ build_time_vars = {'ABIFLAGS': '',
  'MODULE__STRUCT_STATE': 'yes',
  'MODULE__SYMTABLE_LDFLAGS': '',
  'MODULE__TESTBUFFER_STATE': 'yes',
- 'MODULE__TESTCAPI_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_testcapi/testcapi_long.h '
-                          '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_testcapi/parts.h '
-                          '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Modules/_testcapi/util.h',
+ 'MODULE__TESTCAPI_DEPS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_testcapi/testcapi_long.h '
+                          '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_testcapi/parts.h '
+                          '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Modules/_testcapi/util.h',
  'MODULE__TESTCAPI_STATE': 'yes',
  'MODULE__TESTCLINIC_STATE': 'yes',
  'MODULE__TESTIMPORTMULTIPLE_STATE': 'yes',
  'MODULE__TESTINTERNALCAPI_STATE': 'yes',
  'MODULE__TESTMULTIPHASE_STATE': 'yes',
  'MODULE__THREAD_LDFLAGS': '',
- 'MODULE__TKINTER_CFLAGS': '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+ 'MODULE__TKINTER_CFLAGS': '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                            '-Wno-strict-prototypes -DWITH_APPINIT=1',
- 'MODULE__TKINTER_LDFLAGS': '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+ 'MODULE__TKINTER_LDFLAGS': '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                             '-ltk8.6 -ltkstub8.6 -ltcl8.6 -ltclstub8.6',
  'MODULE__TKINTER_STATE': 'yes',
  'MODULE__TRACEMALLOC_LDFLAGS': '',
@@ -1237,145 +1238,145 @@ build_time_vars = {'ABIFLAGS': '',
                              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                              '-ftree-vectorize -fPIC -fPIE '
                              '-fstack-protector-strong -O2 -pipe -isystem '
-                             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                             '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                             '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                             '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                             '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                              '-arch arm64  -isysroot '
                              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                              '-ftree-vectorize -fPIC -fPIE '
                              '-fstack-protector-strong -O2 -pipe -isystem '
-                             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                             '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                             '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                             '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                             '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                              '-arch arm64  =full -std=c11 '
                              '-Werror=implicit-function-declaration '
                              '-fvisibility=hidden '
                              '-fprofile-instr-use=code.profclangd '
-                             '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include/internal '
+                             '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include/internal '
                              '-IObjects -IInclude -IPython -I. '
-                             '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+                             '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
                              '-isysroot '
                              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                              '-D_FORTIFY_SOURCE=2 -isystem '
-                             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                              '-mmacosx-version-min=11.1 '
-                             '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                             '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                              '-isysroot '
                              '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                              '-D_FORTIFY_SOURCE=2 -isystem '
-                             '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                             '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                              '-mmacosx-version-min=11.1 '
-                             '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                             '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                              '-DPy_BUILD_CORE_BUILTIN',
  'PY_CFLAGS': '-fno-strict-overflow -DNDEBUG -O2 -Wall -isysroot '
               '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
               '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe '
               '-isystem '
-              '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-              '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-              '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+              '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+              '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+              '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
               '-arch arm64  -isysroot '
               '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
               '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe '
               '-isystem '
-              '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-              '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-              '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+              '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+              '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+              '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
               '-arch arm64 ',
  'PY_CFLAGS_NODIST': '=full -std=c11 '
                      '-Werror=implicit-function-declaration '
                      '-fvisibility=hidden -fprofile-instr-use=code.profclangd '
-                     '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include/internal',
+                     '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include/internal',
  'PY_COERCE_C_LOCALE': 1,
  'PY_CORE_CFLAGS': '-fno-strict-overflow -DNDEBUG -O2 -Wall -isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                    '-pipe -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                   '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                   '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                    '-arch arm64  -isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 '
                    '-pipe -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                   '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                   '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                   '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                    '-arch arm64  =full -std=c11 '
                    '-Werror=implicit-function-declaration -fvisibility=hidden '
                    '-fprofile-instr-use=code.profclangd '
-                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include/internal '
+                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include/internal '
                    '-IObjects -IInclude -IPython -I. '
-                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+                   '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
                    '-isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-D_FORTIFY_SOURCE=2 -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                    '-mmacosx-version-min=11.1 '
-                   '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                   '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                    '-isysroot '
                    '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                    '-D_FORTIFY_SOURCE=2 -isystem '
-                   '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                   '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                    '-mmacosx-version-min=11.1 '
-                   '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                   '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                    '-DPy_BUILD_CORE',
  'PY_CORE_LDFLAGS': '-isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-Wl,-pie -Wl,-headerpad_max_install_names '
                     '-Wl,-dead_strip_dylibs '
-                    '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-                    '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+                    '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+                    '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                     '-isysroot '
                     '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                     '-Wl,-pie -Wl,-headerpad_max_install_names '
                     '-Wl,-dead_strip_dylibs '
-                    '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-                    '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+                    '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+                    '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                     '=full -Wl,-export_dynamic '
                     '-Wl,-object_path_lto,"$@".lto -g',
  'PY_CPPFLAGS': '-IObjects -IInclude -IPython -I. '
-                '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+                '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
                 '-isysroot '
                 '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                 '-D_FORTIFY_SOURCE=2 -isystem '
-                '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                 '-mmacosx-version-min=11.1 '
-                '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                 '-isysroot '
                 '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                 '-D_FORTIFY_SOURCE=2 -isystem '
-                '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                 '-mmacosx-version-min=11.1 '
-                '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
+                '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
  'PY_ENABLE_SHARED': 0,
  'PY_HAVE_PERF_TRAMPOLINE': 0,
  'PY_LDFLAGS': '-isysroot '
                '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                '-Wl,-pie -Wl,-headerpad_max_install_names '
                '-Wl,-dead_strip_dylibs '
-               '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-               '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+               '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+               '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                '-isysroot '
                '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                '-Wl,-pie -Wl,-headerpad_max_install_names '
                '-Wl,-dead_strip_dylibs '
-               '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-               '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib',
+               '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+               '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib',
  'PY_LDFLAGS_NODIST': '=full -Wl,-export_dynamic '
                       '-Wl,-object_path_lto,"$@".lto -g',
  'PY_LDFLAGS_NOLTO': '-isysroot '
                      '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                      '-Wl,-pie -Wl,-headerpad_max_install_names '
                      '-Wl,-dead_strip_dylibs '
-                     '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-                     '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+                     '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+                     '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                      '-isysroot '
                      '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                      '-Wl,-pie -Wl,-headerpad_max_install_names '
                      '-Wl,-dead_strip_dylibs '
-                     '-Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
-                     '-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib '
+                     '-Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
+                     '-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib '
                      '=thin',
  'PY_SQLITE_ENABLE_LOAD_EXTENSION': 1,
  'PY_SQLITE_HAVE_SERIALIZE': 1,
@@ -1385,46 +1386,47 @@ build_time_vars = {'ABIFLAGS': '',
                         '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                         '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong '
                         '-O2 -pipe -isystem '
-                        '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                        '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                        '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                        '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                        '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                        '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                         '-arch arm64  -isysroot '
                         '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                         '-ftree-vectorize -fPIC -fPIE -fstack-protector-strong '
                         '-O2 -pipe -isystem '
-                        '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
-                        '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 '
-                        '-fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix '
+                        '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
+                        '-fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 '
+                        '-fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix '
                         '-arch arm64  =full -std=c11 '
                         '-Werror=implicit-function-declaration '
                         '-fvisibility=hidden '
                         '-fprofile-instr-use=code.profclangd '
-                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include/internal '
+                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include/internal '
                         '-IObjects -IInclude -IPython -I. '
-                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Include '
+                        '-I/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Include '
                         '-isysroot '
                         '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                         '-D_FORTIFY_SOURCE=2 -isystem '
-                        '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                        '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                         '-mmacosx-version-min=11.1 '
-                        '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                        '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                         '-isysroot '
                         '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk '
                         '-D_FORTIFY_SOURCE=2 -isystem '
-                        '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include '
+                        '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include '
                         '-mmacosx-version-min=11.1 '
-                        '-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include',
+                        '-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include',
  'PY_SUPPORT_TIER': 0,
  'Py_DEBUG': 0,
  'Py_ENABLE_SHARED': 0,
  'Py_HASH_ALGORITHM': 0,
  'Py_STATS': 0,
+ 'Py_SUNOS_VERSION': 0,
  'Py_TRACE_REFS': 0,
  'QUICKTESTOPTS': '-x test_subprocess test_io test_lib2to3 \\',
  'RESSRCDIR': 'Mac/Resources/framework',
  'RETSIGTYPE': 'void',
  'RUNSHARED': '',
- 'SCRIPTDIR': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib',
+ 'SCRIPTDIR': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib',
  'SCRIPT_2TO3': 'build/scripts-3.12/2to3-3.12',
  'SCRIPT_IDLE': 'build/scripts-3.12/idle3.12',
  'SCRIPT_PYDOC': 'build/scripts-3.12/pydoc3.12',
@@ -1536,7 +1538,7 @@ build_time_vars = {'ABIFLAGS': '',
             'Modules/_testcapi   Modules/_xxtestfuzz   Modules/cjkcodecs   '
             'Modules/expat   Objects   Parser   Programs   Python   '
             'Python/frozen_modules   Python/deepfreeze',
- 'SRC_GDB_HOOKS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Tools/gdb/libpython.py',
+ 'SRC_GDB_HOOKS': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Tools/gdb/libpython.py',
  'STATIC_LIBPYTHON': 1,
  'STDC_HEADERS': 1,
  'STRICT_SYSV_CURSES': "/* Don't use ncurses extensions */",
@@ -1550,22 +1552,22 @@ build_time_vars = {'ABIFLAGS': '',
  'TESTPYTHON': './python.exe -E',
  'TESTPYTHONOPTS': '',
  'TESTRUNNER': './python.exe -E '
-               '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Tools/scripts/run_tests.py',
+               '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Tools/scripts/run_tests.py',
  'TESTSUBDIRS': 'idlelib/idle_test \\',
  'TESTTIMEOUT': 1200,
  'TEST_MODULES': 'yes',
  'THREAD_STACK_SIZE': '0x1000000',
  'TIMEMODULE_LIB': 0,
  'TM_IN_SYS_TIME': 0,
- 'TZPATH': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/share/zoneinfo',
+ 'TZPATH': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/share/zoneinfo',
  'UNICODE_DEPS': '\\',
  'UNIVERSALSDK': '',
- 'UPDATE_FILE': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/Tools/build/update_file.py',
+ 'UPDATE_FILE': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/Tools/build/update_file.py',
  'USE_COMPUTED_GOTOS': 1,
  'VERSION': '3.12',
- 'VPATH': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work',
- 'WASM_ASSETS_DIR': './Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda',
- 'WASM_STDLIB': './Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/python3.12/os.py',
+ 'VPATH': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work',
+ 'WASM_ASSETS_DIR': './Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda',
+ 'WASM_STDLIB': './Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/python3.12/os.py',
  'WHEEL_PKG_DIR': '',
  'WINDOW_HAS_FLAGS': 1,
  'WITH_DECIMAL_CONTEXTVAR': 1,
@@ -1580,9 +1582,9 @@ build_time_vars = {'ABIFLAGS': '',
  'WITH_VALGRIND': 0,
  'X87_DOUBLE_ROUNDING': 0,
  'XMLLIBSUBDIRS': 'xml xml/dom xml/etree xml/parsers xml/sax',
- 'abs_builddir': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/build-static',
- 'abs_srcdir': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work',
- 'datarootdir': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/share',
- 'exec_prefix': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda',
- 'prefix': '/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda',
- 'srcdir': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work'}
+ 'abs_builddir': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/build-static',
+ 'abs_srcdir': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work',
+ 'datarootdir': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/share',
+ 'exec_prefix': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda',
+ 'prefix': '/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda',
+ 'srcdir': '/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work'}

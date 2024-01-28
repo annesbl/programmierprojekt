@@ -29,16 +29,16 @@ MODLIBS=           $(LOCALMODLIBS) $(BASEMODLIBS)
 
 # === Variables set by configure
 VERSION=	3.12
-srcdir=		/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work
-VPATH=		/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work
-abs_srcdir=	/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work
-abs_builddir=	/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/build-static
+srcdir=		/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work
+VPATH=		/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work
+abs_srcdir=	/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work
+abs_builddir=	/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/build-static
 
 
 CC=		arm64-apple-darwin20.0.0-clang
 CXX=		arm64-apple-darwin20.0.0-clang++
 LINKCC=		$(PURIFY) $(CC)
-AR=		/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/_build_env/bin/arm64-apple-darwin20.0.0-llvm-ar
+AR=		/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/_build_env/bin/arm64-apple-darwin20.0.0-llvm-ar
 SOABI=		cpython-312-darwin
 LDVERSION=	$(VERSION)$(ABIFLAGS)
 LIBPYTHON=	
@@ -47,7 +47,7 @@ GITTAG=
 GITBRANCH=	
 PGO_PROF_GEN_FLAG=-fprofile-instr-generate
 PGO_PROF_USE_FLAG=-fprofile-instr-use=code.profclangd
-LLVM_PROF_MERGER=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/_build_env/bin/llvm-profdata merge -output=code.profclangd *.profclangr
+LLVM_PROF_MERGER=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/_build_env/bin/llvm-profdata merge -output=code.profclangd *.profclangr
 LLVM_PROF_FILE=LLVM_PROFILE_FILE="code-%p.profclangr"
 LLVM_PROF_ERR=no
 DTRACE=         
@@ -74,7 +74,7 @@ INSTALL_DATA=	${INSTALL} -m 644
 # rather than figuring out exactly which, we always give them executable mode.
 INSTALL_SHARED= ${INSTALL} -m 755
 
-MKDIR_P=	/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work/install-sh -c -d
+MKDIR_P=	/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work/install-sh -c -d
 
 MAKESETUP=      $(srcdir)/Modules/makesetup
 
@@ -82,7 +82,7 @@ MAKESETUP=      $(srcdir)/Modules/makesetup
 OPT=		-DNDEBUG -O2 -Wall
 BASECFLAGS=	 -fno-strict-overflow
 BASECPPFLAGS=	-IObjects -IInclude -IPython
-CONFIGURE_CFLAGS=	-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include -fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 -fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix -arch arm64 
+CONFIGURE_CFLAGS=	-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include -fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 -fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix -arch arm64 
 # CFLAGS_NODIST is used for building the interpreter and stdlib C extensions.
 # Use it when a compiler flag should _not_ be part of the distutils CFLAGS
 # once Python is installed (Issue #21121).
@@ -94,8 +94,8 @@ CONFIGURE_LDFLAGS_NODIST= =full -Wl,-export_dynamic -Wl,-object_path_lto,"$@".lt
 # LDFLAGS_NOLTO is an extra flag to disable lto. It is used to speed up building
 # of _bootstrap_python and _freeze_module tools, which don't need LTO.
 CONFIGURE_LDFLAGS_NOLTO==thin
-CONFIGURE_CPPFLAGS=	-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -D_FORTIFY_SOURCE=2 -isystem /Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include -mmacosx-version-min=11.1 -I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
-CONFIGURE_LDFLAGS=	-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib
+CONFIGURE_CPPFLAGS=	-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -D_FORTIFY_SOURCE=2 -isystem /Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include -mmacosx-version-min=11.1 -I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include
+CONFIGURE_LDFLAGS=	-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib
 # Avoid assigning CFLAGS, LDFLAGS, etc. so users can use them on the
 # command line to append to these values without stomping the pre-set
 # values.
@@ -134,7 +134,7 @@ MULTIARCH=	darwin
 MULTIARCH_CPPFLAGS = -DMULTIARCH=\"darwin\"
 
 # Install prefix for architecture-independent files
-prefix=		/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda
+prefix=		/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda
 
 # Install prefix for architecture-dependent files
 exec_prefix=	${prefix}
@@ -298,14 +298,14 @@ MODULE__CRYPT_STATE=yes
 MODULE__CRYPT_CFLAGS=
 MODULE__CRYPT_LDFLAGS=
 MODULE__CTYPES_STATE=yes
-MODULE__CTYPES_CFLAGS=-fno-strict-overflow -I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include -DUSING_APPLE_OS_LIBFFI=0 -DUSING_MALLOC_CLOSURE_DOT_C=1
+MODULE__CTYPES_CFLAGS=-fno-strict-overflow -I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include -DUSING_APPLE_OS_LIBFFI=0 -DUSING_MALLOC_CLOSURE_DOT_C=1
 MODULE__CTYPES_LDFLAGS=-lffi -ldl
 MODULE__CURSES_STATE=yes
-MODULE__CURSES_CFLAGS=
+MODULE__CURSES_CFLAGS= -D_XOPEN_SOURCE_EXTENDED=1
 MODULE__CURSES_LDFLAGS=-lncurses
 
 MODULE__CURSES_PANEL_STATE=yes
-MODULE__CURSES_PANEL_CFLAGS= 
+MODULE__CURSES_PANEL_CFLAGS=  -D_XOPEN_SOURCE_EXTENDED=1
 MODULE__CURSES_PANEL_LDFLAGS=-lpanel -lncurses
 
 MODULE__DECIMAL_STATE=yes
@@ -322,32 +322,32 @@ MODULE_READLINE_STATE=yes
 MODULE_READLINE_CFLAGS=
 MODULE_READLINE_LDFLAGS=-lreadline
 MODULE__SQLITE3_STATE=yes
-MODULE__SQLITE3_CFLAGS=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include -I$(srcdir)/Modules/_sqlite
-MODULE__SQLITE3_LDFLAGS=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -lsqlite3
+MODULE__SQLITE3_CFLAGS=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include -I$(srcdir)/Modules/_sqlite
+MODULE__SQLITE3_LDFLAGS=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -lsqlite3
 MODULE__TKINTER_STATE=yes
-MODULE__TKINTER_CFLAGS=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include -Wno-strict-prototypes -DWITH_APPINIT=1
-MODULE__TKINTER_LDFLAGS=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -ltk8.6 -ltkstub8.6 -ltcl8.6 -ltclstub8.6
+MODULE__TKINTER_CFLAGS=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include -Wno-strict-prototypes -DWITH_APPINIT=1
+MODULE__TKINTER_LDFLAGS=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -ltk8.6 -ltkstub8.6 -ltcl8.6 -ltclstub8.6
 MODULE__UUID_STATE=yes
 MODULE__UUID_CFLAGS=
 MODULE__UUID_LDFLAGS=
 MODULE_ZLIB_STATE=yes
-MODULE_ZLIB_CFLAGS=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
-MODULE_ZLIB_LDFLAGS=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -lz
+MODULE_ZLIB_CFLAGS=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include
+MODULE_ZLIB_LDFLAGS=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -lz
 MODULE_BINASCII_STATE=yes
-MODULE_BINASCII_CFLAGS=-DUSE_ZLIB_CRC32 -I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
-MODULE_BINASCII_LDFLAGS=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -lz
+MODULE_BINASCII_CFLAGS=-DUSE_ZLIB_CRC32 -I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include
+MODULE_BINASCII_LDFLAGS=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -lz
 MODULE__BZ2_STATE=yes
 MODULE__BZ2_CFLAGS=
 MODULE__BZ2_LDFLAGS=-lbz2
 MODULE__LZMA_STATE=yes
-MODULE__LZMA_CFLAGS=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
-MODULE__LZMA_LDFLAGS=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -llzma
+MODULE__LZMA_CFLAGS=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include
+MODULE__LZMA_LDFLAGS=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -llzma
 MODULE__SSL_STATE=yes
-MODULE__SSL_CFLAGS=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
-MODULE__SSL_LDFLAGS=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib  -lssl -lcrypto
+MODULE__SSL_CFLAGS=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include
+MODULE__SSL_LDFLAGS=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib  -lssl -lcrypto
 MODULE__HASHLIB_STATE=yes
-MODULE__HASHLIB_CFLAGS=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include
-MODULE__HASHLIB_LDFLAGS=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib   -lcrypto
+MODULE__HASHLIB_CFLAGS=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include
+MODULE__HASHLIB_LDFLAGS=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib   -lcrypto
 MODULE__TESTCAPI_STATE=yes
 MODULE__TESTCLINIC_STATE=yes
 MODULE__TESTINTERNALCAPI_STATE=yes
@@ -363,7 +363,7 @@ MODULE_XXLIMITED_35_STATE=yes
 
 
 # Default zoneinfo.TZPATH. Added here to expose it in sysconfig.get_config_var
-TZPATH=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/share/zoneinfo
+TZPATH=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/share/zoneinfo
 
 # Modes for directories, executables and data files created by the
 # install process.  Default to user-only-writable for all file types.
@@ -372,7 +372,7 @@ EXEMODE=	755
 FILEMODE=	644
 
 # configure script arguments
-CONFIG_ARGS=	 '--prefix=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda' '--build=arm64-apple-darwin20.0.0' '--host=arm64-apple-darwin20.0.0' '--enable-ipv6' '--with-ensurepip=no' '--with-tzpath=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/share/zoneinfo' '--with-computed-gotos' '--with-system-expat' '--enable-loadable-sqlite-extensions' '--with-tcltk-includes=-I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include' '--with-tcltk-libs=-L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -ltcl8.6 -ltk8.6' '--with-platlibdir=lib' '--with-lto=full' '--enable-optimizations' '-oldincludedir=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/_build_env/arm64-apple-darwin20.0.0/sysroot/usr/include' '--disable-shared' 'PROFILE_TASK=-m test --pgo' 'build_alias=arm64-apple-darwin20.0.0' 'host_alias=arm64-apple-darwin20.0.0' 'PKG_CONFIG_PATH=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib/pkgconfig' 'MACHDEP=darwin' 'CC=arm64-apple-darwin20.0.0-clang' 'CFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include -fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_08j2kiy9vk/croot/python-split_1696267008175/work=/usr/local/src/conda/python-3.12.0 -fdebug-prefix-map=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda=/usr/local/src/conda-prefix -arch arm64 ' 'LDFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib -L/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/lib' 'CPPFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -D_FORTIFY_SOURCE=2 -isystem /Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include -mmacosx-version-min=11.1 -I/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda/include'
+CONFIG_ARGS=	 '--prefix=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda' '--build=arm64-apple-darwin20.0.0' '--host=arm64-apple-darwin20.0.0' '--enable-ipv6' '--with-ensurepip=no' '--with-tzpath=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/share/zoneinfo' '--with-computed-gotos' '--with-system-expat' '--enable-loadable-sqlite-extensions' '--with-tcltk-includes=-I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include' '--with-tcltk-libs=-L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -ltcl8.6 -ltk8.6' '--with-platlibdir=lib' '--with-lto=full' '--enable-optimizations' '-oldincludedir=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/_build_env/arm64-apple-darwin20.0.0/sysroot/usr/include' '--disable-shared' 'PROFILE_TASK=-m test --pgo' 'build_alias=arm64-apple-darwin20.0.0' 'host_alias=arm64-apple-darwin20.0.0' 'PKG_CONFIG_PATH=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib/pkgconfig' 'MACHDEP=darwin' 'CC=arm64-apple-darwin20.0.0-clang' 'CFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include -fdebug-prefix-map=/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_3cssa5ltls/croot/python-split_1705678820999/work=/usr/local/src/conda/python-3.12.1 -fdebug-prefix-map=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda=/usr/local/src/conda-prefix -arch arm64 ' 'LDFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib -L/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/lib' 'CPPFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -D_FORTIFY_SOURCE=2 -isystem /Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include -mmacosx-version-min=11.1 -I/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda/include'
 
 
 # Subdirectories with code
@@ -776,7 +776,8 @@ build_wasm: check-clean-src $(BUILDPYTHON) platform sharedmods \
 .PHONY: check-clean-src
 check-clean-src:
 	@if test -n "$(VPATH)" -a \( \
-	    -f "$(srcdir)/Programs/python.o" \
+	    -f "$(srcdir)/$(BUILDPYTHON)" \
+	    -o -f "$(srcdir)/Programs/python.o" \
 	    -o -f "$(srcdir)\Python/frozen_modules/importlib._bootstrap.h" \
 	\); then \
 		echo "Error: The source directory ($(srcdir)) is not clean" ; \
@@ -1549,8 +1550,8 @@ regen-pegen:
 	PYTHONPATH=$(srcdir)/Tools/peg_generator $(PYTHON_FOR_REGEN) -m pegen -q c \
 		$(srcdir)/Grammar/python.gram \
 		$(srcdir)/Grammar/Tokens \
-		-o $(srcdir)/Parser/parser.new.c
-	$(UPDATE_FILE) $(srcdir)/Parser/parser.c $(srcdir)/Parser/parser.new.c
+		-o $(srcdir)/Parser/parser.c.new
+	$(UPDATE_FILE) $(srcdir)/Parser/parser.c $(srcdir)/Parser/parser.c.new
 
 .PHONY: regen-ast
 regen-ast:
@@ -2269,9 +2270,11 @@ LIBSUBDIRS=	asyncio \
 TESTSUBDIRS=	idlelib/idle_test \
 		test \
 		test/audiodata \
-		test/capath \
+		test/certdata \
+		test/certdata/capath \
 		test/cjkencodings \
 		test/crashers \
+		test/configdata \
 		test/data \
 		test/decimaltestdata \
 		test/dtracedata \
@@ -2279,6 +2282,9 @@ TESTSUBDIRS=	idlelib/idle_test \
 		test/imghdrdata \
 		test/leakers \
 		test/libregrtest \
+		test/regrtestdata \
+		test/regrtestdata/import_from_tests \
+		test/regrtestdata/import_from_tests/test_regrtest_b \
 		test/sndhdrdata \
 		test/subprocessdata \
 		test/support \
@@ -2287,8 +2293,12 @@ TESTSUBDIRS=	idlelib/idle_test \
 		test/test_capi \
 		test/test_cppext \
 		test/test_ctypes \
+		test/test_dataclasses \
 		test/test_email \
 		test/test_email/data \
+		test/test_future_stmt \
+		test/test_gdb \
+		test/test_inspect \
 		test/test_import \
 		test/test_import/data \
 		test/test_import/data/circular_imports \
@@ -2378,6 +2388,7 @@ TESTSUBDIRS=	idlelib/idle_test \
 		test/test_zipfile/_path \
 		test/test_zoneinfo \
 		test/test_zoneinfo/data \
+		test/tokenizedata \
 		test/tracedmodules \
 		test/typinganndata \
 		test/xmltestdata \
@@ -2739,15 +2750,9 @@ recheck:
 autoconf:
 	(cd $(srcdir); autoreconf -ivf -Werror)
 
-# See https://github.com/tiran/cpython_autoconf container
 .PHONY: regen-configure
 regen-configure:
-	@if command -v podman >/dev/null; then RUNTIME="podman"; else RUNTIME="docker"; fi; \
-	if ! command -v $$RUNTIME; then echo "$@ needs either Podman or Docker container runtime." >&2; exit 1; fi; \
-	if command -v selinuxenabled >/dev/null && selinuxenabled; then OPT=":Z"; fi; \
-	CMD="$$RUNTIME run --rm --pull=always -v $(abs_srcdir):/src$$OPT quay.io/tiran/cpython_autoconf:271"; \
-	echo $$CMD; \
-	$$CMD || exit $?
+	$(srcdir)/Tools/build/regen-configure.sh
 
 # Create a tags file for vi
 tags::
@@ -3130,8 +3135,13 @@ Modules/_testcapi/vectorcall.o: $(srcdir)/Modules/_testcapi/vectorcall.c $(MODUL
 Modules/_testcapi/vectorcall_limited.o: $(srcdir)/Modules/_testcapi/vectorcall_limited.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/vectorcall_limited.c -o Modules/_testcapi/vectorcall_limited.o
 Modules/_testcapi/heaptype.o: $(srcdir)/Modules/_testcapi/heaptype.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/heaptype.c -o Modules/_testcapi/heaptype.o
 Modules/_testcapi/abstract.o: $(srcdir)/Modules/_testcapi/abstract.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/abstract.c -o Modules/_testcapi/abstract.o
+Modules/_testcapi/bytearray.o: $(srcdir)/Modules/_testcapi/bytearray.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/bytearray.c -o Modules/_testcapi/bytearray.o
+Modules/_testcapi/bytes.o: $(srcdir)/Modules/_testcapi/bytes.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/bytes.c -o Modules/_testcapi/bytes.o
 Modules/_testcapi/unicode.o: $(srcdir)/Modules/_testcapi/unicode.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/unicode.c -o Modules/_testcapi/unicode.o
 Modules/_testcapi/dict.o: $(srcdir)/Modules/_testcapi/dict.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/dict.c -o Modules/_testcapi/dict.o
+Modules/_testcapi/set.o: $(srcdir)/Modules/_testcapi/set.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/set.c -o Modules/_testcapi/set.o
+Modules/_testcapi/list.o: $(srcdir)/Modules/_testcapi/list.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/list.c -o Modules/_testcapi/list.o
+Modules/_testcapi/tuple.o: $(srcdir)/Modules/_testcapi/tuple.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/tuple.c -o Modules/_testcapi/tuple.o
 Modules/_testcapi/getargs.o: $(srcdir)/Modules/_testcapi/getargs.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/getargs.c -o Modules/_testcapi/getargs.o
 Modules/_testcapi/pytime.o: $(srcdir)/Modules/_testcapi/pytime.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/pytime.c -o Modules/_testcapi/pytime.o
 Modules/_testcapi/datetime.o: $(srcdir)/Modules/_testcapi/datetime.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/datetime.c -o Modules/_testcapi/datetime.o
@@ -3140,15 +3150,20 @@ Modules/_testcapi/mem.o: $(srcdir)/Modules/_testcapi/mem.c $(MODULE__TESTCAPI_DE
 Modules/_testcapi/watchers.o: $(srcdir)/Modules/_testcapi/watchers.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/watchers.c -o Modules/_testcapi/watchers.o
 Modules/_testcapi/long.o: $(srcdir)/Modules/_testcapi/long.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/long.c -o Modules/_testcapi/long.o
 Modules/_testcapi/float.o: $(srcdir)/Modules/_testcapi/float.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/float.c -o Modules/_testcapi/float.o
+Modules/_testcapi/complex.o: $(srcdir)/Modules/_testcapi/complex.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/complex.c -o Modules/_testcapi/complex.o
+Modules/_testcapi/numbers.o: $(srcdir)/Modules/_testcapi/numbers.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/numbers.c -o Modules/_testcapi/numbers.o
 Modules/_testcapi/structmember.o: $(srcdir)/Modules/_testcapi/structmember.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/structmember.c -o Modules/_testcapi/structmember.o
 Modules/_testcapi/exceptions.o: $(srcdir)/Modules/_testcapi/exceptions.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/exceptions.c -o Modules/_testcapi/exceptions.o
 Modules/_testcapi/code.o: $(srcdir)/Modules/_testcapi/code.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/code.c -o Modules/_testcapi/code.o
 Modules/_testcapi/buffer.o: $(srcdir)/Modules/_testcapi/buffer.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/buffer.c -o Modules/_testcapi/buffer.o
 Modules/_testcapi/pyos.o: $(srcdir)/Modules/_testcapi/pyos.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/pyos.c -o Modules/_testcapi/pyos.o
+Modules/_testcapi/file.o: $(srcdir)/Modules/_testcapi/file.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/file.c -o Modules/_testcapi/file.o
+Modules/_testcapi/codec.o: $(srcdir)/Modules/_testcapi/codec.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/codec.c -o Modules/_testcapi/codec.o
 Modules/_testcapi/immortal.o: $(srcdir)/Modules/_testcapi/immortal.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/immortal.c -o Modules/_testcapi/immortal.o
 Modules/_testcapi/heaptype_relative.o: $(srcdir)/Modules/_testcapi/heaptype_relative.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/heaptype_relative.c -o Modules/_testcapi/heaptype_relative.o
 Modules/_testcapi/gc.o: $(srcdir)/Modules/_testcapi/gc.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/gc.c -o Modules/_testcapi/gc.o
-Modules/_testcapi$(EXT_SUFFIX):  Modules/_testcapimodule.o Modules/_testcapi/vectorcall.o Modules/_testcapi/vectorcall_limited.o Modules/_testcapi/heaptype.o Modules/_testcapi/abstract.o Modules/_testcapi/unicode.o Modules/_testcapi/dict.o Modules/_testcapi/getargs.o Modules/_testcapi/pytime.o Modules/_testcapi/datetime.o Modules/_testcapi/docstring.o Modules/_testcapi/mem.o Modules/_testcapi/watchers.o Modules/_testcapi/long.o Modules/_testcapi/float.o Modules/_testcapi/structmember.o Modules/_testcapi/exceptions.o Modules/_testcapi/code.o Modules/_testcapi/buffer.o Modules/_testcapi/pyos.o Modules/_testcapi/immortal.o Modules/_testcapi/heaptype_relative.o Modules/_testcapi/gc.o; $(BLDSHARED)  Modules/_testcapimodule.o Modules/_testcapi/vectorcall.o Modules/_testcapi/vectorcall_limited.o Modules/_testcapi/heaptype.o Modules/_testcapi/abstract.o Modules/_testcapi/unicode.o Modules/_testcapi/dict.o Modules/_testcapi/getargs.o Modules/_testcapi/pytime.o Modules/_testcapi/datetime.o Modules/_testcapi/docstring.o Modules/_testcapi/mem.o Modules/_testcapi/watchers.o Modules/_testcapi/long.o Modules/_testcapi/float.o Modules/_testcapi/structmember.o Modules/_testcapi/exceptions.o Modules/_testcapi/code.o Modules/_testcapi/buffer.o Modules/_testcapi/pyos.o Modules/_testcapi/immortal.o Modules/_testcapi/heaptype_relative.o Modules/_testcapi/gc.o $(MODULE__TESTCAPI_LDFLAGS)  -o Modules/_testcapi$(EXT_SUFFIX)
+Modules/_testcapi/sys.o: $(srcdir)/Modules/_testcapi/sys.c $(MODULE__TESTCAPI_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCAPI_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testcapi/sys.c -o Modules/_testcapi/sys.o
+Modules/_testcapi$(EXT_SUFFIX):  Modules/_testcapimodule.o Modules/_testcapi/vectorcall.o Modules/_testcapi/vectorcall_limited.o Modules/_testcapi/heaptype.o Modules/_testcapi/abstract.o Modules/_testcapi/bytearray.o Modules/_testcapi/bytes.o Modules/_testcapi/unicode.o Modules/_testcapi/dict.o Modules/_testcapi/set.o Modules/_testcapi/list.o Modules/_testcapi/tuple.o Modules/_testcapi/getargs.o Modules/_testcapi/pytime.o Modules/_testcapi/datetime.o Modules/_testcapi/docstring.o Modules/_testcapi/mem.o Modules/_testcapi/watchers.o Modules/_testcapi/long.o Modules/_testcapi/float.o Modules/_testcapi/complex.o Modules/_testcapi/numbers.o Modules/_testcapi/structmember.o Modules/_testcapi/exceptions.o Modules/_testcapi/code.o Modules/_testcapi/buffer.o Modules/_testcapi/pyos.o Modules/_testcapi/file.o Modules/_testcapi/codec.o Modules/_testcapi/immortal.o Modules/_testcapi/heaptype_relative.o Modules/_testcapi/gc.o Modules/_testcapi/sys.o; $(BLDSHARED)  Modules/_testcapimodule.o Modules/_testcapi/vectorcall.o Modules/_testcapi/vectorcall_limited.o Modules/_testcapi/heaptype.o Modules/_testcapi/abstract.o Modules/_testcapi/bytearray.o Modules/_testcapi/bytes.o Modules/_testcapi/unicode.o Modules/_testcapi/dict.o Modules/_testcapi/set.o Modules/_testcapi/list.o Modules/_testcapi/tuple.o Modules/_testcapi/getargs.o Modules/_testcapi/pytime.o Modules/_testcapi/datetime.o Modules/_testcapi/docstring.o Modules/_testcapi/mem.o Modules/_testcapi/watchers.o Modules/_testcapi/long.o Modules/_testcapi/float.o Modules/_testcapi/complex.o Modules/_testcapi/numbers.o Modules/_testcapi/structmember.o Modules/_testcapi/exceptions.o Modules/_testcapi/code.o Modules/_testcapi/buffer.o Modules/_testcapi/pyos.o Modules/_testcapi/file.o Modules/_testcapi/codec.o Modules/_testcapi/immortal.o Modules/_testcapi/heaptype_relative.o Modules/_testcapi/gc.o Modules/_testcapi/sys.o $(MODULE__TESTCAPI_LDFLAGS)  -o Modules/_testcapi$(EXT_SUFFIX)
 Modules/_testclinic.o: $(srcdir)/Modules/_testclinic.c $(MODULE__TESTCLINIC_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTCLINIC_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testclinic.c -o Modules/_testclinic.o
 Modules/_testclinic$(EXT_SUFFIX):  Modules/_testclinic.o; $(BLDSHARED)  Modules/_testclinic.o $(MODULE__TESTCLINIC_LDFLAGS)  -o Modules/_testclinic$(EXT_SUFFIX)
 Modules/_testimportmultiple.o: $(srcdir)/Modules/_testimportmultiple.c $(MODULE__TESTIMPORTMULTIPLE_DEPS) $(MODULE_DEPS_SHARED) $(PYTHON_HEADERS); $(CC) $(MODULE__TESTIMPORTMULTIPLE_CFLAGS) $(PY_STDMODULE_CFLAGS) $(CCSHARED) -c $(srcdir)/Modules/_testimportmultiple.c -o Modules/_testimportmultiple.o

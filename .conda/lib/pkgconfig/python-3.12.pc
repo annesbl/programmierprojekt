@@ -1,5 +1,5 @@
 # See: man pkg-config
-prefix=/Users/annesoballa/Documents/programmier projekt/programmierprojekt-1/programmierprojekt/.conda
+prefix=/Users/belizsenol/Documents/UNI 1. Semester/GitHub/programmierprojekt/.conda
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
