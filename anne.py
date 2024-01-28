@@ -168,7 +168,7 @@ class EinfacheKI(Player):
             #self.game.place_symbol(row,col)        
             self.first_move = False                         #wird auf False gesetzt, nachdem der first move gemacht worden ist
         else:                                               #falls es nicht der erste zug der KI ist:
-            row, col = self.find_strategic_move()           #find_strategic_move findet ein leeren Button und gibt diesen zurück -> wird ind row, col gespeichert
+            row, col = self.find_strategic_move()           #find_strategic_move findet ein leeren Button und gibt diesen zurück -> wird in row, col gespeichert
 
         # Symbol setzen                            
         self.game.place_symbol(row, col)                    #plaziert symbol auf bei col, row (die im vorherigen schritt festgelegt wurden)
@@ -186,31 +186,31 @@ class EinfacheKI(Player):
         max_length = 0
         best_move = None
         #es wird nur Ort des leeren Buttons zruück gegeben, jedoch noch kein symbol plaziert
-        for r in range(self.game.board.m):
-            for c in range(self.game.board.n):
-                if self.game.get_symbol(r, c) == self.symbol:
-                    # Prüfen, ob rechts Platz ist
-                    if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":
-                        return r, c + 1
-                    # Prüfen, ob links Platz ist
+        for r in range(self.game.board.m):                       #durchgehen der rows
+            for c in range(self.game.board.n):                   #durchgehen der cols
+                if self.game.get_symbol(r, c) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
+                    #Prüfen, ob rechts Platz ist
+                    if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
+                        return r, c + 1                                                     #dann wird row und col des leeren buttons zurück gegeben
+                    #Prüfen, ob links Platz ist
                     elif c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
                         return r, c - 1
-                    # Prüfen, ob unten Platz ist
+                    #Prüfen, ob unten Platz ist
                     elif r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
                         return r + 1, c
-                    # Prüfen, ob oben Platz ist
+                    #Prüfen, ob oben Platz ist
                     elif r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
                         return r - 1, c
-                    # Prüfen, ob diagonal unten rechts Platz ist
+                    #Prüfen, ob diagonal unten rechts Platz ist
                     elif r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
                         return r + 1, c + 1
-                    # Prüfen, ob diagonal oben links Platz ist
+                    #Prüfen, ob diagonal oben links Platz ist
                     elif r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
                         return r - 1, c - 1
-                    # Prüfen, ob diagonal unten links Platz ist
+                    #Prüfen, ob diagonal unten links Platz ist
                     elif r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
                         return r + 1, c - 1
-                    # Prüfen, ob diagonal oben rechts Platz ist
+                    #Prüfen, ob diagonal oben rechts Platz ist
                     elif r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
                         return r - 1, c + 1
                 if self.game.get_symbol(r, c) == "":
@@ -227,32 +227,33 @@ class EinfacheKI(Player):
         return random.choice(empty_positions)
 
     def calculate_chain_length(self, row, col):
-        directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend
+        directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
+                   #     -      |        \       /
         max_length = 1
 
-        for dr, dc in directions:
-            length = 1
+        for dr, dc in directions:                       #durchgehen der directions
+            length = 1                                  #1, weil das aktuelle Feld/Startpunkt (dr,dc) als erstes Element der Kette gezählt wird.
+            for i in range(1, self.game.board.k):       #prüft ob k gleiche symbole in eineer reihe sind
+                r, c = row + i * dr, col + i * dc       #prüft die Symbole in der aktuellen Richtung, beginnend beim Startpunkt und bewegt sich in positiver Richtung (berechnung der nächstn Position)
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol: #falls das Symbol an der berechneten Position gleich dem Symbol der KI ist...
+                    length += 1                         #...wird die länge der kette um 1 erhöht
+                else:
+                    break                                #Schleife bricht ab, sobald ein anderes Symbol oder das Ende von Board erreicht wird
+
             for i in range(1, self.game.board.k):
-                r, c = row + i * dr, col + i * dc
+                r, c = row - i * dr, col - i * dc       #prüft die Symbole in der entgegengesetzten Richtung und bewegt sich in negative Richtung (berechnung der nächstn Position)
                 if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
                     length += 1
                 else:
                     break
 
-            for i in range(1, self.game.board.k):
-                r, c = row - i * dr, col - i * dc
-                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
-                    length += 1
-                else:
-                    break
+            if length >= self.game.board.k:    #überptüft ob Kette grösser gleich k ist
+                return length                  #wenn ja dann kette zurück geben
 
-            if length >= self.game.board.k:
-                return length
+            if length > max_length:            #überprüft ob die aktuelle Kette länger ist als die bisherige längste Kette
+                max_length = length            #wenn ja, dann aktuelle Kette aktualisieruen   
 
-            if length > max_length:
-                max_length = length
-
-        return max_length
+        return max_length            #längste gefundene Kette wird zurück gegeben
     
 class Game:                                                          
     def __init__(self, m, n, k, player1, player2):                                    
