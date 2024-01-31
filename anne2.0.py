@@ -130,34 +130,35 @@ class EinfacheKI(Player):
     def find_strategic_move(self):
         max_length = 0
         best_move = None
+        lenght = {}
         #es wird nur Ort des leeren Buttons zruück gegeben, jedoch noch kein symbol plaziert
         for r in range(self.game.board.m):                       #durchgehen der rows
             for c in range(self.game.board.n):                   #durchgehen der cols
                 if self.game.get_symbol(r, c) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
                     #Prüfen, ob rechts Platz ist
                     if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
-                        return r, c + 1                                                     #dann wird row und col des leeren buttons zurück gegeben
+                        lenght = self.calculate_chain_length(r, c + 1)                                                  #dann wird row und col des leeren buttons zurück gegeben
                     #Prüfen, ob links Platz ist
-                    elif c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
-                        return r, c - 1
+                    if c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
+                        lenght = self.calculate_chain_length(r, c - 1)
                     #Prüfen, ob unten Platz ist
-                    elif r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
-                        return r + 1, c
+                    if r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
+                        lenght = self.calculate_chain_length( r + 1, c)
                     #Prüfen, ob oben Platz ist
-                    elif r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
-                        return r - 1, c
+                    if r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
+                        lenght = self.calculate_chain_length( r - 1, c)
                     #Prüfen, ob diagonal unten rechts Platz ist
-                    elif r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
-                        return r + 1, c + 1
+                    if r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
+                        lenght = self.calculate_chain_length( r + 1, c + 1)
                     #Prüfen, ob diagonal oben links Platz ist
-                    elif r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
-                        return r - 1, c - 1
+                    if r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
+                        lenght = self.calculate_chain_length( r - 1, c - 1)
                     #Prüfen, ob diagonal unten links Platz ist
-                    elif r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
-                        return r + 1, c - 1
+                    if r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
+                        lenght = self.calculate_chain_length( r + 1, c - 1)
                     #Prüfen, ob diagonal oben rechts Platz ist
-                    elif r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
-                        return r - 1, c + 1
+                    if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
+                        lenght = self.calculate_chain_length( r - 1, c + 1)
                 if self.game.get_symbol(r, c) == "":
                     length = self.calculate_chain_length(r, c)
                     if length > max_length:
