@@ -375,7 +375,7 @@ class KomplexeKI(Player):
     def prevent_opponent_win(self):
         for row in range(self.game.board.m):
             for col in range(self.game.board.n):
-                if self.get_symbol(row, col) == "":
+                if self.game.get_symbol(row, col) == "":
                     # Überprüfe, ob der Gegner nach diesem Zug gewinnen kann
                     opponent_symbol =  'o' if self.symbol == 'x' else 'x'
 
@@ -401,7 +401,7 @@ class KomplexeKI(Player):
     def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
         count = 0
         for i in range(length):
-            if 0 <= start_row < self.board.m and 0 <= start_col < self.board.n and self.get_symbol(start_row, start_col) == symbol:
+            if 0 <= start_row < self.game.board.m and 0 <= start_col < self.game.board.n and self.game.get_symbol(start_row, start_col) == symbol:
                 count += 1
                 start_row += delta_row
                 start_col += delta_col
@@ -643,7 +643,7 @@ if __name__ == "__main__":
             
     else:                           #ein einziges Spiel
         #game klasse aufrufen und m,n,k wählen
-        game = Game(5, 5, 3, player1, player2)
+        game = Game(5, 5, 4, player1, player2)
         
         #KIs richtig zuweisen
         player_zufallski.game = game #zufallski
