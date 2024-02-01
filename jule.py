@@ -224,7 +224,8 @@ class KomplexeKI(Player):
         block = self.prevent_opponent_win()
         if block is not None:
             row, col = block
-            self.game.place_symbol(row, col) 
+            self.game.place_symbol(row, col)
+            print("RDJLOVE")
         elif zwickmuehle is not None:
             row,col = zwickmuehle
             self.game.place_symbol(row, col) 
