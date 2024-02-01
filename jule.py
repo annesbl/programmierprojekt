@@ -466,28 +466,28 @@ class KomplexeKI(Player):
             if self.calculate_chain_length(row, col, symbol) == self.game.board.k - 1:
                 #Prüfen, ob rechts Platz ist
                 if col + 1 < self.game.board.n and self.game.get_symbol(row, col + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
-                    return row, col
+                    return row, col+1
                 #Prüfen, ob links Platz ist
                 elif col - 1 >= 0 and self.game.get_symbol(row, col - 1) == "":
-                    return row, col
+                    return row, col-1
                 #Prüfen, ob unten Platz ist
                 elif row + 1 < self.game.board.m and self.game.get_symbol(row + 1, col) == "":
-                    return row, col
+                    return row+1, col
                 #Prüfen, ob oben Platz ist
                 elif row - 1 >= 0 and self.game.get_symbol(row - 1, col) == "":
-                    return row, col
+                    return row-1, col
                 #Prüfen, ob diagonal unten rechts Platz ist
                 elif row + 1 < self.game.board.m and col + 1 < self.game.board.n and self.game.get_symbol(row + 1, col + 1) == "":
-                    return row, col
+                    return row+1, col+1
                 #Prüfen, ob diagonal oben links Platz ist
                 elif row - 1 >= 0 and col - 1 >= 0 and self.game.get_symbol(row - 1, col - 1) == "":
-                    return row, col
+                    return row-1, col-1
                 #Prüfen, ob diagonal unten links Platz ist
                 elif row + 1 < self.game.board.m and col - 1 >= 0 and self.game.get_symbol(row + 1, col - 1) == "":
-                    return row, col
+                    return row+1, col-1
                 #Prüfen, ob diagonal oben rechts Platz ist
                 elif row - 1 >= 0 and col + 1 < self.game.board.n and self.game.get_symbol(row - 1, col + 1) == "":
-                    return row, col
+                    return row-1, col-1
                 else:
                     pass
         return None
