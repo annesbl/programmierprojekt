@@ -172,10 +172,10 @@ class EinfacheKI(Player):
                 #     if length > max_length:
                 #         max_length = length
                 #         best_move = (r, c)
-        if chainlenght_dict:
-            best_length = max(chainlenght_dict)
-            best_move = chainlenght_dict[best_length]
-            return best_move
+        if chainlenght_dict:                               # geht das dictionary durch
+            best_length = max(chainlenght_dict)            # speichert die maximale länge als best_lenght
+            best_move = chainlenght_dict[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
+            return best_move                               # gibt best_move wieder
 
         # Falls keine intelligenten Züge gefunden wurden, setze zufällig
         empty_positions = [(r, c) for r in range(self.game.board.m) for c in range(self.game.board.n) if self.game.get_symbol(r, c) == ""]
