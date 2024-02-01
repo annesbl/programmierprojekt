@@ -409,7 +409,11 @@ class KomplexeKI(Player):
                 start_col += delta_col
             else:
                 break
-        return count >= length
+        if count >= length:
+            return True
+        else:
+            return False
+        
     
     def opponent_symbol(self):
         pass
