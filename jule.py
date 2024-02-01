@@ -453,7 +453,7 @@ class KomplexeKI(Player):
         opponent_symbol = self.get_opponent_symbol()
         for row in range(self.game.board.m):
            for col in range(self.game.board.n):
-               if self.game.get_symbol(row, col) == opponent_symbol(): 
+               if self.game.get_symbol(row, col) == opponent_symbol: 
                 length_opponent = self.calculate_chain_length(row, col, opponent_symbol)
                 if length_opponent == self.game.board.k-1:
                     return row, col
