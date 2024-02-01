@@ -379,6 +379,7 @@ class KomplexeKI(Player):
                 if self.game.get_symbol(row, col) == "":
                     # Überprüfe, ob der Gegner nach diesem Zug gewinnen kann
                     opponent_symbol =  'o' if self.symbol == 'x' else 'x'
+                    #print(opponent_symbol)
 
                     # Horizontale Überprüfung
                     if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k):
@@ -409,6 +410,9 @@ class KomplexeKI(Player):
             else:
                 break
         return count >= length
+    
+    def opponent_symbol(self):
+        pass
 
     
 
