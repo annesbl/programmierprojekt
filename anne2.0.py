@@ -166,13 +166,15 @@ class EinfacheKI(Player):
                     #Prüfen, ob diagonal oben rechts Platz ist
                     if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
                         lenght_or = self.calculate_chain_length( r - 1, c + 1)
-                        chainlenght_dict[lenght_r] = (r-1, c+1)
-                if self.game.get_symbol(r, c) == "":
-                    length = self.calculate_chain_length(r, c)
-                    if length > max_length:
-                        max_length = length
-                        best_move = (r, c)
+                        chainlenght_dict[lenght_or] = (r-1, c+1)
+                # if self.game.get_symbol(r, c) == "":
+                #     length = self.calculate_chain_length(r, c)
+                #     if length > max_length:
+                #         max_length = length
+                #         best_move = (r, c)
+        best_move = chainlenght_dict.get(max(chainlenght_dict, key=chainlenght_dict.get))
 
+        
         if best_move is not None:
             return best_move
 
