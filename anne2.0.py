@@ -172,10 +172,9 @@ class EinfacheKI(Player):
                 #     if length > max_length:
                 #         max_length = length
                 #         best_move = (r, c)
-        best_move = chainlenght_dict.get(max(chainlenght_dict, key=chainlenght_dict.get))
-
-        
-        if best_move is not None:
+        if chainlenght_dict:
+            best_length = max(chainlenght_dict)
+            best_move = chainlenght_dict[best_length]
             return best_move
 
         # Falls keine intelligenten Züge gefunden wurden, setze zufällig
