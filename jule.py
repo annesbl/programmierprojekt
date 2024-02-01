@@ -219,46 +219,44 @@ class KomplexeKI(Player):
          self.is_komplexeki = True
 
     def make_komplexeki_move(self):
-        pass
+        zwickmuehle = self.zwickmühle_bauen()
+        best_move = self.find_strategic_move()
+        if zwickmuehle is not None:
+            row,col = zwickmuehle
+            self.game.place_symbol(row, col) 
+        elif best_move is not None:
+            row, col = best_move
+            self.game.place_symbol(row,col)
+        else:
+            row = random.randint(0, self.game.board.m - 1)  #row des buttons (für den ersten zug) zufällig festlegen
+            col = random.randint(0, self.game.board.n - 1)  #col des buttons (für den ersten zug) zufällig festlegen
+            self.game.place_symbol(row,col)
     
-    def zwichmuehlen_dict(self, m, n, k):
+    def zwichmuehlen_dict(self):
         zwickmuhlen_liste = []
 
         # Überprüfe horizontale Zwickmühlen
-        for i in range(m):
-            for j in range(n - k + 1):
-                zwickmuhlen_liste.append([(i, j + x) for x in range(k)])
+        for i in range(self.game.board.m):
+            for j in range(self.game.board.n - self.game.board.k + 1):
+                zwickmuhlen_liste.append([(i, j + x) for x in range(self.game.board.k)])
 
         # Überprüfe vertikale Zwickmühlen
-        for i in range(m - k + 1):
-            for j in range(n):
-                zwickmuhlen_liste.append([(i + x, j) for x in range(k)])
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.n):
+                zwickmuhlen_liste.append([(i + x, j) for x in range(self.game.board.k)])
 
         # Überprüfe diagonale Zwickmühlen von links oben nach rechts unten
-        for i in range(m - k + 1):
-            for j in range(n - k + 1):
-                zwickmuhlen_liste.append([(i + x, j + x) for x in range(k)])
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.n - self.game.board.k + 1):
+                zwickmuhlen_liste.append([(i + x, j + x) for x in range(self.game.board.k)])
 
         # Überprüfe diagonale Zwickmühlen von links unten nach rechts oben
-        for i in range(m - k + 1):
-            for j in range(k - 1, n):
-                zwickmuhlen_liste.append([(i + x, j - x) for x in range(k)])
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.k - 1, self.game.board.n):
+                zwickmuhlen_liste.append([(i + x, j - x) for x in range(self.game.board.k)])
 
         return zwickmuhlen_liste
     
-    def zwickmühle_bauen(self, zwickmuehlen_liste):
-        for zwickmuehle in zwickmuehlen_liste:
-            count = 0
-            empty_positions = []
-            
-            for position in zwickmuehle:
-                if self.game.get_symbol(position[0], position[1]) == self.symbol:
-                    count += 1
-                elif self.game.get_symbol(position[0], position[1]) == "":
-                    empty_positions.append(position)
-        if count + len(empty_positions) >= 2:
-            return empty_positions
-        
     def calculate_chain_length(self, row, col):
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
                    #     -      |        \       /
@@ -287,6 +285,34 @@ class KomplexeKI(Player):
                 max_length = length            #wenn ja, dann aktuelle Kette aktualisieruen   
 
         return max_length            #längste gefundene Kette wird zurück gegeben
+    
+    def zwickmühle_bauen(self):
+        zwickmuehlen_liste = self.zwichmuehlen_dict()
+        for zwickmuehle in zwickmuehlen_liste:
+            count = 0
+            empty_positions = []
+            
+            for position in zwickmuehle:
+                if self.game.get_symbol(position[0], position[1]) == self.symbol:
+                    count += 1
+                elif self.game.get_symbol(position[0], position[1]) == "":
+                    empty_positions.append(position)
+        chain_lengths = {}
+        for position in empty_positions:
+            chain_length = self.calculate_chain_length(position[0], position[1])
+            chain_lengths[chain_length] = position[0], position[1]
+            
+        if chain_lengths is not None:                               # geht das dictionary durch
+            best_length = max(chain_lengths)            # speichert die maximale länge als best_lenght
+            best_move = chain_lengths[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
+            return best_move                               # gibt best_move wieder
+        else:
+            return None
+
+        
+
+        
+    
 
 
         
