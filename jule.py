@@ -456,6 +456,8 @@ class KomplexeKI(Player):
                 length_opponent = self.calculate_chain_length()
                 if length_opponent == self.game.board.k-1:
                     return row, col
+            
+        return None
 
     
 
