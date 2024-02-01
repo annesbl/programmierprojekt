@@ -545,11 +545,11 @@ if __name__ == "__main__":
     player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_mensch
+    player1 = player_einfacheki2
     player2 = player_komplexeki
     
-    play_several_times = False
-    num_games = 60  # Anzahl der Spiele
+    play_several_times = True
+    num_games = 10  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
