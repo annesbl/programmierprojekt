@@ -463,7 +463,7 @@ class KomplexeKI(Player):
     
     def find_strategic_move_defense(self,row, col, symbol):
         if self.game.get_symbol(row, col) == symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
-            if self.calculate_chain_length(row, col, symbol) == self.game.board.k - 1:
+            if self.calculate_chain_length(row, col, symbol) >= self.game.board.k - 1:
                 #Prüfen, ob rechts Platz ist
                 if col + 1 < self.game.board.n and self.game.get_symbol(row, col + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
                     return row, col+1
