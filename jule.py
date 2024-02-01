@@ -400,15 +400,31 @@ class KomplexeKI(Player):
         # Falls keine Aktion erforderlich ist
         return None
 
+    # def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
+    #     count = 0
+    #     for i in range(length):
+    #         if 0 <= start_row < self.game.board.m and 0 <= start_col < self.game.board.n and self.game.get_symbol(start_row, start_col) == symbol:
+    #             count += 1
+    #             start_row += delta_row
+    #             start_col += delta_col
+    #         else:
+    #             break
+    #     if count >= length:
+    #         return True
+    #     else:
+    #         return False
+    
     def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
         count = 0
         for i in range(length):
+            print(f"Checking position ({start_row}, {start_col})")
             if 0 <= start_row < self.game.board.m and 0 <= start_col < self.game.board.n and self.game.get_symbol(start_row, start_col) == symbol:
                 count += 1
                 start_row += delta_row
                 start_col += delta_col
             else:
                 break
+        print(f"Final count: {count}")
         if count >= length:
             return True
         else:
