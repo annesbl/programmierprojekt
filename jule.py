@@ -226,9 +226,9 @@ class KomplexeKI(Player):
             row, col = block
             self.game.place_symbol(row, col)
             print("RDJLOVE")
-        elif zwickmuehle is not None:
-            row,col = zwickmuehle
-            self.game.place_symbol(row, col) 
+        # elif zwickmuehle is not None:
+        #     row,col = zwickmuehle
+        #     self.game.place_symbol(row, col) 
         elif best_move is not None:
             row, col = best_move
             self.game.place_symbol(row,col)
