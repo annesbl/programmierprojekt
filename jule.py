@@ -353,7 +353,7 @@ class KomplexeKI(Player):
     
     
     
-    def calculate_chain_length(self, row, col):
+    def calculate_chain_length(self, row, col, symbol):
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
                    #     -      |        \       /
         max_length = 1
@@ -362,14 +362,14 @@ class KomplexeKI(Player):
             length = 1                                  #1, weil das aktuelle Feld/Startpunkt (dr,dc) als erstes Element der Kette gezählt wird.
             for i in range(1, self.game.board.k):       #prüft ob k gleiche symbole in eineer reihe sind
                 r, c = row + i * dr, col + i * dc       #prüft die Symbole in der aktuellen Richtung, beginnend beim Startpunkt und bewegt sich in positiver Richtung (berechnung der nächstn Position)
-                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol: #falls das Symbol an der berechneten Position gleich dem Symbol der KI ist...
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == symbol: #falls das Symbol an der berechneten Position gleich dem Symbol der KI ist...
                     length += 1                         #...wird die länge der kette um 1 erhöht
                 else:
                     break                                #Schleife bricht ab, sobald ein anderes Symbol oder das Ende von Board erreicht wird
 
             for i in range(1, self.game.board.k):
                 r, c = row - i * dr, col - i * dc       #prüft die Symbole in der entgegengesetzten Richtung und bewegt sich in negative Richtung (berechnung der nächstn Position)
-                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == symbol:
                     length += 1
                 else:
                     break
@@ -450,10 +450,11 @@ class KomplexeKI(Player):
     #         return False
     
     def make_blocking_move(self):
+        opponent_symbol = self.get_opponent_symbol()
         for row in range(self.game.board.m):
            for col in range(self.game.board.n):
-               if self.game.get_symbol(row, col) == self.get_opponent_symbol: 
-                length_opponent = self.calculate_chain_length()
+               if self.game.get_symbol(row, col) == opponent_symbol(): 
+                length_opponent = self.calculate_chain_length(row, col, opponent_symbol)
                 if length_opponent == self.game.board.k-1:
                     return row, col
             
