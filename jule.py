@@ -256,6 +256,60 @@ class KomplexeKI(Player):
                 zwickmuhlen_liste.append([(i + x, j - x) for x in range(self.game.board.k)])
 
         return zwickmuhlen_liste
+
+    def find_strategic_move(self):
+            max_length = 0
+            best_move = None
+            chainlenght_dict = {}
+            #es wird nur Ort des leeren Buttons zruück gegeben, jedoch noch kein symbol plaziert
+            for r in range(self.game.board.m):                       #durchgehen der rows
+                for c in range(self.game.board.n):                   #durchgehen der cols
+                    if self.game.get_symbol(r, c) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
+                        #Prüfen, ob rechts Platz ist
+                        if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
+                            lenght_r = self.calculate_chain_length(r, c + 1)                                                  #dann wird row und col des leeren buttons zurück gegeben
+                            chainlenght_dict[lenght_r] = (r, c+1)
+                        #Prüfen, ob links Platz ist
+                        if c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
+                            lenght_l = self.calculate_chain_length(r, c - 1)
+                            chainlenght_dict[lenght_l] = (r, c-1)
+                        #Prüfen, ob unten Platz ist
+                        if r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
+                            lenght_u = self.calculate_chain_length( r + 1, c)
+                            chainlenght_dict[lenght_u] = (r+1, c)
+                        #Prüfen, ob oben Platz ist
+                        if r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
+                            lenght_o = self.calculate_chain_length( r - 1, c)
+                            chainlenght_dict[lenght_o] = (r-1, c)
+                        #Prüfen, ob diagonal unten rechts Platz ist
+                        if r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
+                            lenght_ur = self.calculate_chain_length( r + 1, c + 1)
+                            chainlenght_dict[lenght_ur] = (r+1, c+1)
+                        #Prüfen, ob diagonal oben links Platz ist
+                        if r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
+                            lenght_ol = self.calculate_chain_length( r - 1, c - 1)
+                            chainlenght_dict[lenght_ol] = (r-1, c-1)
+                        #Prüfen, ob diagonal unten links Platz ist
+                        if r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
+                            lenght_ul = self.calculate_chain_length( r + 1, c - 1)
+                            chainlenght_dict[lenght_ul] = (r+1, c-1)
+                        #Prüfen, ob diagonal oben rechts Platz ist
+                        if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
+                            lenght_or = self.calculate_chain_length( r - 1, c + 1)
+                            chainlenght_dict[lenght_or] = (r-1, c+1)
+                    # if self.game.get_symbol(r, c) == "":
+                    #     length = self.calculate_chain_length(r, c)
+                    #     if length > max_length:
+                    #         max_length = length
+                    #         best_move = (r, c)
+            if chainlenght_dict:                               # geht das dictionary durch
+                best_length = max(chainlenght_dict)            # speichert die maximale länge als best_lenght
+                best_move = chainlenght_dict[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
+                return best_move                               # gibt best_move wieder
+
+            # Falls keine intelligenten Züge gefunden wurden, setze zufällig
+            empty_positions = [(r, c) for r in range(self.game.board.m) for c in range(self.game.board.n) if self.game.get_symbol(r, c) == ""]
+            return random.choice(empty_positions)
     
     def calculate_chain_length(self, row, col):
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
