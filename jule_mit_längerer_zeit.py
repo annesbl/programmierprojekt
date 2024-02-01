@@ -221,11 +221,7 @@ class KomplexeKI(Player):
     def make_komplexeki_move(self):
         zwickmuehle = self.zwickmühle_bauen()
         best_move = self.find_strategic_move()
-        block = self.prevent_opponent_win()
-        if block is not None:
-            row, col = block
-            self.game.place_symbol(row, col) 
-        elif zwickmuehle is not None:
+        if zwickmuehle is not None:
             row,col = zwickmuehle
             self.game.place_symbol(row, col) 
         elif best_move is not None:
@@ -371,50 +367,6 @@ class KomplexeKI(Player):
         return max_length            #längste gefundene Kette wird zurück gegeben
     
     
-    
-    def prevent_opponent_win(self):
-        for row in range(self.game.board.m):
-            for col in range(self.game.board.n):
-                if self.get_symbol(row, col) == "":
-                    # Überprüfe, ob der Gegner nach diesem Zug gewinnen kann
-                    opponent_symbol =  'o' if self.symbol == 'x' else 'x'
-
-                    # Horizontale Überprüfung
-                    if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k):
-                        return row, col
-
-                    # Vertikale Überprüfung
-                    if self.check_line(row, col, 1, 0, opponent_symbol, self.game.board.k):
-                        return row, col
-
-                    # Diagonale Überprüfung absteigend
-                    if self.check_line(row, col, 1, 1, opponent_symbol, self.game.board.k):
-                        return row, col
-
-                    # Diagonale Überprüfung aufsteigend
-                    if self.check_line(row, col, -1, 1, opponent_symbol, self.game.board.k):
-                        return row, col
-        
-        # Falls keine Aktion erforderlich ist
-        return None
-
-    def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
-        count = 0
-        for i in range(length):
-            if 0 <= start_row < self.board.m and 0 <= start_col < self.board.n and self.get_symbol(start_row, start_col) == symbol:
-                count += 1
-                start_row += delta_row
-                start_col += delta_col
-            else:
-                break
-        return count >= length
-
-    
-
-    
-                    
-    
-    
 
         
 
@@ -438,13 +390,13 @@ class Game:
         #Überprüfung, ob Startspieler == KI --> falls ja: automatischen Zug machen
         #zufalls KI
         if self.current_player.is_zufallski:
-            QTimer.singleShot(100, self.current_player.make_zufallski_move)
+            QTimer.singleShot(500, self.current_player.make_zufallski_move)
         #einfache KI
         elif self.current_player.is_einfacheki:
-            QTimer.singleShot(100, self.current_player.make_einfacheki_move)
+            QTimer.singleShot(500, self.current_player.make_einfacheki_move)
         #komlexe KI6
         elif self.current_player.is_komplexeki:
-            QTimer.singleShot(100, self.current_player.make_komplexeki_move)
+            QTimer.singleShot(500, self.current_player.make_komplexeki_move)
         
         
     #RUFT SYMBOL AUF SPIELFELD AB UM ZU SCHAUEN WELCHES SYMBOL AN DIESER STELLE IST    anne
