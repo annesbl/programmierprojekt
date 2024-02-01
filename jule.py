@@ -454,14 +454,43 @@ class KomplexeKI(Player):
         for row in range(self.game.board.m):
            for col in range(self.game.board.n):
                if self.game.get_symbol(row, col) == opponent_symbol: 
-                length_opponent = self.calculate_chain_length(row, col, opponent_symbol)
-                if length_opponent == self.game.board.k-1:
-                    return row, col
-            
+                    best_move = self.find_strategic_move_defense(row, col, opponent_symbol)
+                    return best_move
         return None
+                    
+            
 
     
-
+    def find_strategic_move_defense(self,row, col, symbol):
+        if self.game.get_symbol(row, col) == symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
+            if self.calculate_chain_length(row, col, symbol) == self.game.board.k - 1:
+                #Prüfen, ob rechts Platz ist
+                if col + 1 < self.game.board.n and self.game.get_symbol(row, col + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
+                    return row, col
+                #Prüfen, ob links Platz ist
+                elif col - 1 >= 0 and self.game.get_symbol(row, col - 1) == "":
+                    return row, col
+                #Prüfen, ob unten Platz ist
+                elif row + 1 < self.game.board.m and self.game.get_symbol(row + 1, col) == "":
+                    return row, col
+                #Prüfen, ob oben Platz ist
+                elif row - 1 >= 0 and self.game.get_symbol(row - 1, col) == "":
+                    return row, col
+                #Prüfen, ob diagonal unten rechts Platz ist
+                elif row + 1 < self.game.board.m and col + 1 < self.game.board.n and self.game.get_symbol(row + 1, col + 1) == "":
+                    return row, col
+                #Prüfen, ob diagonal oben links Platz ist
+                elif row - 1 >= 0 and col - 1 >= 0 and self.game.get_symbol(row - 1, col - 1) == "":
+                    return row, col
+                #Prüfen, ob diagonal unten links Platz ist
+                elif row + 1 < self.game.board.m and col - 1 >= 0 and self.game.get_symbol(row + 1, col - 1) == "":
+                    return row, col
+                #Prüfen, ob diagonal oben rechts Platz ist
+                elif row - 1 >= 0 and col + 1 < self.game.board.n and self.game.get_symbol(row - 1, col + 1) == "":
+                    return row, col
+                else:
+                    pass
+        return None
     
                     
     
