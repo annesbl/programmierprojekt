@@ -376,7 +376,7 @@ if __name__ == "__main__":
     player_zufallski = ZufallsKI("Zufalls KI", "o", None)
     player_zufallski2 = ZufallsKI("Zufalls KI 2", "x", None)
     player_einfacheki = EinfacheKI("Einfache KI", "o", None)
-    #player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
+    player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
     #player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
     # Weitere Spielerinitialisierungen und Spiellogik
     #player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
@@ -386,7 +386,7 @@ if __name__ == "__main__":
     player2 = player_einfacheki
     
     play_several_times = False
-    num_games = 5  # Anzahl der Spiele
+    num_games = 60  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
@@ -402,7 +402,7 @@ if __name__ == "__main__":
             player_zufallski.game = game #zufallski
             player_zufallski2.game = game #zufallski
             player_einfacheki.game = game #einfacheki
-            #player_einfacheki2.game = game #einfacheki
+            player_einfacheki2.game = game #einfacheki
             #player_komplexeki.game = game #komplexeki
             #player_komplexeki2.game = game #komplexeki
             
@@ -434,7 +434,7 @@ if __name__ == "__main__":
         player_zufallski.game = game #zufallski
         player_zufallski2.game = game #zufallski
         player_einfacheki.game = game #einfacheki
-        #player_einfacheki2.game = game #einfacheki
+        player_einfacheki2.game = game #einfacheki
         #player_komplexeki.game = game #komplexeki
         #player_komplexeki2.game = game #komplexeki
         
