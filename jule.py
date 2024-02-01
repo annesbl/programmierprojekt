@@ -256,6 +256,32 @@ class KomplexeKI(Player):
                 zwickmuhlen_liste.append([(i + x, j - x) for x in range(self.game.board.k)])
 
         return zwickmuhlen_liste
+    
+    def zwickmühle_bauen(self):
+        zwickmuehlen_liste = self.zwichmuehlen_dict()
+        for zwickmuehle in zwickmuehlen_liste:
+            count = 0
+            empty_positions = []
+            
+            for position in zwickmuehle:
+                if self.game.get_symbol(position[0], position[1]) == self.symbol:
+                    count += 1
+                elif self.game.get_symbol(position[0], position[1]) == "":
+                    empty_positions.append(position)
+        chain_lengths = {}
+        if empty_positions:
+            for position in empty_positions:
+                chain_length = self.calculate_chain_length(position[0], position[1])
+                chain_lengths[chain_length] = position[0], position[1]
+        else:
+            return None
+            
+        if chain_lengths:                               # geht das dictionary durch
+            best_length = max(chain_lengths)            # speichert die maximale länge als best_lenght
+            best_move = chain_lengths[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
+            return best_move                               # gibt best_move wieder
+        else:
+            return None
 
     def find_strategic_move(self):
             max_length = 0
@@ -340,28 +366,7 @@ class KomplexeKI(Player):
 
         return max_length            #längste gefundene Kette wird zurück gegeben
     
-    def zwickmühle_bauen(self):
-        zwickmuehlen_liste = self.zwichmuehlen_dict()
-        for zwickmuehle in zwickmuehlen_liste:
-            count = 0
-            empty_positions = []
-            
-            for position in zwickmuehle:
-                if self.game.get_symbol(position[0], position[1]) == self.symbol:
-                    count += 1
-                elif self.game.get_symbol(position[0], position[1]) == "":
-                    empty_positions.append(position)
-        chain_lengths = {}
-        for position in empty_positions:
-            chain_length = self.calculate_chain_length(position[0], position[1])
-            chain_lengths[chain_length] = position[0], position[1]
-            
-        if chain_lengths is not None:                               # geht das dictionary durch
-            best_length = max(chain_lengths)            # speichert die maximale länge als best_lenght
-            best_move = chain_lengths[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
-            return best_move                               # gibt best_move wieder
-        else:
-            return None
+    
 
         
 
@@ -540,16 +545,16 @@ if __name__ == "__main__":
     player_zufallski2 = ZufallsKI("Zufalls KI 2", "x", None)
     player_einfacheki = EinfacheKI("Einfache KI", "o", None)
     player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
-    player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
+    #player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
     # Weitere Spielerinitialisierungen und Spiellogik
-    player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
+    #player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_einfacheki2
-    player2 = player_komplexeki
+    player1 = player_mensch
+    player2 = player_einfacheki
     
-    play_several_times = True
-    num_games = 10  # Anzahl der Spiele
+    play_several_times = False
+    num_games = 60  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
@@ -566,7 +571,7 @@ if __name__ == "__main__":
             player_zufallski2.game = game #zufallski
             player_einfacheki.game = game #einfacheki
             player_einfacheki2.game = game #einfacheki
-            player_komplexeki.game = game #komplexeki
+            #player_komplexeki.game = game #komplexeki
             #player_komplexeki2.game = game #komplexeki
             
             #Spiel starten
@@ -598,7 +603,7 @@ if __name__ == "__main__":
         player_zufallski2.game = game #zufallski
         player_einfacheki.game = game #einfacheki
         player_einfacheki2.game = game #einfacheki
-        player_komplexeki.game = game #komplexeki
+        #player_komplexeki.game = game #komplexeki
         #player_komplexeki2.game = game #komplexeki
         
         #Spiel starten
