@@ -221,7 +221,7 @@ class KomplexeKI(Player):
     def make_komplexeki_move(self):
         zwickmuehle = self.zwickmühle_bauen()
         best_move = self.find_strategic_move()
-        block = self.prevent_opponent_win()
+        block = self.make_blocking_move()
         if block is not None:
             row, col = block
             self.game.place_symbol(row, col)
@@ -391,33 +391,33 @@ class KomplexeKI(Player):
 
     
     
-    def prevent_opponent_win(self):
-        opponent_symbol = self.get_opponent_symbol()
-        for row in range(self.game.board.m):
-            for col in range(self.game.board.n):
-                if self.game.get_symbol(row, col) == "":
-                    # Überprüfe, ob der Gegner nach diesem Zug gewinnen kann
-                    #opponent_symbol =  'o' if self.symbol == 'x' else 'x'
-                    print(opponent_symbol)
+    # def prevent_opponent_win(self):
+    #     opponent_symbol = self.get_opponent_symbol()
+    #     for row in range(self.game.board.m):
+    #         for col in range(self.game.board.n):
+    #             if self.game.get_symbol(row, col) == "":
+    #                 # Überprüfe, ob der Gegner nach diesem Zug gewinnen kann
+    #                 #opponent_symbol =  'o' if self.symbol == 'x' else 'x'
+    #                 print(opponent_symbol)
               
-                    # Horizontale Überprüfung
-                    if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k-1):
-                        return row, col
+    #                 # Horizontale Überprüfung
+    #                 if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k-1):
+    #                     return row, col
 
-                    # Vertikale Überprüfung
-                    if self.check_line(row, col, 1, 0, opponent_symbol, self.game.board.k-1):
-                        return row, col
+    #                 # Vertikale Überprüfung
+    #                 if self.check_line(row, col, 1, 0, opponent_symbol, self.game.board.k-1):
+    #                     return row, col
 
-                    # Diagonale Überprüfung absteigend
-                    if self.check_line(row, col, 1, 1, opponent_symbol, self.game.board.k-1):
-                        return row, col
+    #                 # Diagonale Überprüfung absteigend
+    #                 if self.check_line(row, col, 1, 1, opponent_symbol, self.game.board.k-1):
+    #                     return row, col
 
-                    # Diagonale Überprüfung aufsteigend
-                    if self.check_line(row, col, -1, 1, opponent_symbol, self.game.board.k-1):
-                        return row, col
+    #                 # Diagonale Überprüfung aufsteigend
+    #                 if self.check_line(row, col, -1, 1, opponent_symbol, self.game.board.k-1):
+    #                     return row, col
         
-        # Falls keine Aktion erforderlich ist
-        return None
+    #     # Falls keine Aktion erforderlich ist
+    #     return None
 
     # def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
     #     count = 0
@@ -433,21 +433,29 @@ class KomplexeKI(Player):
     #     else:
     #         return False
     
-    def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
-        count = 0
-        for i in range(length):
-            print(f"Checking position ({start_row}, {start_col})")
-            if 0 <= start_row < self.game.board.m and 0 <= start_col < self.game.board.n and self.game.get_symbol(start_row, start_col) == symbol:
-                count += 1
-                start_row += delta_row
-                start_col += delta_col
-            else:
-                break
-        print(f"Final count: {count}")
-        if count >= length:
-            return True
-        else:
-            return False
+    # def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
+    #     count = 0
+    #     for i in range(length):
+    #         print(f"Checking position ({start_row}, {start_col})")
+    #         if 0 <= start_row < self.game.board.m and 0 <= start_col < self.game.board.n and self.game.get_symbol(start_row, start_col) == symbol:
+    #             count += 1
+    #             start_row += delta_row
+    #             start_col += delta_col
+    #         else:
+    #             break
+    #     print(f"Final count: {count}")
+    #     if count >= length:
+    #         return True
+    #     else:
+    #         return False
+    
+    def make_blocking_move(self):
+        for row in range(self.game.board.m):
+           for col in range(self.game.board.n):
+               if self.game.get_symbol(row, col) == self.get_opponent_symbol: 
+                length_opponent = self.calculate_chain_length()
+                if length_opponent == self.game.board.k-1:
+                    return row, col
 
     
 
