@@ -281,7 +281,7 @@ class KomplexeKI(Player):
         chain_lengths = {}
         if empty_positions:
             for position in empty_positions:
-                chain_length = self.calculate_chain_length(position[0], position[1])
+                chain_length = self.calculate_chain_length(position[0], position[1], self.symbol)
                 chain_lengths[chain_length] = position[0], position[1]
         else:
             return None
@@ -306,35 +306,35 @@ class KomplexeKI(Player):
                     if self.game.get_symbol(r, c) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
                         #Prüfen, ob rechts Platz ist
                         if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
-                            lenght_r = self.calculate_chain_length(r, c + 1)                                                  #dann wird row und col des leeren buttons zurück gegeben
+                            lenght_r = self.calculate_chain_length(r, c + 1, self.symbol)                                                  #dann wird row und col des leeren buttons zurück gegeben
                             chainlenght_dict[lenght_r] = (r, c+1)
                         #Prüfen, ob links Platz ist
                         if c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
-                            lenght_l = self.calculate_chain_length(r, c - 1)
+                            lenght_l = self.calculate_chain_length(r, c - 1, self.symbol)
                             chainlenght_dict[lenght_l] = (r, c-1)
                         #Prüfen, ob unten Platz ist
                         if r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
-                            lenght_u = self.calculate_chain_length( r + 1, c)
+                            lenght_u = self.calculate_chain_length( r + 1, c, self.symbol)
                             chainlenght_dict[lenght_u] = (r+1, c)
                         #Prüfen, ob oben Platz ist
                         if r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
-                            lenght_o = self.calculate_chain_length( r - 1, c)
+                            lenght_o = self.calculate_chain_length( r - 1, c, self.symbol)
                             chainlenght_dict[lenght_o] = (r-1, c)
                         #Prüfen, ob diagonal unten rechts Platz ist
                         if r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
-                            lenght_ur = self.calculate_chain_length( r + 1, c + 1)
+                            lenght_ur = self.calculate_chain_length( r + 1, c + 1, self.symbol)
                             chainlenght_dict[lenght_ur] = (r+1, c+1)
                         #Prüfen, ob diagonal oben links Platz ist
                         if r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
-                            lenght_ol = self.calculate_chain_length( r - 1, c - 1)
+                            lenght_ol = self.calculate_chain_length( r - 1, c - 1, self.symbol)
                             chainlenght_dict[lenght_ol] = (r-1, c-1)
                         #Prüfen, ob diagonal unten links Platz ist
                         if r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
-                            lenght_ul = self.calculate_chain_length( r + 1, c - 1)
+                            lenght_ul = self.calculate_chain_length( r + 1, c - 1, self.symbol)
                             chainlenght_dict[lenght_ul] = (r+1, c-1)
                         #Prüfen, ob diagonal oben rechts Platz ist
                         if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
-                            lenght_or = self.calculate_chain_length( r - 1, c + 1)
+                            lenght_or = self.calculate_chain_length( r - 1, c + 1, self.symbol)
                             chainlenght_dict[lenght_or] = (r-1, c+1)
                     # if self.game.get_symbol(r, c) == "":
                     #     length = self.calculate_chain_length(r, c)
