@@ -448,10 +448,6 @@ class KomplexeKI(Player):
             return True
         else:
             return False
-    
-    
-    def opponent_symbol(self):
-        pass
 
     
 
