@@ -237,6 +237,8 @@ class KomplexeKI(Player):
             col = random.randint(0, self.game.board.n - 1)  #col des buttons (für den ersten zug) zufällig festlegen
             self.game.place_symbol(row,col)
     
+    
+    
     def zwichmuehlen_dict(self):
         zwickmuhlen_liste = []
 
@@ -261,6 +263,9 @@ class KomplexeKI(Player):
                 zwickmuhlen_liste.append([(i + x, j - x) for x in range(self.game.board.k)])
 
         return zwickmuhlen_liste
+    
+    
+    
     
     def zwickmühle_bauen(self):
         zwickmuehlen_liste = self.zwichmuehlen_dict()
@@ -287,6 +292,9 @@ class KomplexeKI(Player):
             return best_move                               # gibt best_move wieder
         else:
             return None
+
+
+
 
     def find_strategic_move(self):
             max_length = 0
@@ -342,6 +350,9 @@ class KomplexeKI(Player):
             empty_positions = [(r, c) for r in range(self.game.board.m) for c in range(self.game.board.n) if self.game.get_symbol(r, c) == ""]
             return random.choice(empty_positions)
     
+    
+    
+    
     def calculate_chain_length(self, row, col):
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
                    #     -      |        \       /
@@ -373,14 +384,22 @@ class KomplexeKI(Player):
     
     
     
+    def get_opponent_symbol(self):
+        # Nehmen wir an, es gibt eine Methode im Spiel, die alle Symbole zurückgibt.
+        all_symbols = self.game.get_all_player_symbols()
+        return next((symbol for symbol in all_symbols if symbol != self.symbol), None)
+
+    
+    
     def prevent_opponent_win(self):
+        opponent_symbol = self.get_opponent_symbol()
         for row in range(self.game.board.m):
             for col in range(self.game.board.n):
                 if self.game.get_symbol(row, col) == "":
                     # Überprüfe, ob der Gegner nach diesem Zug gewinnen kann
-                    opponent_symbol =  'o' if self.symbol == 'x' else 'x'
-                    #print(opponent_symbol)
-
+                    #opponent_symbol =  'o' if self.symbol == 'x' else 'x'
+                    print(opponent_symbol)
+              
                     # Horizontale Überprüfung
                     if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k-1):
                         return row, col
@@ -429,7 +448,7 @@ class KomplexeKI(Player):
             return True
         else:
             return False
-        
+    
     
     def opponent_symbol(self):
         pass
@@ -471,7 +490,14 @@ class Game:
         elif self.current_player.is_komplexeki:
             QTimer.singleShot(100, self.current_player.make_komplexeki_move)
         
-        
+           
+     
+    #GIBT ALLE SYMBOLE DER SPIELER ZURÜCK   beliz
+    def get_all_player_symbols(self):
+        symbols = {self.player1.symbol, self.player2.symbol}
+        return symbols       
+           
+             
     #RUFT SYMBOL AUF SPIELFELD AB UM ZU SCHAUEN WELCHES SYMBOL AN DIESER STELLE IST    anne
     def get_symbol(self, row, col):                  
         button = self.board.buttons[row][col]
