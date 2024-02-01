@@ -382,19 +382,19 @@ class KomplexeKI(Player):
                     #print(opponent_symbol)
 
                     # Horizontale Überprüfung
-                    if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k):
+                    if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k-1):
                         return row, col
 
                     # Vertikale Überprüfung
-                    if self.check_line(row, col, 1, 0, opponent_symbol, self.game.board.k):
+                    if self.check_line(row, col, 1, 0, opponent_symbol, self.game.board.k-1):
                         return row, col
 
                     # Diagonale Überprüfung absteigend
-                    if self.check_line(row, col, 1, 1, opponent_symbol, self.game.board.k):
+                    if self.check_line(row, col, 1, 1, opponent_symbol, self.game.board.k-1):
                         return row, col
 
                     # Diagonale Überprüfung aufsteigend
-                    if self.check_line(row, col, -1, 1, opponent_symbol, self.game.board.k):
+                    if self.check_line(row, col, -1, 1, opponent_symbol, self.game.board.k-1):
                         return row, col
         
         # Falls keine Aktion erforderlich ist
