@@ -391,125 +391,46 @@ class KomplexeKI(Player):
 
     
     
-    # def prevent_opponent_win(self):
-    #     opponent_symbol = self.get_opponent_symbol()
-    #     for row in range(self.game.board.m):
-    #         for col in range(self.game.board.n):
-    #             if self.game.get_symbol(row, col) == "":
-    #                 # Überprüfe, ob der Gegner nach diesem Zug gewinnen kann
-    #                 #opponent_symbol =  'o' if self.symbol == 'x' else 'x'
-    #                 print(opponent_symbol)
-              
-    #                 # Horizontale Überprüfung
-    #                 if self.check_line(row, col, 0, 1, opponent_symbol, self.game.board.k-1):
-    #                     return row, col
-
-    #                 # Vertikale Überprüfung
-    #                 if self.check_line(row, col, 1, 0, opponent_symbol, self.game.board.k-1):
-    #                     return row, col
-
-    #                 # Diagonale Überprüfung absteigend
-    #                 if self.check_line(row, col, 1, 1, opponent_symbol, self.game.board.k-1):
-    #                     return row, col
-
-    #                 # Diagonale Überprüfung aufsteigend
-    #                 if self.check_line(row, col, -1, 1, opponent_symbol, self.game.board.k-1):
-    #                     return row, col
-        
-    #     # Falls keine Aktion erforderlich ist
-    #     return None
-
-    # def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
-    #     count = 0
-    #     for i in range(length):
-    #         if 0 <= start_row < self.game.board.m and 0 <= start_col < self.game.board.n and self.game.get_symbol(start_row, start_col) == symbol:
-    #             count += 1
-    #             start_row += delta_row
-    #             start_col += delta_col
-    #         else:
-    #             break
-    #     if count >= length:
-    #         return True
-    #     else:
-    #         return False
     
-    # def check_line(self, start_row, start_col, delta_row, delta_col, symbol, length):
-    #     count = 0
-    #     for i in range(length):
-    #         print(f"Checking position ({start_row}, {start_col})")
-    #         if 0 <= start_row < self.game.board.m and 0 <= start_col < self.game.board.n and self.game.get_symbol(start_row, start_col) == symbol:
-    #             count += 1
-    #             start_row += delta_row
-    #             start_col += delta_col
-    #         else:
-    #             break
-    #     print(f"Final count: {count}")
-    #     if count >= length:
-    #         return True
-    #     else:
-    #         return False
     
     def make_blocking_move(self):
         opponent_symbol = self.get_opponent_symbol()
+        punkt_der_kette = 0, 0
         possible_blocking_moves = []
         direction = ""
-        for row in range(self.game.board.m):
-           for col in range(self.game.board.n):
-                if self.game.get_symbol(row, col) == opponent_symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
-                    if self.calculate_chain_length(row, col, opponent_symbol) >= self.game.board.k - 1:
-                        #Überprüfen welche Richtung es ist
-                        #Prüfen ob rechts kein Platz ist
-                        if col + 1 < self.game.board.n and self.game.get_symbol(row, col + 1) == opponent_symbol:  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
-                            direction = "Waagerecht, rechts"
-                        #Prüfen, ob links kein Platz ist
-                        if col - 1 >= 0 and self.game.get_symbol(row, col - 1) == opponent_symbol:
-                            direction = "Waagerecht, links"
-                        #Prüfen, ob unten kein Platz ist
-                        if row + 1 < self.game.board.m and self.game.get_symbol(row + 1, col) == opponent_symbol:
-                            direction = "Senkrecht, unten"
-                        #Prüfen, ob oben kein Platz ist
-                        if row - 1 >= 0 and self.game.get_symbol(row - 1, col) == opponent_symbol:
-                            direction = "Senkrecht, rechts"
-                        #Prüfen, ob diagonal unten rechts kein Platz ist
-                        if row + 1 < self.game.board.m and col + 1 < self.game.board.n and self.game.get_symbol(row + 1, col + 1) == opponent_symbol:
-                            direction = "Diagonal, rechts unten"
-                        #Prüfen, ob diagonal oben links kein Platz ist
-                        if row - 1 >= 0 and col - 1 >= 0 and self.game.get_symbol(row - 1, col - 1) == opponent_symbol:
-                            direction = "Diagonal, links oben"
-                        #Prüfen, ob diagonal unten links kein Platz ist
-                        if row + 1 < self.game.board.m and col - 1 >= 0 and self.game.get_symbol(row + 1, col - 1) == opponent_symbol:
-                            direction = "Diagonal, links unten"
-                        #Prüfen, ob diagonal oben rechts kein Platz ist
-                        if row - 1 >= 0 and col + 1 < self.game.board.n and self.game.get_symbol(row - 1, col + 1) == opponent_symbol:
-                            direction = "Diagonal, rechts oben"
-                            
-                            
-                        #Prüfen, ob rechts Platz ist
-                        if col + 1 < self.game.board.n and self.game.get_symbol(row, col + 1) == "" and direction == "Waagerecht, rechts":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
-                            return row, col + 1
-                        #Prüfen, ob links Platz ist
-                        if col - 1 >= 0 and self.game.get_symbol(row, col - 1) == "" and direction == "Waagerecht, links":
-                            return row, col - 1
-                        #Prüfen, ob unten Platz ist
-                        if row + 1 < self.game.board.m and self.game.get_symbol(row + 1, col) == ""  and direction == "Senkrecht, rechts":
-                            return row + 1, col
-                        #Prüfen, ob oben Platz ist
-                        if row - 1 >= 0 and self.game.get_symbol(row - 1, col) == "" and direction == "Senkrecht, unten":
-                            return row - 1, col
-                        #Prüfen, ob diagonal unten rechts Platz ist
-                        if row + 1 < self.game.board.m and col + 1 < self.game.board.n and self.game.get_symbol(row + 1, col + 1) == "" and direction == "Diagonal, links unten":
-                            return row + 1, col + 1
-                        #Prüfen, ob diagonal oben links Platz ist
-                        if row - 1 >= 0 and col - 1 >= 0 and self.game.get_symbol(row - 1, col - 1) == "" and direction == "Diagonal, rechts oben":
-                            return row - 1, col - 1
-                        #Prüfen, ob diagonal unten links Platz ist
-                        if row + 1 < self.game.board.m and col - 1 >= 0 and self.game.get_symbol(row + 1, col - 1) == "" and direction == "Diagonal, rechts unten":
-                            return row + 1, col - 1
-                        #Prüfen, ob diagonal oben rechts Platz ist
-                        if row - 1 >= 0 and col + 1 < self.game.board.n and self.game.get_symbol(row - 1, col + 1) == "" and direction == "Diagonal, links oben":
-                            return row - 1, col + 1
-        
-        
+        for i in range(self.game.board.m):
+           for j in range(self.game.board.n):
+                if self.game.get_symbol(i, j) == opponent_symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
+                    if self.calculate_chain_length(i, j, opponent_symbol) >= self.game.board.k - 1:
+                        punkt_der_kette = i, j
+                        break
+                        
+        #Richtung der Kette herausfinden
+        row, col = punkt_der_kette
+        #Prüfen ob rechts kein Platz ist
+        if col + 1 < self.game.board.n and self.game.get_symbol(row, col + 1) == opponent_symbol:  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
+            direction = "Waagerecht, rechts"
+        #Prüfen, ob links kein Platz ist
+        if col - 1 >= 0 and self.game.get_symbol(row, col - 1) == opponent_symbol:
+            direction = "Waagerecht, links"
+        #Prüfen, ob unten kein Platz ist
+            if row + 1 < self.game.board.m and self.game.get_symbol(row + 1, col) == opponent_symbol:
+                direction = "Senkrecht, unten"
+        #Prüfen, ob oben kein Platz ist
+        if row - 1 >= 0 and self.game.get_symbol(row - 1, col) == opponent_symbol:
+            direction = "Senkrecht, rechts"
+        #Prüfen, ob diagonal unten rechts kein Platz ist
+            if row + 1 < self.game.board.m and col + 1 < self.game.board.n and self.game.get_symbol(row + 1, col + 1) == opponent_symbol:
+             direction = "Diagonal, rechts unten"
+        #Prüfen, ob diagonal oben links kein Platz ist
+        if row - 1 >= 0 and col - 1 >= 0 and self.game.get_symbol(row - 1, col - 1) == opponent_symbol:
+            direction = "Diagonal, links oben"
+        #Prüfen, ob diagonal unten links kein Platz ist
+        if row + 1 < self.game.board.m and col - 1 >= 0 and self.game.get_symbol(row + 1, col - 1) == opponent_symbol:
+            direction = "Diagonal, links unten"
+        #Prüfen, ob diagonal oben rechts kein Platz ist
+            if row - 1 >= 0 and col + 1 < self.game.board.n and self.game.get_symbol(row - 1, col + 1) == opponent_symbol:
+              direction = "Diagonal, rechts oben"
         
         return None
     
