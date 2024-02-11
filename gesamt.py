@@ -765,7 +765,7 @@ class Game:
         
   
     
-    #UEBERPRUEFT AUF GLEICHSTAND             beliz
+    #UEBERPRUEFT AUF GLEICHSTAND             beliz, anne
     def is_board_full(self):               
         #schleifen durch das Spielfeld
         for row in range(self.board.m):
@@ -777,12 +777,12 @@ class Game:
         return True                       #brett voll -> unentschieden 
     
     #UEBERPRUEF OB DAS BOARD LEER IST        anne
-    def is_board_empty(self):
-        for row in range(self.board.m):                
-            for col in range(self.board.n):
-                if self.get_symbol(row, col) != "":    #überprüfen ob NICHT leer
-                    return False                       # falls NICHT leer -> False zurückgeben
-        return True
+    # def is_board_empty(self):
+    #     for row in range(self.board.m):                
+    #         for col in range(self.board.n):
+    #             if self.get_symbol(row, col) != "":    #überprüfen ob NICHT leer
+    #                 return False                       # falls NICHT leer -> False zurückgeben
+    #     return True
     
     
     
