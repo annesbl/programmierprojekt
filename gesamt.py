@@ -229,7 +229,7 @@ class KomplexeKI(Player):
         block = self.make_blocking_move()
         # Gewinnenden Zug machen, wenn möglich
         winning_move = self.make_winning_move()
-        if self.game.get_symbol(row, col)== "":
+        if self.game.is_board_empty():
             # Wenn es der erste Zug ist, platziere das Symbol in der Mitte
             if self.game.get_symbol(row,col)== self.get_opponent_symbol():
                 row, col = row+1, col
@@ -269,6 +269,8 @@ class KomplexeKI(Player):
         if differences is not None:
             move = random.choice(differences)
             return move
+        
+    
         
                     
     def get_difference_coordinates(self, zwickmuhle_coords, board_coords):
@@ -682,8 +684,6 @@ class KomplexeKI_Zwickmuehle(Player):
          self.is_komplexeki_zwickmuehle = True
 
     def make_komplexeki_zwickmuehle_move(self):
-        corners = self.get_corners()
-        row, col = random.choice(corners)
         # Überprüfen, ob die KI kurz vor einer Zwickmühle steht
         zwickmuehle =  self.check_possible_zwickmuehle()
         # Den besten Zug finden
@@ -692,7 +692,8 @@ class KomplexeKI_Zwickmuehle(Player):
         block = self.make_blocking_move()
         # Gewinnenden Zug machen, wenn möglich
         winning_move = self.make_winning_move()
-        if self.game.get_symbol(row, col)== "":
+        if self.game.is_board_empty():
+            row, col = self.make_first_move()
             # Wenn es der erste Zug ist, platziere das Symbol in der Mitte
             if self.game.get_symbol(row,col)== self.get_opponent_symbol():
                 row, col = row+1, col
@@ -723,6 +724,14 @@ class KomplexeKI_Zwickmuehle(Player):
     def get_corners(self):
         corners_list = [(0,0), (0, self.game.board.m-1),(self.game.board.n-1, 0),(self.game.board.n-1, self.game.board.m-1)]
         return corners_list
+    
+    def make_first_move(self):
+        corners = self.get_corners()
+        row, col = random.choice(corners)
+        if self.game.get_symbol(row, col)== "":
+            return row, col
+        else:
+            return self.make_first_move()
     
     def check_possible_zwickmuehle(self):
         ki_positions = []
