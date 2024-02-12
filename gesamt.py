@@ -694,9 +694,6 @@ class KomplexeKI_Zwickmuehle(Player):
         winning_move = self.make_winning_move()
         if self.game.is_board_empty():
             row, col = self.make_first_move()
-            # Wenn es der erste Zug ist, platziere das Symbol in der Mitte
-            if self.game.get_symbol(row,col)== self.get_opponent_symbol():
-                row, col = row+1, col
             self.game.place_symbol(row,col)
         elif winning_move is not None:
             # Wenn ein gewinnender Zug möglich ist, mache diesen Zug
@@ -722,7 +719,7 @@ class KomplexeKI_Zwickmuehle(Player):
                     break
                 
     def get_corners(self):
-        corners_list = [(0,0), (0, self.game.board.m-1),(self.game.board.n-1, 0),(self.game.board.n-1, self.game.board.m-1)]
+        corners_list = [(0,0), (self.game.board.m-1, 0),(0, self.game.board.n-1),(self.game.board.m-1, self.game.board.n-1)]
         return corners_list
     
     def make_first_move(self):
@@ -1253,7 +1250,6 @@ class Game:
             for col in range(self.board.n):
                 if self.get_symbol(row, col) != "":    #überprüfen ob NICHT leer
                     counter += 1
-                    return False                     # falls NICHT leer -> False zurückgeben
         
         if counter <= 1:
             return True
@@ -1301,7 +1297,7 @@ if __name__ == "__main__":
     player1 = player_einfacheki2
     player2 = player_komplexeki_zwickmuehle
     
-    play_several_times = False
+    play_several_times = True
     num_games = 100  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
