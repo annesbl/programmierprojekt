@@ -1302,11 +1302,12 @@ if __name__ == "__main__":
     player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_komplexeki_zwickmuehle
+    player1 = player_zufallski
     player2 = player_einfacheki2
     
-    play_several_times = True
-    num_games = 10  # Anzahl der Spiele
+    play_several_times = False
+    play_forever = True
+    num_games = 1000  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
@@ -1349,7 +1350,50 @@ if __name__ == "__main__":
         #Gewinne ausgeben nachdem alle spiele gelaufen sind und die Schleife verlassen wurde
         print(wins)
 
+    elif play_forever:
+        list_player1 = [player_zufallski, player_einfacheki, player_komplexeki, player_komplexeki_zwickmuehle]
+        list_player2 = [player_zufallski2, player_einfacheki2, player_komplexeki2, player_komplexeki_zwickmuehle2]
+        
+        
 
+        while True:
+            player1f = None
+            player2f = None
+            wins = {"Unentschieden": 0}  # Initialize wins dictionary
+            player1f = random.choice(list_player1)
+            player2f = random.choice(list_player2)
+            for i in range(1):
+                
+                
+                wins[player1f.name] = 0
+                wins[player2f.name] = 0
+                
+                for e in range(1000):
+                    game = Game(5, 5, 4, player1f, player2f)
+                    player_zufallski.game = game
+                    player_zufallski2.game = game
+                    player_einfacheki.game = game
+                    player_einfacheki2.game = game
+                    player_komplexeki.game = game
+                    player_komplexeki2.game = game
+                    player_komplexeki_zwickmuehle.game = game
+                    player_komplexeki_zwickmuehle2.game = game
+                    winner = play_game(game)
+                    
+
+                    if winner == player1f.symbol:
+                        wins[player1f.name] += 1  # Update wins for player1f
+                    elif winner == player2f.symbol:
+                        wins[player2f.name] += 1  # Update wins for player2f
+                    elif winner is None:
+                        wins["Unentschieden"] += 1
+
+                    time.sleep(0.15)
+
+            print(wins)
+
+                
+            
             
     else:                           #ein einziges Spiel
         #game klasse aufrufen und m,n,k wählen
