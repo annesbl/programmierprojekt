@@ -109,8 +109,9 @@ class EinfacheKI(Player):
         
     def make_einfacheki_move(self):
         if self.game.is_board_empty():                                 #falls es der erste move ist ist first_move = True gesetzt
-            row = random.randint(0, self.game.board.m - 1)  #row des buttons (für den ersten zug) zufällig festlegen
-            col = random.randint(0, self.game.board.n - 1)  #col des buttons (für den ersten zug) zufällig festlegen
+            row, col = self.make_first_move()
+            
+            #col des buttons (für den ersten zug) zufällig festlegen
             #self.game.place_symbol(row,col)        
             #self.first_move = False                         #wird auf False gesetzt, nachdem der first move gemacht worden ist
         else:                                               #falls es nicht der erste zug der KI ist:
@@ -127,7 +128,14 @@ class EinfacheKI(Player):
         # elif self.game.is_board_full():
         #     print("Unentschieden!")
         #     self.game.board.close()
-    
+    def make_first_move(self):
+        row = random.randint(0, self.game.board.m - 1)  
+        col = random.randint(0, self.game.board.n - 1) 
+        if self.game.get_symbol(row, col)== "":
+            return row, col
+        else:
+            return self.make_first_move()
+            
     def find_strategic_move(self):
         max_length = 0
         best_move = None
@@ -1298,7 +1306,7 @@ if __name__ == "__main__":
     player2 = player_einfacheki2
     
     play_several_times = True
-    num_games = 100  # Anzahl der Spiele
+    num_games = 10  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
