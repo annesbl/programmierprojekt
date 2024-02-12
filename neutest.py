@@ -104,15 +104,15 @@ class EinfacheKI(Player):
         super().__init__(name, symbol)
         self.game = game
         self.is_einfacheki = True
-        self.first_move = True  # Initialize the first_move flag
+        #self.first_move = True  # Initialize the first_move flag
         
         
     def make_einfacheki_move(self):
-        if self.first_move:                                 #falls es der erste move ist ist first_move = True gesetzt
+        if self.game.is_board_empty():                                 #falls es der erste move ist ist first_move = True gesetzt
             row = random.randint(0, self.game.board.m - 1)  #row des buttons (für den ersten zug) zufällig festlegen
             col = random.randint(0, self.game.board.n - 1)  #col des buttons (für den ersten zug) zufällig festlegen
             #self.game.place_symbol(row,col)        
-            self.first_move = False                         #wird auf False gesetzt, nachdem der first move gemacht worden ist
+            #self.first_move = False                         #wird auf False gesetzt, nachdem der first move gemacht worden ist
         else:                                               #falls es nicht der erste zug der KI ist:
             row, col = self.find_strategic_move()           #find_strategic_move findet ein leeren Button und gibt diesen zurück -> wird in row, col gespeichert
 
@@ -1227,14 +1227,23 @@ class Game:
                     return False          #brett nicht voll
         return True                       #brett voll -> unentschieden 
     
-    #UEBERPRUEF OB DAS BOARD LEER IST        anne
-    # def is_board_empty(self):
-    #     for row in range(self.board.m):                
-    #         for col in range(self.board.n):
-    #             if self.get_symbol(row, col) != "":    #überprüfen ob NICHT leer
-    #                 return False                       # falls NICHT leer -> False zurückgeben
-    #     return True
+   
+                
     
+    #UEBERPRUEF OB DAS BOARD LEER IST        anne
+    def is_board_empty(self):
+        counter = 0
+        for row in range(self.board.m):                
+            for col in range(self.board.n):
+                if self.get_symbol(row, col) != "":    #überprüfen ob NICHT leer
+                    counter += 1
+                    return False                     # falls NICHT leer -> False zurückgeben
+        
+        if counter <= 1:
+            return True
+        else:
+            return False
+            
     
     
     
@@ -1273,11 +1282,10 @@ if __name__ == "__main__":
     player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_komplexeki
-    player2 = player_einfacheki
-    
-    play_several_times = False
-    num_games = 100  # Anzahl der Spiele
+    player1 = player_einfacheki
+    player2 = player_komplexeki2
+    play_several_times = True
+    num_games = 10  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
