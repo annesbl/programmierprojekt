@@ -1273,7 +1273,7 @@ if __name__ == "__main__":
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
     player1 = player_mensch
-    player2 = player_komplexeki_zwickmuehle
+    player2 = player_komplexeki
     
     play_several_times = False
     num_games = 100  # Anzahl der Spiele
