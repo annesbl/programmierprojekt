@@ -682,7 +682,8 @@ class KomplexeKI_Zwickmuehle(Player):
          self.is_komplexeki_zwickmuehle = True
 
     def make_komplexeki_zwickmuehle_move(self):
-        row, col = random.choice(self.get_corners)
+        corners = self.get_corners()
+        row, col = random.choice(corners)
         # Überprüfen, ob die KI kurz vor einer Zwickmühle steht
         zwickmuehle =  self.check_possible_zwickmuehle()
         # Den besten Zug finden
@@ -720,7 +721,7 @@ class KomplexeKI_Zwickmuehle(Player):
                     break
                 
     def get_corners(self):
-        corners_list = [(0,0), (0, self.game.board.m-1)(self.game.board.n-1, 0)(self.game.board.n-1, self.game.board.m-1)]
+        corners_list = [(0,0), (0, self.game.board.m-1),(self.game.board.n-1, 0),(self.game.board.n-1, self.game.board.m-1)]
         return corners_list
     
     def check_possible_zwickmuehle(self):
@@ -1276,7 +1277,7 @@ if __name__ == "__main__":
     player_einfacheki = EinfacheKI("Einfache KI", "o", None)
     player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
     player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
-    player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
+    player_komplexeki2 = KomplexeKI("Komplexe KI 2", "x", None)
     player_komplexeki_zwickmuehle = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle", "o", None)
     player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
