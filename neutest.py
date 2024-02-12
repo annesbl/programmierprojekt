@@ -1304,11 +1304,14 @@ if __name__ == "__main__":
 
             #gewinne zählen  - jede runde wird ein gewinner draufaddiert
             if winner == player1.symbol:
-                wins[player1.name] += 1       # +1 wenn player 1 gewinnt
+                wins[player1.name] += 1 
+                print(f"Spieler {player1.name} hat gewonnen!")# +1 wenn player 1 gewinnt
             elif winner == player2.symbol:
-                wins[player2.name] += 1       # +1 wenn player 2 gewinnt
+                wins[player2.name] += 1  
+                print(f"Spieler {player2.name} hat gewonnen!")# +1 wenn player 2 gewinnt
             elif winner is None:
-                wins["Unentschieden"] += 1    # +1 wenn unendschieden 
+                wins["Unentschieden"] += 1
+                print("Unentschieden!")# +1 wenn unendschieden 
 
             #Pause
             time.sleep(0.15)
@@ -1334,6 +1337,15 @@ if __name__ == "__main__":
         player_komplexeki_zwickmuehle2.game = game #komplexeki_zwichmuehle
         
         #Spiel starten
-        play_game(game)
+        #play_game(game)
+        winner = play_game(game)
+
+        if winner == player1.symbol:
+            print(f"Spieler {player1.name} hat gewonnen!")
+        elif winner == player2.symbol:
+            print(f"Spieler {player2.name} hat gewonnen!")
+        elif winner is None:
+            print("Unentschieden!")
+
         
 
