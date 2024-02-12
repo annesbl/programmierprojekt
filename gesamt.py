@@ -1285,7 +1285,7 @@ if __name__ == "__main__":
     player1 = player_komplexeki2
     player2 = player_komplexeki_zwickmuehle
     
-    play_several_times = True
+    play_several_times = False
     num_games = 100  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
@@ -1314,10 +1314,13 @@ if __name__ == "__main__":
             #gewinne zählen  - jede runde wird ein gewinner draufaddiert
             if winner == player1.symbol:
                 wins[player1.name] += 1       # +1 wenn player 1 gewinnt
+                #print(f"Spieler {player1.name} hat gewonnen!")
             elif winner == player2.symbol:
                 wins[player2.name] += 1       # +1 wenn player 2 gewinnt
+                #print(f"Spieler {player2.name} hat gewonnen!")
             elif winner is None:
                 wins["Unentschieden"] += 1    # +1 wenn unendschieden 
+                #print("Unentschieden!")
 
             #Pause
             time.sleep(0.15)
@@ -1343,6 +1346,14 @@ if __name__ == "__main__":
         player_komplexeki_zwickmuehle2.game = game #komplexeki_zwichmuehle
         
         #Spiel starten
-        play_game(game)
+        #play_game(game)
+        winner = play_game(game)
+
+        if winner == player1.symbol:
+            print(f"Spieler {player1.name} hat gewonnen!")
+        elif winner == player2.symbol:
+            print(f"Spieler {player2.name} hat gewonnen!")
+        elif winner is None:
+            print("Unentschieden!")
         
 
