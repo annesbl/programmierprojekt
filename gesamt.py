@@ -75,6 +75,7 @@ class Player:                                  #jule
         self.is_zufallski = False       
         self.is_einfacheki = False
         self.is_komplexeki = False
+        self.is_komplexeki_zwickmuehle = False
         
         
         
@@ -1158,7 +1159,7 @@ class Game:
                 elif self.current_player.is_komplexeki:
                     QTimer.singleShot(100, self.current_player.make_komplexeki_move)
                 #komplexe KI Zwickmühle
-                elif self.current_player.iskomplexeki_zwickmuehle:
+                elif self.current_player.is_komplexeki_zwickmuehle:
                     QTimer.singleShot(100, self.current_player.make_komplexeki_zwickmuehle_move)
             
             
@@ -1271,10 +1272,10 @@ if __name__ == "__main__":
     player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_komplexeki_zwickmuehle2
-    player2 = player_komplexeki
+    player1 = player_mensch
+    player2 = player_komplexeki_zwickmuehle
     
-    play_several_times = True
+    play_several_times = False
     num_games = 100  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
