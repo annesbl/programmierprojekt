@@ -682,7 +682,7 @@ class KomplexeKI_Zwickmuehle(Player):
          self.is_komplexeki_zwickmuehle = True
 
     def make_komplexeki_zwickmuehle_move(self):
-        row, col = self.get_center()
+        row, col = random.choice(self.get_corners)
         # Überprüfen, ob die KI kurz vor einer Zwickmühle steht
         zwickmuehle =  self.check_possible_zwickmuehle()
         # Den besten Zug finden
@@ -691,7 +691,12 @@ class KomplexeKI_Zwickmuehle(Player):
         block = self.make_blocking_move()
         # Gewinnenden Zug machen, wenn möglich
         winning_move = self.make_winning_move()
-        if winning_move is not None:
+        if self.game.get_symbol(row, col)== "":
+            # Wenn es der erste Zug ist, platziere das Symbol in der Mitte
+            if self.game.get_symbol(row,col)== self.get_opponent_symbol():
+                row, col = row+1, col
+            self.game.place_symbol(row,col)
+        elif winning_move is not None:
             # Wenn ein gewinnender Zug möglich ist, mache diesen Zug
             row, col = winning_move
             self.game.place_symbol(row, col)
@@ -713,6 +718,10 @@ class KomplexeKI_Zwickmuehle(Player):
                 if self.game.get_symbol(row, col) == "":
                     self.game.place_symbol(row, col)
                     break
+                
+    def get_corners(self):
+        corners_list = [(0,0), (0, self.game.board.m-1)(self.game.board.n-1, 0)(self.game.board.n-1, self.game.board.m-1)]
+        return corners_list
     
     def check_possible_zwickmuehle(self):
         ki_positions = []
@@ -1272,10 +1281,10 @@ if __name__ == "__main__":
     player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_mensch
+    player1 = player_komplexeki2
     player2 = player_komplexeki_zwickmuehle
     
-    play_several_times = False
+    play_several_times = True
     num_games = 100  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
