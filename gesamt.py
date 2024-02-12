@@ -1293,7 +1293,7 @@ if __name__ == "__main__":
 
 
     if play_several_times:                                           #mehrere male durchlaufen --> für Data Science Fragen
-        for _ in range(num_games):                                   #für jedes game einmal die Schleife durchlaufen
+        for _ in range(num_games):                                   #für jedes game einmal die Schleife durchlaufen,a
             
             #game klasse aufrufen und m,n,k,player1,player2 wählen
             game = Game(5, 5, 4, player1, player2)
