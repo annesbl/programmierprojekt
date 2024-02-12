@@ -1298,7 +1298,7 @@ if __name__ == "__main__":
     player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_komplexeki2
+    player1 = player_einfacheki2
     player2 = player_komplexeki_zwickmuehle
     
     play_several_times = False
