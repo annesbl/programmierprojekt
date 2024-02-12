@@ -219,9 +219,9 @@ class KomplexeKI(Player):
          self.is_komplexeki = True
 
     def make_komplexeki_move(self):
-        row, col = self.berechne_mitte()
+        row, col = self.get_center()
         # Überprüfen, ob die KI kurz vor einer Zwickmühle steht
-        zwickmuehle =  self.kurz_vor_zwickmuehle()
+        zwickmuehle =  self.check_possible_zwickmuehle()
         # Den besten Zug finden
         best_move = self.find_move()
         # Blockierenden Zug machen, um den Gegner zu stoppen
@@ -256,15 +256,15 @@ class KomplexeKI(Player):
                     self.game.place_symbol(row, col)
                     break
     
-    def kurz_vor_zwickmuehle(self):
-        ki_positionen = []
-        zwickmuehle_liste = self.zwichmuehlen_liste()
+    def check_possible_zwickmuehle(self):
+        ki_positions = []
+        zwickmuehle_list = self.zwichmuehle_list()
         for i in range(self.game.board.m):
             for j in range(self.game.board.n):
                 if self.game.get_symbol(i, j) == self.symbol:
-                    ki_positionen.append((i,j))
+                    ki_positions.append((i,j))
                     
-        differences = self.get_difference_coordinates(zwickmuehle_liste, ki_positionen)
+        differences = self.get_difference_coordinates(zwickmuehle_list, ki_positions)
         if differences is not None:
             move = random.choice(differences)
             return move
@@ -282,7 +282,7 @@ class KomplexeKI(Player):
 
 
     
-    def zwichmuehlen_liste(self):
+    def zwichmuehle_list(self):
         zwickmuhlen_liste = []
 
         # Überprüfe horizontale Zwickmühlen
@@ -310,9 +310,9 @@ class KomplexeKI(Player):
     
     
     
-    def zwickmühle_bauen(self):
-         zwickmuehlen_liste = self.zwichmuehlen_liste()
-         for zwickmuehle in zwickmuehlen_liste:
+    def build_zwickmuehle(self):
+         zwickmuehlen_list = self.zwichmuehle_list()
+         for zwickmuehle in zwickmuehlen_list:
              count = 0
              empty_positions = []
             
@@ -337,7 +337,6 @@ class KomplexeKI(Player):
              return None
          
     def find_move(self):
-        max_length = 0
         best_move = None
         chainlenght_dict = {}
         #es wird nur Ort des leeren Buttons zruück gegeben, jedoch noch kein symbol plaziert
@@ -346,35 +345,35 @@ class KomplexeKI(Player):
                 if self.game.get_symbol(r, c) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
                     #Prüfen, ob rechts Platz ist
                     if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
-                        lenght_r = self.calculate_chain_length2(r, c + 1)                                                  #dann wird row und col des leeren buttons zurück gegeben
+                        lenght_r = self.calculate_regular_chain_length(r, c + 1)                                                  #dann wird row und col des leeren buttons zurück gegeben
                         chainlenght_dict[lenght_r] = (r, c+1)
                     #Prüfen, ob links Platz ist
                     if c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
-                        lenght_l = self.calculate_chain_length2(r, c - 1)
+                        lenght_l = self.calculate_regular_chain_length(r, c - 1)
                         chainlenght_dict[lenght_l] = (r, c-1)
                     #Prüfen, ob unten Platz ist
                     if r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
-                        lenght_u = self.calculate_chain_length2( r + 1, c)
+                        lenght_u = self.calculate_regular_chain_length( r + 1, c)
                         chainlenght_dict[lenght_u] = (r+1, c)
                     #Prüfen, ob oben Platz ist
                     if r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
-                        lenght_o = self.calculate_chain_length2( r - 1, c)
+                        lenght_o = self.calculate_regular_chain_length( r - 1, c)
                         chainlenght_dict[lenght_o] = (r-1, c)
                     #Prüfen, ob diagonal unten rechts Platz ist
                     if r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
-                        lenght_ur = self.calculate_chain_length2( r + 1, c + 1)
+                        lenght_ur = self.calculate_regular_chain_length( r + 1, c + 1)
                         chainlenght_dict[lenght_ur] = (r+1, c+1)
                     #Prüfen, ob diagonal oben links Platz ist
                     if r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
-                        lenght_ol = self.calculate_chain_length2( r - 1, c - 1)
+                        lenght_ol = self.calculate_regular_chain_length( r - 1, c - 1)
                         chainlenght_dict[lenght_ol] = (r-1, c-1)
                     #Prüfen, ob diagonal unten links Platz ist
                     if r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
-                        lenght_ul = self.calculate_chain_length2( r + 1, c - 1)
+                        lenght_ul = self.calculate_regular_chain_length( r + 1, c - 1)
                         chainlenght_dict[lenght_ul] = (r+1, c-1)
                     #Prüfen, ob diagonal oben rechts Platz ist
                     if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
-                        lenght_or = self.calculate_chain_length2( r - 1, c + 1)
+                        lenght_or = self.calculate_regular_chain_length( r - 1, c + 1)
                         chainlenght_dict[lenght_or] = (r-1, c+1)
                 # if self.game.get_symbol(r, c) == "":
                 #     length = self.calculate_chain_length(r, c)
@@ -387,7 +386,7 @@ class KomplexeKI(Player):
             return best_move                               # gibt best_move wieder
         
         
-    def calculate_chain_length2(self, row, col):
+    def calculate_regular_chain_length(self, row, col):
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
                    #     -      |        \       /
         max_length = 1
@@ -420,9 +419,9 @@ class KomplexeKI(Player):
             for i in range(self.game.board.m):
                 for j in range(self.game.board.n):
                         if self.game.get_symbol(i, j) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
-                            chain = self.calculate_chain_length(i, j, self.symbol)
+                            chain = self.calculate_complex_chain_length(i, j, self.symbol)
                             if chain is not None and len(chain) >= self.game.board.k - 1:
-                                direction = self.richtung_herausfinden(i, j, self.symbol, chain)
+                                direction = self.find_direction(i, j, self.symbol, chain)
                                 move = self.find_empty_spot(chain, direction)
                                 if move is not None:
                                     return move
@@ -430,7 +429,7 @@ class KomplexeKI(Player):
                                     return None 
 
 
-    def berechne_mitte(self):
+    def get_center(self):
     # Berechnet die Mitte der Spalten und Zeilen
         mitte_spalten = int((self.game.board.n - 1) / 2) if self.game.board.n % 2 == 1 else int(self.game.board.n / 2)
         mitte_zeilen = int((self.game.board.m - 1) / 2) if self.game.board.m % 2 == 1 else int(self.game.board.m / 2)
@@ -444,7 +443,7 @@ class KomplexeKI(Player):
     
     
     
-    def calculate_chain_length(self, row, col, symbol):
+    def calculate_complex_chain_length(self, row, col, symbol):
         directions = [(0, 1), (1, 0), (1, 1), (-1, +1)]
         max_length = []
 
@@ -488,10 +487,10 @@ class KomplexeKI(Player):
             for i in range(self.game.board.m):
                 for j in range(self.game.board.n):
                         if self.game.get_symbol(i, j) == opponent_symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
-                            chain = self.calculate_chain_length(i, j, opponent_symbol) 
+                            chain = self.calculate_complex_chain_length(i, j, opponent_symbol) 
                             if chain is not None and len(chain)>= self.game.board.k - 1:
-                                direction = self.richtung_herausfinden(i, j, opponent_symbol, chain)
-                                already_blocked = self.bereits_geblockt(chain, direction)
+                                direction = self.find_direction(i, j, opponent_symbol, chain)
+                                already_blocked = self.already_blocked(chain, direction)
                                 if already_blocked: 
                                     pass
                                 else:
@@ -510,7 +509,7 @@ class KomplexeKI(Player):
             
         
         
-    def richtung_herausfinden(self, row, col, symbol, coordinates_list):
+    def find_direction(self, row, col, symbol, coordinates_list):
     # Richtung der Kette herausfinden
     # Prüfen, ob rechts das Symbol in der Liste ist
         if col + 1 < self.game.board.n and (row, col + 1) in coordinates_list and self.game.get_symbol(row, col + 1) == symbol:
@@ -539,73 +538,6 @@ class KomplexeKI(Player):
         else:
             return None
 
-    def finde_koordinaten_in_richtung(self, punkt, direction, symbol):
-        gefundenen_koordinaten = []
-        row, col = punkt 
-        counter = 1
-        
-        if direction == "Waagerecht, rechts" or direction == "Waagerecht, links":
-            for i in range(self.game.board.n):
-                if self.game.get_symbol(row, i) == symbol:
-                    gefundenen_koordinaten.append((row, i))
-        elif direction == "Senkrecht, unten" or direction == "Senkrecht, oben":
-            for i in range(self.game.board.m):
-                if self.game.get_symbol(i, col) == symbol:
-                    gefundenen_koordinaten.append((i, col))
-        elif direction == "Diagonal, links oben":
-            i = row
-            j = col 
-            while True:
-                try: 
-                    self.game.get_symbol(i, j)
-                except:
-                    break
-                else:
-                    if self.game.get_symbol(i, j)== symbol:
-                        gefundenen_koordinaten.append((i, j))
-                    i += 1
-                    j += 1
-        elif direction == "Diagonal, rechts unten":
-            i = row
-            j = col 
-            while True:
-                try: 
-                    self.game.get_symbol(i, j)
-                except:
-                    break
-                else:
-                    if self.game.get_symbol(i, j)== symbol:
-                        gefundenen_koordinaten.append((i, j))
-                    i -= 1
-                    j -= 1
-        elif direction == "Diagonal, links unten":
-            i = row
-            j = col
-            while True:
-                try: 
-                    self.game.get_symbol(i, j)
-                except:
-                    break
-                else:
-                    if self.game.get_symbol(i, j)== symbol:
-                        gefundenen_koordinaten.append((i, j))
-                    i -= 1
-                    j += 1
-        elif direction == "Diagonal, rechts oben":
-            i = row
-            j = col
-            while True:
-                try: 
-                    self.game.get_symbol(i, j)
-                except:
-                    break
-                else:
-                    if self.game.get_symbol(i, j)== symbol:
-                        gefundenen_koordinaten.append((i, j))
-                    i += 1
-                    j -= 1                  
-        print(gefundenen_koordinaten)
-        return gefundenen_koordinaten
 
     
     def find_empty_spot(self, list, direction):
@@ -679,7 +611,7 @@ class KomplexeKI(Player):
         else:
             return None
                 
-    def bereits_geblockt(self, list, direction):
+    def already_blocked(self, list, direction):
         #bei waagerechter Kette. die alle in einer Reihe sind
         consecutive = self.are_coordinates_consecutive(list)
         #if (summe_rows_plus1 - summe_rows) == self.game.board.k-1:#and direction == "Waagerecht, rechts" or direction == "Waagerecht, links":
@@ -742,7 +674,412 @@ class KomplexeKI(Player):
        
         
     
+class KomplexeKI_Zwickmuehle(Player):
+    def __init__(self, name, symbol, game):
+         super().__init__(name, symbol)
+         self.game = game           #Übergeben des 'self'-Objekts an die display-Methode
+         self.is_komplexeki_zwickmuehle = True
 
+    def make_komplexeki_zwickmuehle_move(self):
+        row, col = self.get_center()
+        # Überprüfen, ob die KI kurz vor einer Zwickmühle steht
+        zwickmuehle =  self.check_possible_zwickmuehle()
+        # Den besten Zug finden
+        best_move = self.build_zwickmuehle()
+        # Blockierenden Zug machen, um den Gegner zu stoppen
+        block = self.make_blocking_move()
+        # Gewinnenden Zug machen, wenn möglich
+        winning_move = self.make_winning_move()
+        if winning_move is not None:
+            # Wenn ein gewinnender Zug möglich ist, mache diesen Zug
+            row, col = winning_move
+            self.game.place_symbol(row, col)
+        elif block is not None:
+            # Wenn ein blockierender Zug möglich ist, blockiere den Gegner
+            row, col = block
+            self.game.place_symbol(row, col)
+
+        elif zwickmuehle is not None:
+              row,col = zwickmuehle
+              self.game.place_symbol(row, col) 
+        elif best_move is not None:
+            row, col = best_move
+            self.game.place_symbol(row,col)
+        else:
+             while True:
+                row = random.randint(0, self.game.board.m - 1)
+                col = random.randint(0, self.game.board.n - 1)
+                if self.game.get_symbol(row, col) == "":
+                    self.game.place_symbol(row, col)
+                    break
+    
+    def check_possible_zwickmuehle(self):
+        ki_positions = []
+        zwickmuehle_list = self.zwichmuehle_list()
+        for i in range(self.game.board.m):
+            for j in range(self.game.board.n):
+                if self.game.get_symbol(i, j) == self.symbol:
+                    ki_positions.append((i,j))
+                    
+        differences = self.get_difference_coordinates(zwickmuehle_list, ki_positions)
+        if differences is not None:
+            move = random.choice(differences)
+            return move
+        
+                    
+    def get_difference_coordinates(self, zwickmuhle_coords, board_coords):
+        differences = [coord for coord in zwickmuhle_coords if coord not in board_coords]
+        if differences is not None:
+            if len(differences) <= 3:
+                return differences
+        else:
+            return None
+        
+
+
+
+    
+    def zwichmuehle_list(self):
+        zwickmuhlen_liste = []
+
+        # Überprüfe horizontale Zwickmühlen
+        for i in range(self.game.board.m):
+            for j in range(self.game.board.n - self.game.board.k + 1):
+                zwickmuhlen_liste.append([(i, j + x) for x in range(self.game.board.k)])
+
+        # Überprüfe vertikale Zwickmühlen
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.n):
+                zwickmuhlen_liste.append([(i + x, j) for x in range(self.game.board.k)])
+
+        # Überprüfe diagonale Zwickmühlen von links oben nach rechts unten
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.n - self.game.board.k + 1):
+                zwickmuhlen_liste.append([(i + x, j + x) for x in range(self.game.board.k)])
+
+        # Überprüfe diagonale Zwickmühlen von links unten nach rechts oben
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.k - 1, self.game.board.n):
+                zwickmuhlen_liste.append([(i + x, j - x) for x in range(self.game.board.k)])
+
+        return zwickmuhlen_liste
+    
+    
+    
+    
+    def build_zwickmuehle(self):
+         zwickmuehlen_list = self.zwichmuehle_list()
+         for zwickmuehle in zwickmuehlen_list:
+             count = 0
+             empty_positions = []
+            
+             for position in zwickmuehle:
+                if self.game.get_symbol(position[0], position[1]) == self.symbol:
+                     count += 1
+                elif self.game.get_symbol(position[0], position[1]) == "":
+                     empty_positions.append(position)
+         chain_lengths = {}
+         if empty_positions:
+             for position in empty_positions:
+                 chain_length = self.calculate_regular_chain_length(position[0], position[1], self.symbol)
+                 chain_lengths[chain_length] = position[0], position[1]
+         else:
+             return None
+            
+         if chain_lengths:                               # geht das dictionary durch
+             best_length = max(chain_lengths)            # speichert die maximale länge als best_lenght
+             best_move = chain_lengths[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
+             return best_move                               # gibt best_move wieder
+         else:
+             return None
+         
+    
+        
+        
+    def calculate_regular_chain_length(self, row, col):
+        directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
+                   #     -      |        \       /
+        max_length = 1
+
+        for dr, dc in directions:                       #durchgehen der directions
+            length = 1                                  #1, weil das aktuelle Feld/Startpunkt (dr,dc) als erstes Element der Kette gezählt wird.
+            for i in range(1, self.game.board.k):       #prüft ob k gleiche symbole in eineer reihe sind
+                r, c = row + i * dr, col + i * dc       #prüft die Symbole in der aktuellen Richtung, beginnend beim Startpunkt und bewegt sich in positiver Richtung (berechnung der nächstn Position)
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol: #falls das Symbol an der berechneten Position gleich dem Symbol der KI ist...
+                    length += 1                         #...wird die länge der kette um 1 erhöht
+                else:
+                    break                                #Schleife bricht ab, sobald ein anderes Symbol oder das Ende von Board erreicht wird
+
+            for i in range(1, self.game.board.k):
+                r, c = row - i * dr, col - i * dc       #prüft die Symbole in der entgegengesetzten Richtung und bewegt sich in negative Richtung (berechnung der nächstn Position)
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
+                    length += 1
+                else:
+                    break
+
+            if length >= self.game.board.k:    #überptüft ob Kette grösser gleich k ist
+                return length                  #wenn ja dann kette zurück geben
+
+            if length > max_length:            #überprüft ob die aktuelle Kette länger ist als die bisherige längste Kette
+                max_length = length            #wenn ja, dann aktuelle Kette aktualisieruen   
+
+        return max_length            #längste gefundene Kette wird zurück gegeben
+        
+    def make_winning_move(self):
+            for i in range(self.game.board.m):
+                for j in range(self.game.board.n):
+                        if self.game.get_symbol(i, j) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
+                            chain = self.calculate_complex_chain_length(i, j, self.symbol)
+                            if chain is not None and len(chain) >= self.game.board.k - 1:
+                                direction = self.find_direction(i, j, self.symbol, chain)
+                                move = self.find_empty_spot(chain, direction)
+                                if move is not None:
+                                    return move
+                                else:
+                                    return None 
+
+
+    def get_center(self):
+    # Berechnet die Mitte der Spalten und Zeilen
+        mitte_spalten = int((self.game.board.n - 1) / 2) if self.game.board.n % 2 == 1 else int(self.game.board.n / 2)
+        mitte_zeilen = int((self.game.board.m - 1) / 2) if self.game.board.m % 2 == 1 else int(self.game.board.m / 2)
+        
+        move = mitte_zeilen, mitte_spalten
+        return move
+
+
+
+    
+    
+    
+    
+    def calculate_complex_chain_length(self, row, col, symbol):
+        directions = [(0, 1), (1, 0), (1, 1), (-1, +1)]
+        max_length = []
+
+        for dr, dc in directions:
+            chain_coordinates = []
+
+            # Check in positive direction
+            r, c = row, col
+            while 0 <= r < self.game.board.m and 0 <= c < self.game.board.n:
+                if self.game.get_symbol(r, c) == symbol:
+                    chain_coordinates.append((r, c))
+                r, c = r + dr, c + dc
+                
+
+            if len(chain_coordinates) >= self.game.board.k-1:
+                return chain_coordinates
+            if len(chain_coordinates) > len(max_length):            #überprüft ob die aktuelle Kette länger ist als die bisherige längste Kette
+                max_length = chain_coordinates           #wenn ja, dann aktuelle Kette aktualisieruen   
+
+        return max_length     
+
+        
+
+    
+    
+    
+    def get_opponent_symbol(self):
+        # Nehmen wir an, es gibt eine Methode im Spiel, die alle Symbole zurückgibt.
+        all_symbols = self.game.get_all_player_symbols()
+        return next((symbol for symbol in all_symbols if symbol != self.symbol), None)
+
+    
+    
+    
+    
+    
+    
+                    
+    def make_blocking_move(self):
+            opponent_symbol = self.get_opponent_symbol()
+            for i in range(self.game.board.m):
+                for j in range(self.game.board.n):
+                        if self.game.get_symbol(i, j) == opponent_symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
+                            chain = self.calculate_complex_chain_length(i, j, opponent_symbol) 
+                            if chain is not None and len(chain)>= self.game.board.k - 1:
+                                direction = self.find_direction(i, j, opponent_symbol, chain)
+                                already_blocked = self.already_blocked(chain, direction)
+                                if already_blocked: 
+                                    pass
+                                else:
+                                    move = self.find_empty_spot(chain, direction)
+                                    if move is not None:
+                                        return move
+                                    else:
+                                        return None 
+                                
+                            
+
+                            
+           
+            
+            
+            
+        
+        
+    def find_direction(self, row, col, symbol, coordinates_list):
+    # Richtung der Kette herausfinden
+    # Prüfen, ob rechts das Symbol in der Liste ist
+        if col + 1 < self.game.board.n and (row, col + 1) in coordinates_list and self.game.get_symbol(row, col + 1) == symbol:
+            return "Waagerecht, rechts"
+        # Prüfen, ob links das Symbol in der Liste ist
+        elif col - 1 >= 0 and (row, col - 1) in coordinates_list and self.game.get_symbol(row, col - 1) == symbol:
+            return "Waagerecht, links"
+        # Prüfen, ob unten das Symbol in der Liste ist
+        elif row + 1 < self.game.board.m and (row + 1, col) in coordinates_list and self.game.get_symbol(row + 1, col) == symbol:
+            return "Senkrecht, unten"
+        # Prüfen, ob oben das Symbol in der Liste ist
+        elif row - 1 >= 0 and (row - 1, col) in coordinates_list and self.game.get_symbol(row - 1, col) == symbol:
+            return "Senkrecht, oben"
+        # Prüfen, ob diagonal unten rechts das Symbol in der Liste ist
+        elif row + 1 < self.game.board.m and col + 1 < self.game.board.n and (row + 1, col + 1) in coordinates_list and self.game.get_symbol(row + 1, col + 1) == symbol:
+            return "Diagonal, rechts unten"
+        # Prüfen, ob diagonal oben links das Symbol in der Liste ist
+        elif row - 1 >= 0 and col - 1 >= 0 and (row - 1, col - 1) in coordinates_list and self.game.get_symbol(row - 1, col - 1) == symbol:
+            return "Diagonal, links oben"
+        # Prüfen, ob diagonal unten links das Symbol in der Liste ist
+        elif row + 1 < self.game.board.m and col - 1 >= 0 and (row + 1, col - 1) in coordinates_list and self.game.get_symbol(row + 1, col - 1) == symbol:
+            return "Diagonal, links unten"
+        # Prüfen, ob diagonal oben rechts das Symbol in der Liste ist
+        elif row - 1 >= 0 and col + 1 < self.game.board.n and (row - 1, col + 1) in coordinates_list and self.game.get_symbol(row - 1, col + 1) == symbol:
+            return "Diagonal, rechts oben"
+        else:
+            return None
+
+
+    
+    def find_empty_spot(self, list, direction):
+        if not list:
+            return None  # Return None if the list is empty
+
+        if len(list) < 2:
+            return None  # Not enough elements in the list
+        #da Abstand zwischen zwei Punkten immer k ist die Summe aller (Row/Col - Row/Col+1 (pro Objekt +1) = k
+        consecutive = self.are_coordinates_consecutive(list)
+        #bei waagerechter Kette. die alle in einer Reihe sind
+        if consecutive == True and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):
+            #Prüfen, ob rechts Platz ist
+            if list[-1][1] + 1 < self.game.board.n and self.game.get_symbol(list[-1][0], list[-1][1] + 1) == "":  
+                return list[-1][0], list[-1][1] + 1
+            #Prüfen, ob links Platz ist
+            if list[0][1] - 1 >= 0 and self.game.get_symbol(list[0][0], list[0][1] - 1) == "":
+                return list[0][0], list[0][1] - 1
+        elif consecutive is not None and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):
+            row, col = consecutive
+            if col + 1 < self.game.board.n and self.game.get_symbol(row, col + 1) == "":  
+                return row, col + 1
+            #Prüfen, ob links Platz ist
+            if col - 1 >= 0 and self.game.get_symbol(row, col - 1) == "":
+                return row, col - 1
+        #bei senkrechter Kette, die alle in einer Reihe sind
+        elif consecutive == True and (direction == "Senkrecht, unten" or direction == "Senkrecht, oben"):
+            #Prüfen, ob unten Platz ist
+            if list[-1][0] + 1 < self.game.board.m and self.game.get_symbol(list[-1][0] + 1, list[-1][1]) == "":
+                return list[-1][0] + 1, list[-1][1]
+            #Prüfen, ob oben Platz ist
+            if list[0][0] - 1 >= 0 and self.game.get_symbol(list[0][0] - 1, list[0][1]) == "":
+                return list[0][0] - 1, list[0][1]
+        elif consecutive is not None and (direction == "Senkrecht, unten" or direction == "Senkrecht, oben"):
+            row, col = consecutive
+            #Prüfen, ob unten Platz ist
+            if row + 1 < self.game.board.m and self.game.get_symbol(row + 1, col) == "":
+                return row + 1, col
+            #Prüfen, ob oben Platz ist
+            if row - 1 >= 0 and self.game.get_symbol(row - 1, col) == "":
+                return row - 1, col
+        elif consecutive == True and (direction == "Diagonal, links oben" or direction == "Diagonal, rechts unten"):
+            # Prüfen, ob diagonal unten rechts kein Platz ist
+            if list[-1][0] + 1 < self.game.board.m and list[-1][1] + 1 < self.game.board.n and self.game.get_symbol(list[-1][0] + 1, list[-1][1] + 1) == "":
+                return list[-1][0] + 1, list[-1][1] + 1
+            # Prüfen, ob diagonal oben links kein Platz ist
+            if list[0][0] - 1 >= 0 and list[0][1] - 1 >= 0 and self.game.get_symbol(list[0][0] - 1, list[0][1] - 1) == "":
+                return list[0][0] - 1, list[0][1] - 1
+        elif consecutive is not None and (direction == "Diagonal, links oben" or direction == "Diagonal, rechts unten"):
+            row, col = consecutive
+            #Prüfen, ob diagonal unten rechts Platz ist
+            if row + 1 < self.game.board.m and col + 1 < self.game.board.n and self.game.get_symbol(row + 1, col + 1) == "":
+                return row + 1, col + 1
+            #Prüfen, ob diagonal oben links Platz ist
+            if row - 1 >= 0 and col - 1 >= 0 and self.game.get_symbol(row - 1, col - 1) == "":
+                return row - 1, col - 1
+        elif consecutive == True and (direction == "Diagonal, links unten" or direction == "Diagonal, rechts oben"):
+            if list[-1][0] + 1 < self.game.board.m and list[-1][1] - 1 >= 0 and  self.game.get_symbol(list[-1][0] + 1, list[-1][1] - 1) == "":
+                return list[-1][0] + 1, list[-1][1] - 1
+        # Prüfen, ob diagonal oben rechts das Symbol in der Liste ist
+            if list[0][0] - 1 >= 0 and list[0][1] + 1 < self.game.board.n and self.game.get_symbol(list[0][0] - 1, list[0][1] + 1) == "":
+                return list[0][0] - 1, list[0][1] + 1
+        elif consecutive is not None and (direction == "Diagonal, links unten" or direction == "Diagonal, rechts oben"):
+            row, col = consecutive
+            #Prüfen, ob diagonal unten links Platz ist
+            if row + 1 < self.game.board.m and col - 1 >= 0 and self.game.get_symbol(row + 1, col - 1) == "":
+                return row + 1, col - 1
+            #Prüfen, ob diagonal oben rechts Platz ist
+            if row - 1 >= 0 and col + 1 < self.game.board.n and self.game.get_symbol(row - 1, col + 1) == "":
+                return row - 1, col + 1
+        else:
+            return None
+                
+    def already_blocked(self, list, direction):
+        #bei waagerechter Kette. die alle in einer Reihe sind
+        consecutive = self.are_coordinates_consecutive(list)
+        #if (summe_rows_plus1 - summe_rows) == self.game.board.k-1:#and direction == "Waagerecht, rechts" or direction == "Waagerecht, links":
+        #Prüfen, ob rechts Platz ist
+        if list and consecutive == True and list[-1][1] + 1 < self.game.board.n and list[0][0] - 1 >= 0 and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):     
+            if self.game.get_symbol(list[-1][0], list[-1][1] + 1) != "" and self.game.get_symbol(list[0][0], list[0][1] - 1) != "" :  
+                return True
+        # bei senkrechter Kette, die alle in einer Reihe sind
+        elif list and consecutive == True and list[-1][0] + 1 < self.game.board.m and list[0][0] - 1 >= 0 and (direction == "Senkrecht, unten" or direction == "Senkrecht, oben"): 
+            if self.game.get_symbol(list[-1][0] + 1, list[-1][1]) != "" and self.game.get_symbol(list[0][0] - 1, list[0][1]) != "":
+                return True
+        elif list and consecutive == True and list[-1][0] + 1 < self.game.board.m and list[-1][1] + 1 < self.game.board.n and list[0][0] - 1 >= 0  and (direction == "Diagonal, links oben" or direction == "Diagonal, rechts unten"):
+            if list and self.game.get_symbol(list[0][0] + 1, list[0][1] + 1) != "" and self.game.get_symbol(list[-1][0] - 1, list[-1][1] - 1) != "" :
+                return True
+        elif list and consecutive == True and list[-1][0] + 1 < self.game.board.m and list[-1][1] - 1 >= 0 and list[0][0] - 1 >= 0 and list[0][1] + 1 < self.game.board.n and (direction == "Diagonal, links unten" or direction == "Diagonal, rechts oben"):
+            if list and self.game.get_symbol(list[-1][0] + 1, list[-1][1] - 1) != "" and self.game.get_symbol(list[0][0] - 1, list[0][1] + 1) != "":
+                return True
+        elif isinstance(consecutive, tuple)  and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):
+            row, col = consecutive
+            if self.game.get_symbol(row, col + 1) != "" and self.game.get_symbol(row, col - 1) != "":
+                return True
+        elif isinstance(consecutive, tuple) and (direction == "Senkrecht, unten" or direction == "Senkrecht, oben"): 
+            row, col = consecutive
+            if self.game.get_symbol(row +1, col) != "" and self.game.get_symbol(row - 1, col) != "":
+                return True
+        elif isinstance(consecutive, tuple) and (direction == "Diagonal, links oben" or direction == "Diagonal, rechts unten"):
+            row, col = consecutive
+            if self.game.get_symbol(row +1, col + 1) != "" and self.game.get_symbol(row - 1, col - 1) != "":
+                return True
+        elif isinstance(consecutive, tuple) and (direction == "Diagonal, links unten" or direction == "Diagonal, rechts oben"):
+            row, col = consecutive
+            if self.game.get_symbol(row +1, col - 1) != "" and self.game.get_symbol(row - 1, col + 1) != "":
+                return True
+        else:
+            return False
+        
+        
+        
+    def are_coordinates_consecutive(self, coord_list):
+        if not coord_list:
+            return None
+
+        for i in range(len(coord_list) - 1):
+            current_coord = coord_list[i]
+            next_coord = coord_list[i + 1]
+
+            # Check if both parts of the coordinates are completely next to each other in any direction
+            if (
+                (abs(current_coord[0] - next_coord[0]) == 1 and abs(current_coord[1] - next_coord[1]) == 0) or  # Vertical
+                (abs(current_coord[0] - next_coord[0]) == 0 and abs(current_coord[1] - next_coord[1]) == 1) or  # Horizontal
+                (abs(current_coord[0] - next_coord[0]) == 1 and abs(current_coord[1] - next_coord[1]) == 1)     # Diagonal
+            ):
+                continue
+            else:
+                row, col = current_coord
+                return (row, col)
+                
+        return True
 
         
                 
@@ -767,6 +1104,9 @@ class Game:
         #komlexe KI6
         elif self.current_player.is_komplexeki:
             QTimer.singleShot(100, self.current_player.make_komplexeki_move)
+        #komplexe KI Zwickmühle
+        elif self.current_player.is_komplexeki_zwickmuehle:
+            QTimer.singleShot(100, self.current_player.make_komplexeki_zwickmuehle_move)
         
            
      
@@ -817,6 +1157,9 @@ class Game:
                 #komlexe KI
                 elif self.current_player.is_komplexeki:
                     QTimer.singleShot(100, self.current_player.make_komplexeki_move)
+                #komplexe KI Zwickmühle
+                elif self.current_player.iskomplexeki_zwickmuehle:
+                    QTimer.singleShot(100, self.current_player.make_komplexeki_zwickmuehle_move)
             
             
             
@@ -924,9 +1267,11 @@ if __name__ == "__main__":
     player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
     player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
     player_komplexeki2 = KomplexeKI("Einfache KI 2", "x", None)
+    player_komplexeki_zwickmuehle = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle", "o", None)
+    player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_einfacheki2
+    player1 = player_komplexeki_zwickmuehle2
     player2 = player_komplexeki
     
     play_several_times = True
@@ -949,6 +1294,8 @@ if __name__ == "__main__":
             player_einfacheki2.game = game #einfacheki
             player_komplexeki.game = game #komplexeki
             player_komplexeki2.game = game #komplexeki
+            player_komplexeki_zwickmuehle = game #komplexeki_zwichmuehle
+            player_komplexeki_zwickmuehle2 = game #komplexeki_zwichmuehle
             
             #Spiel starten
             winner = play_game(game)           #spiel läuft und gibt einen gewinner (x bzw o) wieder
@@ -981,6 +1328,8 @@ if __name__ == "__main__":
         player_einfacheki2.game = game #einfacheki
         player_komplexeki.game = game #komplexeki
         player_komplexeki2.game = game #komplexeki
+        player_komplexeki_zwickmuehle = game #komplexeki_zwichmuehle
+        player_komplexeki_zwickmuehle2 = game #komplexeki_zwichmuehle
         
         #Spiel starten
         play_game(game)
