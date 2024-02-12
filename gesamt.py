@@ -782,7 +782,7 @@ class KomplexeKI_Zwickmuehle(Player):
          chain_lengths = {}
          if empty_positions:
              for position in empty_positions:
-                 chain_length = self.calculate_regular_chain_length(position[0], position[1], self.symbol)
+                 chain_length = self.calculate_regular_chain_length(position[0], position[1])
                  chain_lengths[chain_length] = position[0], position[1]
          else:
              return None
@@ -1273,7 +1273,7 @@ if __name__ == "__main__":
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
     player1 = player_mensch
-    player2 = player_komplexeki
+    player2 = player_komplexeki_zwickmuehle
     
     play_several_times = False
     num_games = 100  # Anzahl der Spiele
@@ -1295,8 +1295,8 @@ if __name__ == "__main__":
             player_einfacheki2.game = game #einfacheki
             player_komplexeki.game = game #komplexeki
             player_komplexeki2.game = game #komplexeki
-            player_komplexeki_zwickmuehle = game #komplexeki_zwichmuehle
-            player_komplexeki_zwickmuehle2 = game #komplexeki_zwichmuehle
+            player_komplexeki_zwickmuehle.game = game #komplexeki_zwichmuehle
+            player_komplexeki_zwickmuehle2.game = game #komplexeki_zwichmuehle
             
             #Spiel starten
             winner = play_game(game)           #spiel läuft und gibt einen gewinner (x bzw o) wieder
@@ -1329,8 +1329,8 @@ if __name__ == "__main__":
         player_einfacheki2.game = game #einfacheki
         player_komplexeki.game = game #komplexeki
         player_komplexeki2.game = game #komplexeki
-        player_komplexeki_zwickmuehle = game #komplexeki_zwichmuehle
-        player_komplexeki_zwickmuehle2 = game #komplexeki_zwichmuehle
+        player_komplexeki_zwickmuehle.game = game #komplexeki_zwichmuehle
+        player_komplexeki_zwickmuehle2.game = game #komplexeki_zwichmuehle
         
         #Spiel starten
         play_game(game)
