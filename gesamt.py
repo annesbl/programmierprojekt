@@ -228,19 +228,24 @@ class KomplexeKI(Player):
          self.is_komplexeki = True
 
     def make_komplexeki_move(self):
-        row, col = self.get_center()
+        center = self.get_center()
+        # Gewinnenden Zug machen, wenn möglich
+        winning_move = self.make_winning_move()
         # Überprüfen, ob die KI kurz vor einer Zwickmühle steht
         zwickmuehle =  self.check_possible_zwickmuehle()
         # Den besten Zug finden
         best_move = self.find_move()
         # Blockierenden Zug machen, um den Gegner zu stoppen
         block = self.make_blocking_move()
-        # Gewinnenden Zug machen, wenn möglich
-        winning_move = self.make_winning_move()
+        
         if self.game.is_board_empty():
+            row, col = center
             # Wenn es der erste Zug ist, platziere das Symbol in der Mitte
             if self.game.get_symbol(row,col)== self.get_opponent_symbol():
-                row, col = row+1, col
+                if self.game.board.m == self.game.board.n == self.game.board.k:
+                    row, col = 0, 0
+                else:
+                    row, col = 0, self.game.board.n-1
             self.game.place_symbol(row,col)
         elif winning_move is not None:
             # Wenn ein gewinnender Zug möglich ist, mache diesen Zug
@@ -284,7 +289,7 @@ class KomplexeKI(Player):
     def get_difference_coordinates(self, zwickmuhle_coords, board_coords):
         differences = [coord for coord in zwickmuhle_coords if coord not in board_coords]
         if differences is not None:
-            if len(differences) <= 3:
+            if len(differences) <= 2:
                 return differences
         else:
             return None
@@ -319,33 +324,6 @@ class KomplexeKI(Player):
         return zwickmuhlen_liste
     
     
-    
-    
-    def build_zwickmuehle(self):
-         zwickmuehlen_list = self.zwichmuehle_list()
-         for zwickmuehle in zwickmuehlen_list:
-             count = 0
-             empty_positions = []
-            
-             for position in zwickmuehle:
-                if self.game.get_symbol(position[0], position[1]) == self.symbol:
-                     count += 1
-                elif self.game.get_symbol(position[0], position[1]) == "":
-                     empty_positions.append(position)
-         chain_lengths = {}
-         if empty_positions:
-             for position in empty_positions:
-                 chain_length = self.calculate_chain_length(position[0], position[1], self.symbol)
-                 chain_lengths[chain_length] = position[0], position[1]
-         else:
-             return None
-            
-         if chain_lengths:                               # geht das dictionary durch
-             best_length = max(chain_lengths)            # speichert die maximale länge als best_lenght
-             best_move = chain_lengths[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
-             return best_move                               # gibt best_move wieder
-         else:
-             return None
          
     def find_move(self):
         best_move = None
@@ -463,10 +441,16 @@ class KomplexeKI(Player):
 
             # Check in positive direction
             r, c = row, col
-            while 0 <= r < self.game.board.m and 0 <= c < self.game.board.n:
-                if self.game.get_symbol(r, c) == symbol:
-                    chain_coordinates.append((r, c))
-                r, c = r + dr, c + dc
+            for i in range(1, self.game.board.k):       #prüft ob k gleiche symbole in eineer reihe sind
+                r, c = row + i * dr, col + i * dc       #prüft die Symbole in der aktuellen Richtung, beginnend beim Startpunkt und bewegt sich in positiver Richtung (berechnung der nächstn Position)
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol: #falls das Symbol an der berechneten Position gleich dem Symbol der KI ist...
+                    chain_coordinates.append((r, c))                        #...wird die länge der kette um 1 erhöht
+                
+            for i in range(1, self.game.board.k):
+                r, c = row - i * dr, col - i * dc       #prüft die Symbole in der entgegengesetzten Richtung und bewegt sich in negative Richtung (berechnung der nächstn Position)
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
+                     chain_coordinates.append((r, c))
+                
                 
 
             if len(chain_coordinates) >= self.game.board.k-1:
@@ -693,7 +677,6 @@ class KomplexeKI_Zwickmuehle(Player):
 
     def make_komplexeki_zwickmuehle_move(self):
         # Überprüfen, ob die KI kurz vor einer Zwickmühle steht
-        zwickmuehle =  self.check_possible_zwickmuehle()
         # Den besten Zug finden
         best_move = self.build_zwickmuehle()
         # Blockierenden Zug machen, um den Gegner zu stoppen
@@ -711,10 +694,6 @@ class KomplexeKI_Zwickmuehle(Player):
             # Wenn ein blockierender Zug möglich ist, blockiere den Gegner
             row, col = block
             self.game.place_symbol(row, col)
-
-        elif zwickmuehle is not None:
-              row,col = zwickmuehle
-              self.game.place_symbol(row, col) 
         elif best_move is not None:
             row, col = best_move
             self.game.place_symbol(row,col)
@@ -737,63 +716,92 @@ class KomplexeKI_Zwickmuehle(Player):
             return row, col
         else:
             return self.make_first_move()
-    
-    def check_possible_zwickmuehle(self):
-        ki_positions = []
-        zwickmuehle_list = self.zwichmuehle_list()
-        for i in range(self.game.board.m):
-            for j in range(self.game.board.n):
-                if self.game.get_symbol(i, j) == self.symbol:
-                    ki_positions.append((i,j))
-                    
-        differences = self.get_difference_coordinates(zwickmuehle_list, ki_positions)
-        if differences is not None:
-            move = random.choice(differences)
-            return move
         
                     
     def get_difference_coordinates(self, zwickmuhle_coords, board_coords):
-        differences = [coord for coord in zwickmuhle_coords if coord not in board_coords]
-        if differences is not None:
-            if len(differences) <= 3:
-                return differences
-        else:
-            return None
+        differences_dict = {}
+        
+        for zwickmuhle_coord in zwickmuhle_coords:
+            missing_coords = [coord for coord in zwickmuhle_coord if coord not in board_coords]
+            num_missing = len(missing_coords)
+            differences_dict[num_missing] = missing_coords
+
+        if differences_dict:  
+            best_length = min(differences_dict.keys())  # Use min instead of max to find the least missing coordinates
+            best_move = differences_dict[best_length]
+            return best_move
+
+        return None
+
         
 
 
 
     
-    def zwichmuehle_list(self):
+    def zwickmuehle_list(self):
+        zwickmuhle_size = self.game.board.k
         zwickmuhlen_liste = []
 
         # Überprüfe horizontale Zwickmühlen
         for i in range(self.game.board.m):
-            for j in range(self.game.board.n - self.game.board.k + 1):
-                zwickmuhlen_liste.append([(i, j + x) for x in range(self.game.board.k)])
+            for j in range(self.game.board.n - zwickmuhle_size + 1):
+                zwickmuhle = [(i, j + x) for x in range(zwickmuhle_size)]
+                if all(self.is_valid_position(pos) for pos in zwickmuhle):
+                    zwickmuhlen_liste.append(zwickmuhle)
 
         # Überprüfe vertikale Zwickmühlen
-        for i in range(self.game.board.m - self.game.board.k + 1):
+        for i in range(self.game.board.m - zwickmuhle_size + 1):
             for j in range(self.game.board.n):
-                zwickmuhlen_liste.append([(i + x, j) for x in range(self.game.board.k)])
+                zwickmuhle = [(i + x, j) for x in range(zwickmuhle_size)]
+                if all(self.is_valid_position(pos) for pos in zwickmuhle):
+                    zwickmuhlen_liste.append(zwickmuhle)
 
         # Überprüfe diagonale Zwickmühlen von links oben nach rechts unten
-        for i in range(self.game.board.m - self.game.board.k + 1):
-            for j in range(self.game.board.n - self.game.board.k + 1):
-                zwickmuhlen_liste.append([(i + x, j + x) for x in range(self.game.board.k)])
+        for i in range(self.game.board.m - zwickmuhle_size + 1):
+            for j in range(self.game.board.n - zwickmuhle_size + 1):
+                zwickmuhle = [(i + x, j + x) for x in range(zwickmuhle_size)]
+                if all(self.is_valid_position(pos) for pos in zwickmuhle):
+                    zwickmuhlen_liste.append(zwickmuhle)
 
         # Überprüfe diagonale Zwickmühlen von links unten nach rechts oben
-        for i in range(self.game.board.m - self.game.board.k + 1):
-            for j in range(self.game.board.k - 1, self.game.board.n):
-                zwickmuhlen_liste.append([(i + x, j - x) for x in range(self.game.board.k)])
+        for i in range(self.game.board.m - zwickmuhle_size + 1):
+            for j in range(zwickmuhle_size - 1, self.game.board.n):
+                zwickmuhle = [(i + x, j - x) for x in range(zwickmuhle_size)]
+                if all(self.is_valid_position(pos) for pos in zwickmuhle):
+                    zwickmuhlen_liste.append(zwickmuhle)
+
+        # Überprüfe L-shapes
+        for i in range(self.game.board.m - zwickmuhle_size + 1):
+            for j in range(self.game.board.n - zwickmuhle_size + 1):
+                l_shape = [(i + x, j) for x in range(zwickmuhle_size)] + [(i + zwickmuhle_size - 1, j + x) for x in range(1, zwickmuhle_size)]
+                if all(self.is_valid_position(pos) for pos in l_shape):
+                    zwickmuhlen_liste.append(l_shape)
+
+        # Überprüfe T-shapes
+        for i in range(self.game.board.m - zwickmuhle_size + 1):
+            for j in range(self.game.board.n - zwickmuhle_size + 1):
+                t_shape = [(i + x, j) for x in range(zwickmuhle_size)] + [(i + zwickmuhle_size//2, j + x) for x in range(1, zwickmuhle_size)]
+                if all(self.is_valid_position(pos) for pos in t_shape):
+                    zwickmuhlen_liste.append(t_shape)
+
+        # Überprüfe diagonal + straight shapes
+        for i in range(self.game.board.m - zwickmuhle_size + 1):
+            for j in range(self.game.board.n - zwickmuhle_size + 1):
+                diagonal_straight = [(i + x, j + x) for x in range(zwickmuhle_size)] + [(i + zwickmuhle_size - 1, j + x) for x in range(1, zwickmuhle_size)]
+                if all(self.is_valid_position(pos) for pos in diagonal_straight):
+                    zwickmuhlen_liste.append(diagonal_straight)
 
         return zwickmuhlen_liste
+
+    def is_valid_position(self, pos):
+        return 0 <= pos[0] < self.game.board.m and 0 <= pos[1] < self.game.board.n
+
     
     
     
     
     def build_zwickmuehle(self):
-         zwickmuehlen_list = self.zwichmuehle_list()
+         zwickmuehlen_list = self.zwickmuehle_list()
          for zwickmuehle in zwickmuehlen_list:
              count = 0
              empty_positions = []
@@ -887,10 +895,15 @@ class KomplexeKI_Zwickmuehle(Player):
 
             # Check in positive direction
             r, c = row, col
-            while 0 <= r < self.game.board.m and 0 <= c < self.game.board.n:
-                if self.game.get_symbol(r, c) == symbol:
-                    chain_coordinates.append((r, c))
-                r, c = r + dr, c + dc
+            for i in range(1, self.game.board.k):       #prüft ob k gleiche symbole in eineer reihe sind
+                r, c = row + i * dr, col + i * dc       #prüft die Symbole in der aktuellen Richtung, beginnend beim Startpunkt und bewegt sich in positiver Richtung (berechnung der nächstn Position)
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol: #falls das Symbol an der berechneten Position gleich dem Symbol der KI ist...
+                    chain_coordinates.append((r, c))                        #...wird die länge der kette um 1 erhöht
+                
+            for i in range(1, self.game.board.k):
+                r, c = row - i * dr, col - i * dc       #prüft die Symbole in der entgegengesetzten Richtung und bewegt sich in negative Richtung (berechnung der nächstn Position)
+                if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
+                     chain_coordinates.append((r, c))
                 
 
             if len(chain_coordinates) >= self.game.board.k-1:
@@ -1302,12 +1315,12 @@ if __name__ == "__main__":
     player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_zufallski
-    player2 = player_einfacheki2
+    player1 = player_komplexeki2
+    player2 = player_komplexeki_zwickmuehle
     
     play_several_times = False
     play_forever = True
-    num_games = 1000  # Anzahl der Spiele
+    num_games = 100  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
@@ -1351,12 +1364,12 @@ if __name__ == "__main__":
         print(wins)
 
     elif play_forever:
-        list_player1 = [player_zufallski, player_einfacheki, player_komplexeki, player_komplexeki_zwickmuehle]
-        list_player2 = [player_zufallski2, player_einfacheki2, player_komplexeki2, player_komplexeki_zwickmuehle2]
+        list_player1 = [player_zufallski, player_einfacheki, player_komplexeki]
+        list_player2 = [player_zufallski2, player_einfacheki2, player_komplexeki2]
         
         
 
-        while True:
+        for k in range(10):
             player1f = None
             player2f = None
             wins = {"Unentschieden": 0}  # Initialize wins dictionary
@@ -1369,7 +1382,7 @@ if __name__ == "__main__":
                 wins[player2f.name] = 0
                 
                 for e in range(1000):
-                    game = Game(5, 5, 4, player1f, player2f)
+                    game = Game(5, 5, 5, player1f, player2f)
                     player_zufallski.game = game
                     player_zufallski2.game = game
                     player_einfacheki.game = game
