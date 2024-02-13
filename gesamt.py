@@ -104,30 +104,21 @@ class EinfacheKI(Player):
         super().__init__(name, symbol)
         self.game = game
         self.is_einfacheki = True
-        #self.first_move = True  # Initialize the first_move flag
+        
         
         
     def make_einfacheki_move(self):
         if self.game.is_board_empty():                                 #falls es der erste move ist ist first_move = True gesetzt
             row, col = self.make_first_move()
             
-            #col des buttons (für den ersten zug) zufällig festlegen
-            #self.game.place_symbol(row,col)        
-            #self.first_move = False                         #wird auf False gesetzt, nachdem der first move gemacht worden ist
+                                                         
         else:                                               #falls es nicht der erste zug der KI ist:
             row, col = self.find_strategic_move()           #find_strategic_move findet ein leeren Button und gibt diesen zurück -> wird in row, col gespeichert
 
         # Symbol setzen                            
         self.game.place_symbol(row, col)                    #plaziert symbol auf bei col, row (die im vorherigen schritt festgelegt wurden)
 
-        # Überprüfen, ob das Spiel vorbei ist      - ist das nicht schon durch place_symbol? weil in der place_symbol methode gibt es das, und jetzt machen wir es nochmal?
-        # winner = self.game.check_winner() 
-        # if winner:
-        #     print(f"Spieler {self.name} hat gewonnen!")
-        #     self.game.board.close()
-        # elif self.game.is_board_full():
-        #     print("Unentschieden!")
-        #     self.game.board.close()
+        
     def make_first_move(self):
         row = random.randint(0, self.game.board.m - 1)  
         col = random.randint(0, self.game.board.n - 1) 
@@ -176,11 +167,7 @@ class EinfacheKI(Player):
                     if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
                         lenght_or = self.calculate_chain_length( r - 1, c + 1)
                         chainlenght_dict[lenght_or] = (r-1, c+1)
-                # if self.game.get_symbol(r, c) == "":
-                #     length = self.calculate_chain_length(r, c)
-                #     if length > max_length:
-                #         max_length = length
-                #         best_move = (r, c)
+                
         if chainlenght_dict:                               # geht das dictionary durch
             best_length = max(chainlenght_dict)            # speichert die maximale länge als best_lenght
             best_move = chainlenght_dict[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
@@ -364,11 +351,7 @@ class KomplexeKI(Player):
                     if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
                         lenght_or = self.calculate_regular_chain_length( r - 1, c + 1)
                         chainlenght_dict[lenght_or] = (r-1, c+1)
-                # if self.game.get_symbol(r, c) == "":
-                #     length = self.calculate_chain_length(r, c)
-                #     if length > max_length:
-                #         max_length = length
-                #         best_move = (r, c)
+                
         if chainlenght_dict:                               # geht das dictionary durch
             best_length = max(chainlenght_dict)            # speichert die maximale länge als best_lenght
             best_move = chainlenght_dict[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
@@ -428,10 +411,6 @@ class KomplexeKI(Player):
 
 
 
-    
-    
-    
-    
     def calculate_complex_chain_length(self, row, col, symbol):
         directions = [(0, 1), (1, 0), (1, 1), (-1, +1)]
         max_length = []
@@ -462,9 +441,6 @@ class KomplexeKI(Player):
 
         
 
-    
-    
-    
     def get_opponent_symbol(self):
         # Nehmen wir an, es gibt eine Methode im Spiel, die alle Symbole zurückgibt.
         all_symbols = self.game.get_all_player_symbols()
@@ -473,10 +449,6 @@ class KomplexeKI(Player):
     
     
     
-    
-    
-    
-                    
     def make_blocking_move(self):
             opponent_symbol = self.get_opponent_symbol()
             for i in range(self.game.board.m):
@@ -498,12 +470,6 @@ class KomplexeKI(Player):
                             
 
                             
-           
-            
-            
-            
-        
-        
     def find_direction(self, row, col, symbol, coordinates_list):
     # Richtung der Kette herausfinden
     # Prüfen, ob rechts das Symbol in der Liste ist
@@ -609,7 +575,6 @@ class KomplexeKI(Player):
     def already_blocked(self, list, direction):
         #bei waagerechter Kette. die alle in einer Reihe sind
         consecutive = self.are_coordinates_consecutive(list)
-        #if (summe_rows_plus1 - summe_rows) == self.game.board.k-1:#and direction == "Waagerecht, rechts" or direction == "Waagerecht, links":
         #Prüfen, ob rechts Platz ist
         if list and consecutive == True and list[-1][1] + 1 < self.game.board.n and list[0][0] - 1 >= 0 and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):     
             if self.game.get_symbol(list[-1][0], list[-1][1] + 1) != "" and self.game.get_symbol(list[0][0], list[0][1] - 1) != "" :  
@@ -709,6 +674,7 @@ class KomplexeKI_Zwickmuehle(Player):
         corners_list = [(0,0), (self.game.board.m-1, 0),(0, self.game.board.n-1),(self.game.board.m-1, self.game.board.n-1)]
         return corners_list
     
+    
     def make_first_move(self):
         corners = self.get_corners()
         row, col = random.choice(corners)
@@ -735,9 +701,6 @@ class KomplexeKI_Zwickmuehle(Player):
 
         
 
-
-
-    
     def zwickmuehle_list(self):
         zwickmuhle_size = self.game.board.k
         zwickmuhlen_liste = []
@@ -793,11 +756,11 @@ class KomplexeKI_Zwickmuehle(Player):
 
         return zwickmuhlen_liste
 
+    
+    
     def is_valid_position(self, pos):
         return 0 <= pos[0] < self.game.board.m and 0 <= pos[1] < self.game.board.n
 
-    
-    
     
     
     def build_zwickmuehle(self):
@@ -883,9 +846,6 @@ class KomplexeKI_Zwickmuehle(Player):
 
 
     
-    
-    
-    
     def calculate_complex_chain_length(self, row, col, symbol):
         directions = [(0, 1), (1, 0), (1, 1), (-1, +1)]
         max_length = []
@@ -915,9 +875,6 @@ class KomplexeKI_Zwickmuehle(Player):
 
         
 
-    
-    
-    
     def get_opponent_symbol(self):
         # Nehmen wir an, es gibt eine Methode im Spiel, die alle Symbole zurückgibt.
         all_symbols = self.game.get_all_player_symbols()
@@ -925,11 +882,6 @@ class KomplexeKI_Zwickmuehle(Player):
 
     
     
-    
-    
-    
-    
-                    
     def make_blocking_move(self):
             opponent_symbol = self.get_opponent_symbol()
             for i in range(self.game.board.m):
@@ -951,12 +903,6 @@ class KomplexeKI_Zwickmuehle(Player):
                             
 
                             
-           
-            
-            
-            
-        
-        
     def find_direction(self, row, col, symbol, coordinates_list):
     # Richtung der Kette herausfinden
     # Prüfen, ob rechts das Symbol in der Liste ist
@@ -1059,10 +1005,11 @@ class KomplexeKI_Zwickmuehle(Player):
         else:
             return None
                 
+    
+    
     def already_blocked(self, list, direction):
         #bei waagerechter Kette. die alle in einer Reihe sind
         consecutive = self.are_coordinates_consecutive(list)
-        #if (summe_rows_plus1 - summe_rows) == self.game.board.k-1:#and direction == "Waagerecht, rechts" or direction == "Waagerecht, links":
         #Prüfen, ob rechts Platz ist
         if list and consecutive == True and list[-1][1] + 1 < self.game.board.n and list[0][0] - 1 >= 0 and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):     
             if self.game.get_symbol(list[-1][0], list[-1][1] + 1) != "" and self.game.get_symbol(list[0][0], list[0][1] - 1) != "" :  
@@ -1116,7 +1063,6 @@ class KomplexeKI_Zwickmuehle(Player):
             else:
                 row, col = current_coord
                 return (row, col)
-                
         return True
 
         
@@ -1423,7 +1369,6 @@ if __name__ == "__main__":
         player_komplexeki_zwickmuehle2.game = game #komplexeki_zwichmuehle
         
         #Spiel starten
-        #play_game(game)
         winner = play_game(game)
 
         if winner == player1.symbol:
