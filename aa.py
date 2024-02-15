@@ -245,7 +245,7 @@ class KomplexeKI(Player):
                 if self.game.board.m == self.game.board.n == self.game.board.k:   
                     row, col = 0, 0
                 else:
-                    row, col = 0, self.game.board.n-1
+                    row, col = self.game.board.m-1, 0
             self.game.place_symbol(row,col)
         elif winning_move is not None:
             # Wenn ein gewinnender Zug möglich ist, mache diesen Zug
@@ -1290,10 +1290,10 @@ if __name__ == "__main__":
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
     player1 = player_komplexeki2
-    player2 = player_komplexeki_zwickmuehle
+    player2 = player_komplexeki
     
-    play_several_times = False
-    play_forever = True
+    play_several_times = True
+    play_forever = False
     num_games = 100  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
