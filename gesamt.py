@@ -1279,7 +1279,7 @@ if __name__ == "__main__":
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
     player1 = player_komplexeki_random2
-    player2 = player_komplexeki
+    player2 = player_einfacheki
     
     play_several_times = True
     play_forever = False
@@ -1331,11 +1331,11 @@ if __name__ == "__main__":
 #-----------------------------------------------------------------------------------------------------------
 
     elif play_forever:                                                            #mehrmals Spielen ohne neu starten und spieler wählen zu müssen
-        list_player1 = [player_zufallski, player_einfacheki, player_komplexeki]     #liste 1
-        list_player2 = [player_zufallski2, player_einfacheki2, player_komplexeki2]  #liste 2
+        list_player1 =  [player_komplexeki_random2]   #liste 1
+        list_player2 =  [player_zufallski, player_einfacheki, player_komplexeki] #liste 2
         
         
-        for k in range(8):              
+        for k in range(6):              
             player1f = None
             player2f = None
             wins = {"Unentschieden": 0}  # Initialize wins dictionary
@@ -1349,7 +1349,7 @@ if __name__ == "__main__":
                 wins[player2f.name] = 0   #gewinne für player 2
                 
                 for e in range(1000):                          #1000 Spiele pro paar
-                    game = Game(5, 5, 5, player1f, player2f)   #game klasse aufrufen 
+                    game = Game(5, 5, 4, player1f, player2f)   #game klasse aufrufen 
                     
                     #KIs richtig zuweisen
                     player_zufallski.game = game
