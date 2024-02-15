@@ -1278,13 +1278,13 @@ if __name__ == "__main__":
     player_komplexeki_random2 = KomplexeKI_Random("Komplexe KI Random 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_komplexeki_random2
-    player2 = player_einfacheki
+    player1 = player_zufallski
+    player2 = player_komplexeki
     
-    play_several_times = True
-    play_forever = False
+    play_several_times = False
+    play_forever = True
     play_until_x_wins = False
-    num_games = 2000  # Anzahl der Spiele
+    num_games = 200  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
@@ -1295,7 +1295,7 @@ if __name__ == "__main__":
         for _ in range(num_games):                                   #für jedes game einmal die Schleife durchlaufen,a
             
             #game klasse aufrufen und m,n,k,player1,player2 wählen
-            game = Game(5, 5, 4, player1, player2)
+            game = Game(3, 3, 3, player1, player2)
             
             #KIs richtig zuweisen
             player_zufallski.game = game #zufallski
@@ -1349,7 +1349,7 @@ if __name__ == "__main__":
                 wins[player2f.name] = 0   #gewinne für player 2
                 
                 for e in range(1000):                          #1000 Spiele pro paar
-                    game = Game(5, 5, 5, player1f, player2f)   #game klasse aufrufen 
+                    game = Game(3, 3, 3, player1f, player2f)   #game klasse aufrufen 
                     
                     #KIs richtig zuweisen
                     player_zufallski.game = game
