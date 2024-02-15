@@ -652,24 +652,28 @@ class KomplexeKI(Player):
 
 #-------------------------------ZWICKMÜHLE------------------------------------------    
     
-class KomplexeKI_Zwickmuehle(Player):
+class KomplexeKI_Random(Player):
+    
     def __init__(self, name, symbol, game):
-        
          super().__init__(name, symbol)
-         self.game = game                       #Übergeben des 'self'-Objekts an die display-Methode
-         self.is_komplexeki_zwickmuehle = True
+         self.game = game           #Übergeben des 'self'-Objekts an die display-Methode
+         self.is_komplexeki_random = True
 
-    #ZUG DER ZWICKMÜHLEN KI
-    def make_komplexeki_zwickmuehle_move(self):
-        # Den besten Zug finden
-        best_move = self.build_zwickmuehle()
-        # Blockierenden Zug machen, um den Gegner zu stoppen
-        block = self.make_blocking_move()
-        # Gewinnenden Zug machen, wenn möglich
-        winning_move = self.make_winning_move()
-        if self.game.is_board_empty():
-            row, col = self.make_first_move()
-            self.game.place_symbol(row,col)
+    #ZUG DER KOMPLEXEN KI
+    def make_komplexeki_random_move(self):
+        center = self.get_center()                       #in die Mitte des Spielfeldes setzten
+        winning_move = self.make_winning_move()          #Überprüfen, ob ein gewinnender Zug möglich ist
+        zwickmuehle =  self.check_possible_zwickmuehle() #Überprüfen, ob ein Zwickmühle möglich ist
+        best_move = self.find_move()                     #Den besten Zug finden
+        block = self.make_blocking_move()                #Blockierenden Zug machen, um den Gegner zu stoppen
+        
+        if self.game.is_board_empty():                                                               
+            while True:
+                row = random.randint(0, self.game.board.m - 1)
+                col = random.randint(0, self.game.board.n - 1)
+                if self.game.get_symbol(row, col) == "":
+                    self.game.place_symbol(row, col)
+                    break
         elif winning_move is not None:
             # Wenn ein gewinnender Zug möglich ist, mache diesen Zug
             row, col = winning_move
@@ -678,6 +682,10 @@ class KomplexeKI_Zwickmuehle(Player):
             # Wenn ein blockierender Zug möglich ist, blockiere den Gegner
             row, col = block
             self.game.place_symbol(row, col)
+
+        elif zwickmuehle is not None:
+              row,col = zwickmuehle
+              self.game.place_symbol(row, col) 
         elif best_move is not None:
             row, col = best_move
             self.game.place_symbol(row,col)
@@ -689,129 +697,105 @@ class KomplexeKI_Zwickmuehle(Player):
                     self.game.place_symbol(row, col)
                     break
     
-    #ECKEN DES SPIELFELDES           
-    def get_corners(self):
-        corners_list = [(0,0), (self.game.board.m-1, 0),(0, self.game.board.n-1),(self.game.board.m-1, self.game.board.n-1)] #Ecken des Spielfeldes in einer liste speichern
-        return corners_list
+    #ÜBERPRÜFEN, OB ZWICKMÜHLE MÖGLICH IST
+    def check_possible_zwickmuehle(self):
+        ki_positions = []
+        zwickmuehle_list = self.zwichmuehle_list()
+        for i in range(self.game.board.m):
+            for j in range(self.game.board.n):
+                if self.game.get_symbol(i, j) == self.symbol:
+                    ki_positions.append((i,j))
+                    
+        differences = self.get_difference_coordinates(zwickmuehle_list, ki_positions)
+        if differences is not None:
+            move = random.choice(differences)
+            return move
+        
     
-    #ERSTER ZUG DER KI
-    def make_first_move(self):
-        corners = self.get_corners()
-        row, col = random.choice(corners)                 #zufällige Position aus der Liste der Ecken auswählen
-        if self.game.get_symbol(row, col)== "":
-            return row, col
-        else:
-            return self.make_first_move()
-        
-    #ZURÜCKGEBEN DER ZWICKMÜHLEN                
     def get_difference_coordinates(self, zwickmuhle_coords, board_coords):
-        differences_dict = {}
+        differences = [coord for coord in zwickmuhle_coords if coord not in board_coords]
+        if differences is not None:
+            if len(differences) <= 2:
+                return differences
+        else:
+            return None
         
-        for zwickmuhle_coord in zwickmuhle_coords:                                                 #durchgehen der Zwickmühlen
-            missing_coords = [coord for coord in zwickmuhle_coord if coord not in board_coords]    #wenn die Koordinaten der Zwickmühle nicht in den Koordinaten des Spielfeldes sind, dann werden diese in die Liste der fehlenden Koordinaten eingefügt
-            num_missing = len(missing_coords)
-            differences_dict[num_missing] = missing_coords                                         #Anzahl der fehlenden Koordinaten wird als Key und die fehlenden Koordinaten als Value in das Dictionary eingefügt
-
-        if differences_dict:                            #wenn das Dictionary nicht leer ist
-            best_length = min(differences_dict.keys())  #min anstatt max, um die fehlenden Koordinaten zu finden
-            best_move = differences_dict[best_length]   #speichert die fehlenden Koordinaten als best_move
-            return best_move
-
-        return None
-
         
     #ZURÜCKGEBEN DER ZWICKMÜHLEN
-    def zwickmuehle_list(self):
-        zwickmuhle_size = self.game.board.k
+    def zwichmuehle_list(self):
         zwickmuhlen_liste = []
 
         # Überprüfe horizontale Zwickmühlen
         for i in range(self.game.board.m):
-            for j in range(self.game.board.n - zwickmuhle_size + 1):
-                zwickmuhle = [(i, j + x) for x in range(zwickmuhle_size)]
-                if all(self.is_valid_position(pos) for pos in zwickmuhle):
-                    zwickmuhlen_liste.append(zwickmuhle)
+            for j in range(self.game.board.n - self.game.board.k + 1):
+                zwickmuhlen_liste.append([(i, j + x) for x in range(self.game.board.k)])
 
         # Überprüfe vertikale Zwickmühlen
-        for i in range(self.game.board.m - zwickmuhle_size + 1):
+        for i in range(self.game.board.m - self.game.board.k + 1):
             for j in range(self.game.board.n):
-                zwickmuhle = [(i + x, j) for x in range(zwickmuhle_size)]
-                if all(self.is_valid_position(pos) for pos in zwickmuhle):
-                    zwickmuhlen_liste.append(zwickmuhle)
+                zwickmuhlen_liste.append([(i + x, j) for x in range(self.game.board.k)])
 
         # Überprüfe diagonale Zwickmühlen von links oben nach rechts unten
-        for i in range(self.game.board.m - zwickmuhle_size + 1):
-            for j in range(self.game.board.n - zwickmuhle_size + 1):
-                zwickmuhle = [(i + x, j + x) for x in range(zwickmuhle_size)]
-                if all(self.is_valid_position(pos) for pos in zwickmuhle):
-                    zwickmuhlen_liste.append(zwickmuhle)
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.n - self.game.board.k + 1):
+                zwickmuhlen_liste.append([(i + x, j + x) for x in range(self.game.board.k)])
 
         # Überprüfe diagonale Zwickmühlen von links unten nach rechts oben
-        for i in range(self.game.board.m - zwickmuhle_size + 1):
-            for j in range(zwickmuhle_size - 1, self.game.board.n):
-                zwickmuhle = [(i + x, j - x) for x in range(zwickmuhle_size)]
-                if all(self.is_valid_position(pos) for pos in zwickmuhle):
-                    zwickmuhlen_liste.append(zwickmuhle)
-
-        # Überprüfe L-shapes
-        for i in range(self.game.board.m - zwickmuhle_size + 1):
-            for j in range(self.game.board.n - zwickmuhle_size + 1):
-                l_shape = [(i + x, j) for x in range(zwickmuhle_size)] + [(i + zwickmuhle_size - 1, j + x) for x in range(1, zwickmuhle_size)]
-                if all(self.is_valid_position(pos) for pos in l_shape):
-                    zwickmuhlen_liste.append(l_shape)
-
-        # Überprüfe T-shapes
-        for i in range(self.game.board.m - zwickmuhle_size + 1):
-            for j in range(self.game.board.n - zwickmuhle_size + 1):
-                t_shape = [(i + x, j) for x in range(zwickmuhle_size)] + [(i + zwickmuhle_size//2, j + x) for x in range(1, zwickmuhle_size)]
-                if all(self.is_valid_position(pos) for pos in t_shape):
-                    zwickmuhlen_liste.append(t_shape)
-
-        # Überprüfe diagonal + straight shapes
-        for i in range(self.game.board.m - zwickmuhle_size + 1):
-            for j in range(self.game.board.n - zwickmuhle_size + 1):
-                diagonal_straight = [(i + x, j + x) for x in range(zwickmuhle_size)] + [(i + zwickmuhle_size - 1, j + x) for x in range(1, zwickmuhle_size)]
-                if all(self.is_valid_position(pos) for pos in diagonal_straight):
-                    zwickmuhlen_liste.append(diagonal_straight)
+        for i in range(self.game.board.m - self.game.board.k + 1):
+            for j in range(self.game.board.k - 1, self.game.board.n):
+                zwickmuhlen_liste.append([(i + x, j - x) for x in range(self.game.board.k)])
 
         return zwickmuhlen_liste
-
     
-    #ÜBERPRÜFEN, OB EINE POSITION GÜLTIG IST
-    def is_valid_position(self, pos):
-        return 0 <= pos[0] < self.game.board.m and 0 <= pos[1] < self.game.board.n  #überprüft ob die Position innerhalb des Spielfeldes ist
-
     
-    #ZWICKMÜHLE BAUEN
-    def build_zwickmuehle(self):
-         zwickmuehlen_list = self.zwickmuehle_list()
-         for zwickmuehle in zwickmuehlen_list:            #geht die Zwickmühlen durch
-             count = 0
-             empty_positions = []
-            
-             for position in zwickmuehle:
-                if self.game.get_symbol(position[0], position[1]) == self.symbol:       #wenn das Symbol an der Stelle r,c das Symbol der KI ist, dann wird count um 1 erhöht
-                     count += 1
-                elif self.game.get_symbol(position[0], position[1]) == "":              #wenn das Symbol an der Stelle r,c leer ist, dann wird die Position in die Liste der leeren Positionen eingefügt
-                     empty_positions.append(position)
-         chain_lengths = {}
-         if empty_positions:                                                             
-             for position in empty_positions:
-                 chain_length = self.calculate_regular_chain_length(position[0], position[1])   #berechnet die Kette der leeren Positionen
-                 chain_lengths[chain_length] = position[0], position[1]                         #speichert die Kette als Key und die Position als Value in das Dictionary
-         else:
-             return None
-            
-         if chain_lengths:                               # geht das dictionary durch
-             best_length = max(chain_lengths)            # speichert die maximale länge als best_lenght
-             best_move = chain_lengths[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
-             return best_move                            # gibt best_move wieder
-         else:
-             return None
-         
-    
+    #FINDEN DES BESTEN ZUGES
+    def find_move(self):
+        best_move = None
+        chainlenght_dict = {}
+        #es wird nur Ort des leeren Buttons zruück gegeben, jedoch noch kein symbol plaziert
+        for r in range(self.game.board.m):                       #durchgehen der rows
+            for c in range(self.game.board.n):                   #durchgehen der cols
+                if self.game.get_symbol(r, c) == self.symbol:    #wenn das symbol an der stelle r,c das symbol der KI ist:
+                    #Prüfen, ob rechts Platz ist
+                    if c + 1 < self.game.board.n and self.game.get_symbol(r, c + 1) == "":  #wenn der Button an der stelle c + 1 innerhalb des boards ist und leer ist:
+                        lenght_r = self.calculate_regular_chain_length(r, c + 1)                                                  #dann wird row und col des leeren buttons zurück gegeben
+                        chainlenght_dict[lenght_r] = (r, c+1)
+                    #Prüfen, ob links Platz ist
+                    if c - 1 >= 0 and self.game.get_symbol(r, c - 1) == "":
+                        lenght_l = self.calculate_regular_chain_length(r, c - 1)
+                        chainlenght_dict[lenght_l] = (r, c-1)
+                    #Prüfen, ob unten Platz ist
+                    if r + 1 < self.game.board.m and self.game.get_symbol(r + 1, c) == "":
+                        lenght_u = self.calculate_regular_chain_length( r + 1, c)
+                        chainlenght_dict[lenght_u] = (r+1, c)
+                    #Prüfen, ob oben Platz ist
+                    if r - 1 >= 0 and self.game.get_symbol(r - 1, c) == "":
+                        lenght_o = self.calculate_regular_chain_length( r - 1, c)
+                        chainlenght_dict[lenght_o] = (r-1, c)
+                    #Prüfen, ob diagonal unten rechts Platz ist
+                    if r + 1 < self.game.board.m and c + 1 < self.game.board.n and self.game.get_symbol(r + 1, c + 1) == "":
+                        lenght_ur = self.calculate_regular_chain_length( r + 1, c + 1)
+                        chainlenght_dict[lenght_ur] = (r+1, c+1)
+                    #Prüfen, ob diagonal oben links Platz ist
+                    if r - 1 >= 0 and c - 1 >= 0 and self.game.get_symbol(r - 1, c - 1) == "":
+                        lenght_ol = self.calculate_regular_chain_length( r - 1, c - 1)
+                        chainlenght_dict[lenght_ol] = (r-1, c-1)
+                    #Prüfen, ob diagonal unten links Platz ist
+                    if r + 1 < self.game.board.m and c - 1 >= 0 and self.game.get_symbol(r + 1, c - 1) == "":
+                        lenght_ul = self.calculate_regular_chain_length( r + 1, c - 1)
+                        chainlenght_dict[lenght_ul] = (r+1, c-1)
+                    #Prüfen, ob diagonal oben rechts Platz ist
+                    if r - 1 >= 0 and c + 1 < self.game.board.n and self.game.get_symbol(r - 1, c + 1) == "":
+                        lenght_or = self.calculate_regular_chain_length( r - 1, c + 1)
+                        chainlenght_dict[lenght_or] = (r-1, c+1)
+                
+        if chainlenght_dict:                               # geht das dictionary durch
+            best_length = max(chainlenght_dict)            # speichert die maximale länge als best_lenght
+            best_move = chainlenght_dict[best_length]      # speichert den best_move als best lenght(eig unnötig aber dsachte wir lasse best move einfach mal drinnen)
+            return best_move                               # gibt best_move wieder
         
-    #BERECHNUNG DER KETTENLÄNGE
+    
+    #BERECHNUNG DER KETTENLÄNGE   
     def calculate_regular_chain_length(self, row, col):
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # horizontal, vertikal, diagonal absteigend, diagonal aufsteigend, dargestellt durch (dr, dc)
                    #     -      |        \       /
@@ -841,7 +825,8 @@ class KomplexeKI_Zwickmuehle(Player):
 
         return max_length            #längste gefundene Kette wird zurück gegeben
      
-    #GEWINNENDER ZUG DER KI   
+     
+    #ERKENNEN, OB EIN GEWINNENDER ZUG MÖGLICH IST   
     def make_winning_move(self):
             for i in range(self.game.board.m):
                 for j in range(self.game.board.n):
@@ -855,7 +840,7 @@ class KomplexeKI_Zwickmuehle(Player):
                                 else:
                                     return None 
 
-    #MITTE DES SPIELFELDES
+    #BERECHNUNG DER MITTE DES SPIELFELDES
     def get_center(self):
     # Berechnet die Mitte der Spalten und Zeilen
         mitte_spalten = int((self.game.board.n - 1) / 2) if self.game.board.n % 2 == 1 else int(self.game.board.n / 2)
@@ -864,9 +849,7 @@ class KomplexeKI_Zwickmuehle(Player):
         move = mitte_zeilen, mitte_spalten
         return move
 
-
-
-    #LÄNGSTE KETTE FINDEN
+    #BERECHNUNG DER KETTENLÄNGE
     def calculate_complex_chain_length(self, row, col, symbol):
         directions = [(0, 1), (1, 0), (1, 1), (-1, +1)]
         max_length = []
@@ -886,6 +869,7 @@ class KomplexeKI_Zwickmuehle(Player):
                 if 0 <= r < self.game.board.m and 0 <= c < self.game.board.n and self.game.get_symbol(r, c) == self.symbol:
                      chain_coordinates.append((r, c))
                 
+                
 
             if len(chain_coordinates) >= self.game.board.k-1:
                 return chain_coordinates
@@ -902,7 +886,7 @@ class KomplexeKI_Zwickmuehle(Player):
         return next((symbol for symbol in all_symbols if symbol != self.symbol), None)
 
     
-    #BLOCKIERENDER ZUG DER KI
+    #BLOCKIEREN DES GEGNERS
     def make_blocking_move(self):
             opponent_symbol = self.get_opponent_symbol()
             for i in range(self.game.board.m):
@@ -922,7 +906,7 @@ class KomplexeKI_Zwickmuehle(Player):
                                         return None 
                                 
                             
-    #RICHTUNG DER KETTE FINDEN                       
+    #RICHTUNG DER KETTE HERAUSFINDEN                      
     def find_direction(self, row, col, symbol, coordinates_list):
     # Richtung der Kette herausfinden
     # Prüfen, ob rechts das Symbol in der Liste ist
@@ -953,7 +937,7 @@ class KomplexeKI_Zwickmuehle(Player):
             return None
 
 
-    #LEERE POSITION FINDEN
+    #LEERE STELLE IN DER KETTE FINDEN
     def find_empty_spot(self, list, direction):
         if not list:
             return None  # Return None if the list is empty
@@ -1024,9 +1008,8 @@ class KomplexeKI_Zwickmuehle(Player):
                 return row - 1, col + 1
         else:
             return None
-                
-    
-    #ÜBERPRÜFEN, OB EINE POSITION BEREITS BLOCKIERT IST
+         
+    #ÜBERPRÜFEN, OB EIN ZUG BEREITS BLOCKIERT IST       
     def already_blocked(self, list, direction):
         #bei waagerechter Kette. die alle in einer Reihe sind
         consecutive = self.are_coordinates_consecutive(list)
@@ -1034,28 +1017,34 @@ class KomplexeKI_Zwickmuehle(Player):
         if list and consecutive == True and list[-1][1] + 1 < self.game.board.n and list[0][0] - 1 >= 0 and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):     
             if self.game.get_symbol(list[-1][0], list[-1][1] + 1) != "" and self.game.get_symbol(list[0][0], list[0][1] - 1) != "" :  
                 return True
-        # bei senkrechter Kette, die alle in einer Reihe sind
+        #bei senkrechter Kette, die alle in einer Reihe sind
         elif list and consecutive == True and list[-1][0] + 1 < self.game.board.m and list[0][0] - 1 >= 0 and (direction == "Senkrecht, unten" or direction == "Senkrecht, oben"): 
             if self.game.get_symbol(list[-1][0] + 1, list[-1][1]) != "" and self.game.get_symbol(list[0][0] - 1, list[0][1]) != "":
                 return True
+        #bei diagonalen Kette, die alle in einer Reihe sind
         elif list and consecutive == True and list[-1][0] + 1 < self.game.board.m and list[-1][1] + 1 < self.game.board.n and list[0][0] - 1 >= 0  and (direction == "Diagonal, links oben" or direction == "Diagonal, rechts unten"):
             if list and self.game.get_symbol(list[0][0] + 1, list[0][1] + 1) != "" and self.game.get_symbol(list[-1][0] - 1, list[-1][1] - 1) != "" :
                 return True
+        #bei diagonalen Kette, die alle in einer Reihe sind
         elif list and consecutive == True and list[-1][0] + 1 < self.game.board.m and list[-1][1] - 1 >= 0 and list[0][0] - 1 >= 0 and list[0][1] + 1 < self.game.board.n and (direction == "Diagonal, links unten" or direction == "Diagonal, rechts oben"):
             if list and self.game.get_symbol(list[-1][0] + 1, list[-1][1] - 1) != "" and self.game.get_symbol(list[0][0] - 1, list[0][1] + 1) != "":
                 return True
+        #bei waagerechter Kette. die alle in einer Reihe sind
         elif isinstance(consecutive, tuple)  and (direction == "Waagerecht, rechts" or direction == "Waagerecht, links"):
             row, col = consecutive
             if self.game.get_symbol(row, col + 1) != "" and self.game.get_symbol(row, col - 1) != "":
                 return True
+        #bei senkrechter Kette, die alle in einer Reihe sind
         elif isinstance(consecutive, tuple) and (direction == "Senkrecht, unten" or direction == "Senkrecht, oben"): 
             row, col = consecutive
             if self.game.get_symbol(row +1, col) != "" and self.game.get_symbol(row - 1, col) != "":
                 return True
+        #bei diagonalen Kette, die alle in einer Reihe sind
         elif isinstance(consecutive, tuple) and (direction == "Diagonal, links oben" or direction == "Diagonal, rechts unten"):
             row, col = consecutive
             if self.game.get_symbol(row +1, col + 1) != "" and self.game.get_symbol(row - 1, col - 1) != "":
                 return True
+        #bei diagonalen Kette, die alle in einer Reihe sind
         elif isinstance(consecutive, tuple) and (direction == "Diagonal, links unten" or direction == "Diagonal, rechts oben"):
             row, col = consecutive
             if self.game.get_symbol(row +1, col - 1) != "" and self.game.get_symbol(row - 1, col + 1) != "":
@@ -1064,7 +1053,7 @@ class KomplexeKI_Zwickmuehle(Player):
             return False
         
         
-    #ÜBERPRÜFEN, OB KOORDINATEN AUF EINER LINIE LIEGEN  
+    #KOOEDINATEN ÜBERPRÜFEN
     def are_coordinates_consecutive(self, coord_list):
         if not coord_list:
             return None
@@ -1083,8 +1072,8 @@ class KomplexeKI_Zwickmuehle(Player):
             else:
                 row, col = current_coord
                 return (row, col)
+                
         return True
-
         
  #------------------------------------------------------------------------------------------------------------
  #------------------------------------------------GAME--------------------------------------------------------
@@ -1110,8 +1099,8 @@ class Game:
         elif self.current_player.is_komplexeki:
             QTimer.singleShot(100, self.current_player.make_komplexeki_move)
         #komplexe KI Zwickmühle
-        elif self.current_player.is_komplexeki_zwickmuehle:
-            QTimer.singleShot(100, self.current_player.make_komplexeki_zwickmuehle_move)
+        elif self.current_player.is_komplexeki_random:
+            QTimer.singleShot(100, self.current_player.make_komplexeki_random_move)
         
            
      
@@ -1163,8 +1152,8 @@ class Game:
                 elif self.current_player.is_komplexeki:
                     QTimer.singleShot(100, self.current_player.make_komplexeki_move)
                 #komplexe KI Zwickmühle
-                elif self.current_player.is_komplexeki_zwickmuehle:
-                    QTimer.singleShot(100, self.current_player.make_komplexeki_zwickmuehle_move)
+                elif self.current_player.is_komplexeki_random:
+                    QTimer.singleShot(100, self.current_player.make_komplexeki_random_move)
             
             
             
@@ -1285,16 +1274,17 @@ if __name__ == "__main__":
     player_einfacheki2 = EinfacheKI("Einfache KI 2", "x", None)
     player_komplexeki = KomplexeKI("Komplexe KI", "o", None)
     player_komplexeki2 = KomplexeKI("Komplexe KI 2", "x", None)
-    player_komplexeki_zwickmuehle = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle", "o", None)
-    player_komplexeki_zwickmuehle2 = KomplexeKI_Zwickmuehle("Komplexe KI Zwickmühle 2", "x", None)
+    player_komplexeki_random = KomplexeKI_Random("Komplexe KI Random", "o", None)
+    player_komplexeki_random2 = KomplexeKI_Random("Komplexe KI Random 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_komplexeki2
-    player2 = player_komplexeki_zwickmuehle
+    player1 = player_komplexeki_random2
+    player2 = player_komplexeki
     
-    play_several_times = False
-    play_forever = True
-    num_games = 100  # Anzahl der Spiele
+    play_several_times = True
+    play_forever = False
+    play_until_x_wins = False
+    num_games = 2000  # Anzahl der Spiele
     
     #Gewinnzählung in einem dictionary
     wins = {player1.name: 0, player2.name: 0, "Unentschieden": 0}
@@ -1314,8 +1304,8 @@ if __name__ == "__main__":
             player_einfacheki2.game = game #einfacheki
             player_komplexeki.game = game #komplexeki
             player_komplexeki2.game = game #komplexeki
-            player_komplexeki_zwickmuehle.game = game #komplexeki_zwichmuehle
-            player_komplexeki_zwickmuehle2.game = game #komplexeki_zwichmuehle
+            player_komplexeki_random.game = game #komplexeki_zwichmuehle
+            player_komplexeki_random2.game = game #komplexeki_zwichmuehle
             
             #Spiel starten
             winner = play_game(game)           #spiel läuft und gibt einen gewinner (x bzw o) wieder
@@ -1368,8 +1358,8 @@ if __name__ == "__main__":
                     player_einfacheki2.game = game
                     player_komplexeki.game = game
                     player_komplexeki2.game = game
-                    player_komplexeki_zwickmuehle.game = game
-                    player_komplexeki_zwickmuehle2.game = game
+                    player_komplexeki_random.game = game
+                    player_komplexeki_random2.game = game
                     
                     winner = play_game(game)         #spiel starten und gewinnner am ende zurückgebn
 
@@ -1384,6 +1374,31 @@ if __name__ == "__main__":
 
             print(wins) #gewinne ausgeben 
 
+#----------------------------------------------------------------------------------------------------------- 
+
+    elif play_until_x_wins:
+        
+        while True:
+            player1f = player_komplexeki
+            player2f = player_zufallski2
+            game = Game(5, 5, 4, player1f, player2f)   #game klasse aufrufen 
+                    
+            #KIs richtig zuweisen
+            player_zufallski.game = game
+            player_zufallski2.game = game
+            player_einfacheki.game = game
+            player_einfacheki2.game = game
+            player_komplexeki.game = game
+            player_komplexeki2.game = game
+            player_komplexeki_random.game = game
+            player_komplexeki_random2.game = game
+            
+            winner = play_game(game)         #spiel starten und gewinnner am ende zurückgebn
+            
+            if winner is None:
+                break
+            
+            time.sleep(0.15)
                 
 #-----------------------------------------------------------------------------------------------------------   
             
@@ -1398,8 +1413,8 @@ if __name__ == "__main__":
         player_einfacheki2.game = game #einfacheki
         player_komplexeki.game = game #komplexeki
         player_komplexeki2.game = game #komplexeki
-        player_komplexeki_zwickmuehle.game = game #komplexeki_zwichmuehle
-        player_komplexeki_zwickmuehle2.game = game #komplexeki_zwichmuehle
+        player_komplexeki_random.game = game #komplexeki_zwichmuehle
+        player_komplexeki_random2.game = game #komplexeki_zwichmuehle
         
         #Spiel starten
         winner = play_game(game)
