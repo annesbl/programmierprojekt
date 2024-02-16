@@ -1278,8 +1278,8 @@ if __name__ == "__main__":
     player_komplexeki_random2 = KomplexeKI_Random("Komplexe KI Random 2", "x", None)
     
     #Player1 und Player2 wählen (2 der oben gennanten namen wählen - auf "x" und "o" achten)
-    player1 = player_zufallski
-    player2 = player_komplexeki
+    player1 = player_mensch
+    player2 = player_zufallski
     
     play_several_times = False
     play_forever = False
